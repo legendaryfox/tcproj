@@ -28,6 +28,9 @@ class Cbo < ActiveRecord::Base
   has_many :categorizations, :foreign_key => "cbo_id"
   has_many :categories, :through => :categorizations, :source => :category
                     
+  def addToCategory!(category)
+    self.categorizations.create!(:category_id => category.id)
+  end
   
   
 end
