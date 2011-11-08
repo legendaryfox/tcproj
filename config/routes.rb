@@ -1,5 +1,9 @@
 Tcproj::Application.routes.draw do
   
+  get "categories/new"
+
+  get "cbos/new"
+
   resources :users
   
   get "users/new"
