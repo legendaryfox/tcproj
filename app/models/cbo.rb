@@ -24,6 +24,9 @@ class Cbo < ActiveRecord::Base
   
   has_many :participations, :foreign_key => "cbo_id"
   has_many :students, :through => :participations, :source => :student
+  
+  has_many :categorizations, :foreign_key => "cbo_id"
+  has_many :categories, :through => :categorizations, :source => :category
                     
   
   

@@ -1,5 +1,7 @@
 Tcproj::Application.routes.draw do
   
+  get "categorizations/new"
+
   get "categories/new"
 
   get "cbos/new"
