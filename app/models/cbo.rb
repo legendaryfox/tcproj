@@ -23,7 +23,7 @@ class Cbo < ActiveRecord::Base
                     :format => { :with => email_regex }
   
   has_many :participations, :foreign_key => "cbo_id"
-  has_many :students, :through => :participations, :source => :student
+  has_many :users, :through => :participations, :source => :user
   
   has_many :categorizations, :foreign_key => "cbo_id"
   has_many :categories, :through => :categorizations, :source => :category

@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
                     :format => { :with => email_regex },
                     :uniqueness => true
 
-  has_many :participations, :foreign_key => "student_id"               
+  has_many :participations, :foreign_key => "user_id"               
     
   has_many :cbos, :through => :participations, :source => :cbo
   
