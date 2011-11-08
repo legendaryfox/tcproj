@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   validates :email, :presence => true,
                     :format => { :with => email_regex },
                     :uniqueness => true
+
+  has_many :participations, :foreign_key => "student_id"               
+    
+  has_many :cbos, :through => :participations, :source => :cbo
   
   
 end

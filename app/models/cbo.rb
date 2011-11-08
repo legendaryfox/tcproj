@@ -21,6 +21,9 @@ class Cbo < ActiveRecord::Base
                     
   validates :email, :presence => true,
                     :format => { :with => email_regex }
+  
+  has_many :participations, :foreign_key => "cbo_id"
+  has_many :students, :through => :participations, :source => :student
                     
   
   
