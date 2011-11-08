@@ -27,5 +27,10 @@ class User < ActiveRecord::Base
     
   has_many :cbos, :through => :participations, :source => :cbo
   
+  def joinCBO!(cbo)
+    self.participations.create!(:cbo_id => cbo.id)
+  end
+  
+  
   
 end
