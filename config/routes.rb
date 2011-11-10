@@ -4,15 +4,12 @@ Tcproj::Application.routes.draw do
 
   get "categorizations/new"
 
-  get "categories/new"
 
-  get "cbos/new"
 
   resources :users
   resources :cbos
   resources :categories
   
-  get "users/new"
 
   get "pages/home"
 
