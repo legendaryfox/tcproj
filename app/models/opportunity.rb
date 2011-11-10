@@ -14,7 +14,9 @@
 #
 
 class Opportunity < ActiveRecord::Base
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :cbo_id, :questionnaire_id
   
   belongs_to :cbo
+  
+  validates :cbo_id, :presence => true
 end

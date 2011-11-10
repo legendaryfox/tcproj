@@ -1,7 +1,7 @@
 <h1>Create a new CBO</h1>
 
 <%= form_for(@cbo) do |f| %>
-	<%= render 'shared/error_messages' %>
+	<%= render 'shared/error_messages', :object => f.object %>
 	<div class="field">
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>
@@ -13,6 +13,6 @@
 	</div>
 	
 	<div class="actions">
-		<%= f.submit "Sign up" %>
+		<%= f.submit "Create CBO" %>
 	</div>
 <% end %>

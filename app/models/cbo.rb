@@ -20,7 +20,8 @@ class Cbo < ActiveRecord::Base
                     :length => { :maximum => 32 }
                     
   validates :email, :presence => true,
-                    :format => { :with => email_regex }
+            :format => { :with => email_regex },
+            :uniqueness => { :case_sensitive => false }
                     
   has_many :opportunities
   

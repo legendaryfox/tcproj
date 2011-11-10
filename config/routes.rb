@@ -1,6 +1,5 @@
 Tcproj::Application.routes.draw do
   
-  get "opportunities/new"
 
   get "categorizations/new"
 
@@ -9,6 +8,7 @@ Tcproj::Application.routes.draw do
   resources :users
   resources :cbos
   resources :categories
+  resources :opportunities
     
 
   get "pages/home"

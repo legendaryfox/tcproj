@@ -1,2 +1,28 @@
-<h1>Opportunities#new</h1>
-<p>Find me in app/views/opportunities/new.html.erb</p>
+<h1>New Opportunity</h1>
+
+<%= form_for(@opportunity) do |f| %>
+	<%= render 'shared/error_messages', :object => f.object %>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :description %><br />
+		<%= f.text_field :description %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :cbo_id %><br />
+		<%= f.text_field :cbo_id %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :questionnaire_id %><br />
+		<%= f.text_field :questionnaire_id %>
+	</div>
+	
+	<div class="actions">
+		<%= f.submit "Create" %>
+	</div>
+<% end %>
