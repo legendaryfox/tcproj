@@ -9,7 +9,7 @@ Tcproj::Application.routes.draw do
   resources :users
   resources :cbos
   resources :categories
-  
+    
 
   get "pages/home"
 
