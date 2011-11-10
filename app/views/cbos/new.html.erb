@@ -1,2 +1,18 @@
-<h1>Cbos#new</h1>
-<p>Find me in app/views/cbos/new.html.erb</p>
+<h1>Create a new CBO</h1>
+
+<%= form_for(@cbo) do |f| %>
+	<%= render 'shared/error_messages' %>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :email %><br />
+		<%= f.text_field :email %>
+	</div>
+	
+	<div class="actions">
+		<%= f.submit "Sign up" %>
+	</div>
+<% end %>
