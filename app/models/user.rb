@@ -30,8 +30,7 @@ class User < ActiveRecord::Base
                         
   before_save :encrypt_password
 
-  has_many :participations, :foreign_key => "user_id"               
-    
+  has_many :participations #, :foreign_key => "user_id"               
   has_many :cbos, :through => :participations, :source => :cbo
   
   
@@ -39,14 +38,27 @@ class User < ActiveRecord::Base
     encrypted_password == encrypt(submitted_password)
   end
   
-  def joinCBO!(cbo)
+  def join_cbo!(cbo)
     self.participations.create!(:cbo_id => cbo.id)
+  end
+  
+  def leave_cbo!(cbo)
+    self.participations.find_by_cbo_id(cbo).destroy
+  end
+  
+  def part_of_cbo?(cbo)
+    participations.find_by_cbo_id(cbo)
   end
   
   def self.authenticate(email, submitted_password)
     user = find_by_email(email)
     return nil if user.nil?
     return user if user.has_password?(submitted_password)
+  end
+  
+  def self.authenticate_with_salt(id, cookie_salt)
+    user = find_by_id(id)
+    (user && user.salt == cookie_salt) ? user : nil
   end
   
   private

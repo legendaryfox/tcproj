@@ -9,6 +9,11 @@ class CbosController < ApplicationController
     @cbo = Cbo.find(params[:id])
   end
   
+  def index
+    @cbos = Cbo.all
+    @title = "All CBOs"
+  end
+  
   def create
     @cbo = Cbo.new(params[:cbo])
     if @cbo.save

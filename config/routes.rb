@@ -4,17 +4,18 @@ Tcproj::Application.routes.draw do
   
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-
+  match '/signup', :to => 'users#new'
   get "sessions/new"
 
   get "categorizations/new"
-
-
+  
+  
 
   resources :users
   resources :cbos
   resources :categories
   resources :opportunities
+  resources :participations
     
 
   get "pages/home"

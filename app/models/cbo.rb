@@ -13,7 +13,7 @@
 
 class Cbo < ActiveRecord::Base
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_  
+  attr_accessible :name, :email, :password, :password_confirmation
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
@@ -32,13 +32,13 @@ class Cbo < ActiveRecord::Base
                     
   has_many :opportunities
   
-  has_many :participations, :foreign_key => "cbo_id"
+  has_many :participations #, :foreign_key => "cbo_id"
   has_many :users, :through => :participations, :source => :user
   
   has_many :categorizations, :foreign_key => "cbo_id"
   has_many :categories, :through => :categorizations, :source => :category
                     
-  def addToCategory!(category)
+  def add_to_category!(category)
     self.categorizations.create!(:category_id => category.id)
   end
   

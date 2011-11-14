@@ -1,5 +1,14 @@
-<%= @user.name %><br>
-<%= @user.id %><br>
-<%= @user.email %><br>
-<%= @user.student %><br>
-<%= @user.admin %><br>
+Name: <%= @user.name %><br>
+Email: <%= @user.email %><br>
+
+<% if signed_in? && current_user.id == @user.id%>
+		This is your profile page.
+<% end %>
+
+<br />
+These are all the CBOs this user is in:
+<ul>
+<% @cbos.each do |cbo| %>
+	<li><%= link_to cbo.name, cbo %></li>
+<% end %>
+</ul>

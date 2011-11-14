@@ -1,2 +1,19 @@
 CBO Name: <%= @cbo.name %> <br />
-CBO Contact email: <%= @cbo.email %>
+CBO Contact email: <%= @cbo.email %> <br />
+
+<% if signed_in? %>
+	You are signed in.
+	<% if current_user.part_of_cbo?(@cbo) %>
+		Remove yourself from this CBO
+		<%= form_for(current_user.participations.find_by_cbo_id(@cbo),
+					:html => { :method => :delete }) do |f| %>
+			<% f.submit "Remove Participation" %>
+		<% end %>
+	<% else %>
+		Be a part of this CBO
+		<%= form_for(current_user.participations.build(:cbo_id => @cbo.id)) do |f| %>
+			<%= f.hidden_field :cbo_id %>
+			<%= f.submit "Participate" %>
+		<% end %>
+	<% end %>
+<% end %>

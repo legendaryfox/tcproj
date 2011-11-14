@@ -1,0 +1,10 @@
+<h1>All CBOs</h1>
+
+
+<ul class="cbos">
+	<% @cbos.each do |cbo| %>
+		<li>
+			<%= link_to cbo.name, cbo %>
+		</li>
+	<% end %>
+</ul>
