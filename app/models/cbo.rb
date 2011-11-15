@@ -52,6 +52,11 @@ class Cbo < ActiveRecord::Base
     return cbo if cbo.has_password?(submitted_password)
   end
   
+  def self.authenticate_with_salt(id, cookie_salt)
+    cbo = find_by_id(id)
+    (cbo && cbo.salt == cookie_salt) ? cbo : nil
+  end
+  
   private
   
     

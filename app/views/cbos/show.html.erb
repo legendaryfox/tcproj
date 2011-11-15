@@ -1,7 +1,7 @@
 CBO Name: <%= @cbo.name %> <br />
 CBO Contact email: <%= @cbo.email %> <br />
 
-<% if signed_in? %>
+<% if signed_in_user? %>
 	You are signed in.
 	<% if current_user.part_of_cbo?(@cbo) %>
 		Remove yourself from this CBO

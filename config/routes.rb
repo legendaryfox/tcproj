@@ -10,7 +10,6 @@ Tcproj::Application.routes.draw do
   get "categorizations/new"
   
   
-
   resources :users
   resources :cbos
   resources :categories

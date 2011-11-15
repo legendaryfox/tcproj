@@ -1,7 +1,7 @@
 Name: <%= @user.name %><br>
 Email: <%= @user.email %><br>
 
-<% if signed_in? && current_user.id == @user.id%>
+<% if signed_in_user? && current_user.id == @user.id%>
 		This is your profile page.
 <% end %>
 

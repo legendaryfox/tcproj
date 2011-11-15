@@ -5,7 +5,7 @@
 		<%= csrf_meta_tag %>
 	</head>
 	<body>
-		<% if signed_in?%>
+		<% if signed_in_user?%>
 			
 			Hello, <%= link_to current_user.name, current_user %>.
 			<ul>
@@ -14,7 +14,11 @@
 				<li><%= link_to "User Listing", users_path %></li>
 				<li><%= link_to "CBO Listing", cbos_path %></li>
 			</ul>
-			
+		<% elsif signed_in_cbo? %>
+			Hello, are you <%= link_to current_cbo.name, current_cbo %>
+			<ul>
+				<li><%= link_to "Sign Out", signout_path %></li>
+			</ul>
 		<% else %>
 			Hello, you are not signed in.
 			<ul>
