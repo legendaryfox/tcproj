@@ -1,15 +1,4 @@
 
-# == Schema Information
-#
-# Table name: cbos
-#
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#
-
 
 class Cbo < ActiveRecord::Base
   attr_accessor :password
@@ -82,4 +71,18 @@ class Cbo < ActiveRecord::Base
   
   
 end
+
+
+# == Schema Information
+#
+# Table name: cbos
+#
+#  id                 :integer         not null, primary key
+#  name               :string(255)
+#  email              :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  encrypted_password :string(255)
+#  salt               :string(255)
+#
 
