@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
   
   def create
     
-    if params[:student]
+    if (params[:session][:student] == "1")
+      puts "in student login"
       #student login
       user = User.authenticate(params[:session][:email], params[:session][:password])
       if user.nil?
@@ -17,7 +18,8 @@ class SessionsController < ApplicationController
         redirect_to user
       end
       
-    else
+    elsif (params[:session][:student] == "0")
+      puts "in cbo login"
       #cbo login
       cbo = Cbo.authenticate(params[:session][:email], params[:session][:password])
       if cbo.nil?
@@ -28,7 +30,10 @@ class SessionsController < ApplicationController
         sign_in_cbo cbo
         redirect_to cbo
       end
-      
+    else
+      puts "in nowhere land.."
+      puts "params is" + params[:session][:student].class.name
+      #do nothing...
     end
 
   end
