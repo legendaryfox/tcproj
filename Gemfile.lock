@@ -44,6 +44,7 @@ GEM
     mime-types (1.17.2)
     nokogiri (1.5.0)
     polyglot (0.3.3)
+    possessive (1.0.0)
     rack (1.2.4)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
@@ -91,6 +92,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  possessive
   rails (= 3.0.0)
   rspec (= 2.0.1)
   rspec-rails (= 2.0.1)
