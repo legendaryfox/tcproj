@@ -17,4 +17,7 @@ class Userprofile < ActiveRecord::Base
   attr_accessible :firstname, :lastname, :nickname
   
   belongs_to :user
+  
+  validates :firstname, :presence => true
+  validates :lastname, :presence => true
 end
