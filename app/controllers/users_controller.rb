@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :except => [:new, :create]
-  before_filter 
+  before_filter :authenticate_user, :except => [:new, :create] #in app/helpers/sessions_helper.rb
+  before_filter :correct_user, :only => [:edit, :update]
   
   
   def index
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @cbos = @user.cbos.all
+    #@cbos = @user.cbos.all
   end
   
   def new
@@ -30,5 +30,29 @@ class UsersController < ApplicationController
     end
 
   end
+  
+  def edit
+    #@user is passed implicitly via "correct_user" method below in private section
+    @title = "Edit User"
+  end
+  
+  def update
+    if @user.update_attributes(params[:user])
+      redirect_to @user, :flash => { :success => "User updated." }
+    else
+      @title = "Edit user"
+      render 'edit'
+    end
+  end
+  
+  
+  
+  private
+  
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
+    
 
 end

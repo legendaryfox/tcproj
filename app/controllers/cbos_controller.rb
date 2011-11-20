@@ -17,6 +17,7 @@ class CbosController < ApplicationController
   def create
     @cbo = Cbo.new(params[:cbo])
     if @cbo.save
+      sign_in_cbo @cbo
       redirect_to @cbo
     else
       render 'new'

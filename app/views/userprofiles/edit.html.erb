@@ -1,0 +1,10 @@
+<h1>Edit User Profile</h1>
+
+<%= form_for(@userprofile) do |userprofile_form| %>
+	<%= render 'shared/error_messages', :object => userprofile_form.object %>
+	<%= render 'fields', :userprofile_form => userprofile_form %>
+	
+	<div class="actions">
+		<%= userprofile_form.submit "Update" %>
+	</div>
+<% end %>

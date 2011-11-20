@@ -18,8 +18,21 @@ module SessionsHelper
     @current_user ||= user_from_remember_token
   end
   
+  def current_user?(user)
+    user == current_user
+  end
+  
   def signed_in_user?
     !current_user.nil?
+  end
+  
+  def authenticate_user
+    deny_access_user unless signed_in_user?
+  end
+  
+  def deny_access_user
+    store_location
+    redirect_to signin_path, :notice => "Please sign in as a Student to access this page."
   end
   
   
@@ -41,8 +54,21 @@ module SessionsHelper
     @current_cbo ||= cbo_from_remember_token
   end
   
+  def current_cbo?(cbo)
+    cbo == current_cbo
+  end
+  
   def signed_in_cbo?
     !current_cbo.nil?
+  end
+  
+  def authenticate_cbo
+    deny_access_cbo unless signed_in_cbo?
+  end
+  
+  def deny_access_cbo
+    store_location
+    redirect_to signin_path, :notice => "Please sign in as a CBO to access this page."
   end
   
   
@@ -64,6 +90,14 @@ module SessionsHelper
     
     def remember_cbo_token
       cookies.signed[:remember_cbo_token] || [nil, nil]
+    end
+    
+    def store_location
+      session[:return_to] = request.fullpath
+    end
+    
+    def clear_return_to
+      session[:return_to] = nil
     end
   
   

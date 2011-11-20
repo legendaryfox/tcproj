@@ -1,14 +1,21 @@
-Name: <%= @user.name %><br>
-Email: <%= @user.email %><br>
+<h1>Welcome, <%= @user.userprofile.name %>!</h1>
 
-<% if signed_in_user? && current_user.id == @user.id%>
-		This is your profile page.
+<p>This is your user page.</p>
+<p>Your e-mail address is <%= @user.email %>.</p>
+<p>Click <%= link_to "here", @user.userprofile %> to visit your personal profile.</p>
+
+<% if !@user.cbos.empty? %>
+
+	<p>These are all the CBOs <%= current_user.id == @user.id ? "you are" : "this user is" %> currently part of:
+		<ul>
+			<% @user.cbos.each do |cbo| %>
+				<li><%= link_to cbo.name, cbo %></li>
+			<% end %>
+		</ul>
+	</p>
+<% else %>
+
+	<p>You are currently not a part of any CBOs. See the list of CBOs <%= link_to "here", cbos_path %>.</p>
 <% end %>
 
-<br />
-These are all the CBOs this user is in:
-<ul>
-<% @cbos.each do |cbo| %>
-	<li><%= link_to cbo.name, cbo %></li>
-<% end %>
-</ul>
+<%= link_to "Edit", edit_user_path(current_user) %>

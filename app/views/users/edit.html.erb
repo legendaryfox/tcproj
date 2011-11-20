@@ -1,0 +1,10 @@
+<h1>Edit User</h1>
+
+<%= form_for(@user) do |user_form| %>
+	<%= render 'shared/error_messages', :object => user_form.object %>
+	<%= render 'fields', :user_form => user_form %>
+	
+	<div class="actions">
+		<%= user_form.submit "Update" %>
+	</div>
+<% end %>

@@ -1,0 +1,28 @@
+<header>
+	<nav>
+		<% if signed_in_user? %>
+
+			<ul>
+				<li><%= link_to "User Home", current_user%>
+				<li><%= link_to current_user.userprofile.name.possessive + " Profile", current_user.userprofile %></li>
+				<li><%= link_to "User Listing", users_path %></li>
+				<li><%= link_to "CBO Listing", cbos_path %></li>
+				<li><%= link_to "Sign Out", signout_path %></li>		
+			</ul>
+		
+		<% elsif signed_in_cbo? %>
+	
+			<ul>
+				<li><%= link_to current_cbo.name.possessive, current_cbo %> Organization Profile</li>
+				<li><%= link_to "CBO Listing", cbos_path %></li>
+				<li><%= link_to "Sign Out", signout_path %></li>
+			</ul>
+		<% else %>
+		
+			<ul>
+				<li><%= link_to "Sign In", signin_path %></li>
+				<li><%= link_to "New User", signup_path %></li>
+			</ul>
+		<% end %>
+	</nav>
+</header>

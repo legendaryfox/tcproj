@@ -8,11 +8,12 @@ Tcproj::Application.routes.draw do
   get "sessions/new"
 
   get "categorizations/new"
-  
+    
   
   root :to => "sessions#new"
   
   resources :users
+  resources :userprofiles
   resources :cbos
   resources :categories
   resources :opportunities

@@ -20,4 +20,23 @@ class Userprofile < ActiveRecord::Base
   
   validates :firstname, :presence => true
   validates :lastname, :presence => true
+  
+  def name_full(include_nickname = true)
+    firstname + (nickname_with_quotes && include_nickname ? " " + nickname_with_quotes : "" ) + " " + lastname
+  end
+  
+  
+  def name
+    nickname.blank? ? firstname : nickname
+  end
+    
+    
+  private
+  
+    def nickname_with_quotes
+      nickname.blank? ? nil : '"' + nickname + '"'
+    end
+  
+  
+  
 end
