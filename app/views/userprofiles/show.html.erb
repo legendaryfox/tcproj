@@ -8,4 +8,8 @@
 	</ul>
 </p>
 
-<p><%= link_to "Edit Profile", edit_userprofile_path(current_user.userprofile) %></p>
+<% if signed_in_user? %>
+	<% if @userprofile.id == current_user.id %>
+		<p><%= link_to "Edit Profile", edit_userprofile_path(current_user.userprofile) %></p>
+	<% end %>
+<% end %>
