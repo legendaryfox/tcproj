@@ -7,6 +7,12 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 johnuser = User.create!(:name => "johnuser", :email => "johnuser@gmail.com", :password => "foobar", :password_confirmation => "foobar")
+johnuser.create_userprofile(:firstname => "John", :nickname => "Johnnie", :lastname => "Smith")
 
 mikeuser = User.create!(:name => "mikeuser", :email => "mikeuser@gmail.com", :password => "foobar", :password_confirmation => "foobar")
+mikeuser.create_userprofile(:firstname => "Michael", :lastname => "Elton")
+
+cbo1 = Cbo.create!(:name => "Moregood Doings", :email => "moregood@gmail.com", :password => "foobar", :password_confirmation => "foobar")
+
+cbo2 = Cbo.create!(:name => "Anyday Time", :email => "anydaytime@gmail.com", :password => "foobar", :password_confirmation => "foobar")
 

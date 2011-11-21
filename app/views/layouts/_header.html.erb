@@ -13,7 +13,7 @@
 		<% elsif signed_in_cbo? %>
 	
 			<ul>
-				<li><%= link_to current_cbo.name.possessive, current_cbo %> Organization Profile</li>
+				<li><%= link_to current_cbo.name.possessive + " Organization Profile", current_cbo %></li>
 				<li><%= link_to "CBO Listing", cbos_path %></li>
 				<li><%= link_to "Sign Out", signout_path %></li>
 			</ul>

@@ -1,5 +1,11 @@
-CBO Name: <%= @cbo.name %> <br />
-CBO Contact email: <%= @cbo.email %> <br />
+
+<h1><%= @cbo.name %></h1>
+<p>
+	<ul>
+		<li>CBO Name: <%= @cbo.name %></li>
+		<li>CBO Contact email: <%= @cbo.email %></li>
+	</ul>
+</p>
 
 <% if signed_in_user? %>
 	You are signed in.
@@ -16,4 +22,8 @@ CBO Contact email: <%= @cbo.email %> <br />
 			<%= f.submit "Participate" %>
 		<% end %>
 	<% end %>
+<% end %>
+
+<% if current_cbo?(@cbo) %>
+	<p><%= link_to "Edit Profile", edit_cbo_path(@cbo) %></p>
 <% end %>

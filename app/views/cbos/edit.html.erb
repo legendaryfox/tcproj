@@ -1,11 +1,11 @@
-<h1>Create a new CBO</h1>
+<h1>Edit CBO</h1>
 
 <%= form_for(@cbo) do |cbo_form| %>
 	<%= render 'shared/error_messages', :object => cbo_form.object %>
 	<%= render 'fields', :cbo_form => cbo_form %>
 	
 	<div class="actions">
-		<%= cbo_form.submit "Create CBO" %>
+		<%= cbo_form.submit "Update CBO" %>
 	</div>
 	
 <% end %>
