@@ -1,21 +1,27 @@
 <h1>Welcome, <%= @user.userprofile.name %>!</h1>
 
-<p>This is your user page.</p>
+<p>This is your user page. Edit your account information <%= link_to "here", edit_user_path(current_user) %>.</p>
 <p>Your e-mail address is <%= @user.email %>.</p>
 <p>Click <%= link_to "here", @user.userprofile %> to visit your personal profile.</p>
 
 <% if !@user.cbos.empty? %>
 
 	<p>These are all the CBOs <%= current_user.id == @user.id ? "you are" : "this user is" %> currently part of:
-		<ul>
+		<table>
+			<thead>
+				<th>CBO Name</th>
+			</thead>
+			<tbody>
 			<% @user.cbos.each do |cbo| %>
-				<li><%= link_to cbo.name, cbo %></li>
+				<tr>
+					<td><%= link_to cbo.name, cbo %></td>
+				</tr>
 			<% end %>
-		</ul>
+			</tbody>
+		</table>
 	</p>
 <% else %>
 
 	<p>You are currently not a part of any CBOs. See the list of CBOs <%= link_to "here", cbos_path %>.</p>
 <% end %>
 
-<%= link_to "Edit", edit_user_path(current_user) %>
