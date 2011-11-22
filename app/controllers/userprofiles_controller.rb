@@ -1,4 +1,7 @@
 class UserprofilesController < ApplicationController
+  before_filter :authenticate_user, :except => [:new, :create] #in app/helpers/sessions_helper.rb
+  before_filter :correct_userprofile_user, :only => [:edit, :update] 
+  
   
   def show
     @userprofile = Userprofile.find(params[:id])
@@ -19,5 +22,11 @@ class UserprofilesController < ApplicationController
     end
   end
   
+  private
+  
+    def correct_userprofile_user
+      @user = Userprofile.find(params[:id]).user #slightly modified from correct_user in users_controller
+      redirect_to(root_path) unless current_user?(@user)
+    end
   
 end
