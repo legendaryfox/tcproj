@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111117121204) do
+ActiveRecord::Schema.define(:version => 20111122134605) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(:version => 20111117121204) do
   end
 
   add_index "cbos", ["email"], :name => "index_cbos_on_email", :unique => true
+
+  create_table "memberships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "cbo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "memberships", ["cbo_id"], :name => "index_memberships_on_cbo_id"
+  add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "opportunities", :force => true do |t|
     t.string   "name"

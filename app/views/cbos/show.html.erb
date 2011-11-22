@@ -8,18 +8,21 @@
 </p>
 
 <% if signed_in_user? %>
+
 	You are signed in.
 	<% if current_user.part_of_cbo?(@cbo) %>
+	
 		Remove yourself from this CBO:<br /><br />
-		<%= form_for(current_user.participations.find_by_cbo_id(@cbo),
+		<%= form_for(current_user.memberships.find_by_cbo_id(@cbo),
 					:html => { :method => :delete }) do |f| %>
-			<% f.submit "Remove Participation", :class => "btn danger" %>
+			<% f.submit "Remove membership", :class => "btn danger" %>
 		<% end %>
 	<% else %>
+	
 		Be a part of this CBO:<br /><br />
-		<%= form_for(current_user.participations.build(:cbo_id => @cbo.id)) do |f| %>
+		<%= form_for(current_user.memberships.build(:cbo_id => @cbo.id)) do |f| %>
 			<%= f.hidden_field :cbo_id %>
-			<%= f.submit "Participate", :class => "btn primary"  %>
+			<%= f.submit "Become a member", :class => "btn primary"  %>
 		<% end %>
 	<% end %>
 <% end %>

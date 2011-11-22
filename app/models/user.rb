@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
                         
   before_save :encrypt_password
 
-  has_many :participations #, :foreign_key => "user_id"               
-  has_many :cbos, :through => :participations, :source => :cbo
+  has_many :memberships #, :foreign_key => "user_id"               
+  has_many :cbos, :through => :memberships, :source => :cbo
   
   has_one :userprofile
   
@@ -32,15 +32,15 @@ class User < ActiveRecord::Base
   end
   
   def join_cbo!(cbo)
-    self.participations.create!(:cbo_id => cbo.id)
+    self.memberships.create!(:cbo_id => cbo.id)
   end
   
   def leave_cbo!(cbo)
-    self.participations.find_by_cbo_id(cbo).destroy
+    self.memberships.find_by_cbo_id(cbo).destroy
   end
   
   def part_of_cbo?(cbo)
-    participations.find_by_cbo_id(cbo)
+    memberships.find_by_cbo_id(cbo)
   end
   
   def self.authenticate(email, submitted_password)

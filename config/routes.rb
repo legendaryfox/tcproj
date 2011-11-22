@@ -18,6 +18,7 @@ Tcproj::Application.routes.draw do
   resources :categories
   resources :opportunities
   resources :participations
+  resources :memberships
     
 
   get "pages/home"
