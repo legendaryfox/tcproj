@@ -4,18 +4,26 @@
 	<%= render 'shared/error_messages', :object => user_form.object %>
 	<p>Please re-enter your e-mail and password to confirm your account.</p>
 
-	<div class="field">
-		<%= user_form.label :email %><br />
-		<%= user_form.text_field :email %><br />
-	</div>
-
-	<div class="field">
-		<%= user_form.label :password %><br />
-		<%= user_form.password_field :password %><br />
-	</div>
 	
+	<fieldset>
+		<legend>Login Information</legend>
+		<div class="clearfix">
+			<%= user_form.label :email, :class => "xlInput" %>
+			<div class="input">
+				<%= user_form.text_field :email, :class => "xlarge" %>
+			</div>
+		</div>
+		
+		<div class="clearfix">
+			<%= user_form.label :password, :class => "xlInput" %>
+			<div class="input">
+				<%= user_form.password_field :password, :class => "xlarge" %>
+			</div>
+		</div>
 	
-	<div class="actions">
-		<%= user_form.submit "Confirm", :class => "btn primary"  %>
-	</div>
+		<div class="actions">
+			<%= user_form.submit "Confirm", :class => "btn primary"  %>
+		</div>
+	</fieldset>
+	
 <% end %>

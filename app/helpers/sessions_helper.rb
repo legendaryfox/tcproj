@@ -71,6 +71,9 @@ module SessionsHelper
     redirect_to signin_path, :notice => "Please sign in as a CBO to access this page."
   end
   
+  def store_location
+    session[:return_to] = request.fullpath
+  end
   
   
   
@@ -92,9 +95,7 @@ module SessionsHelper
       cookies.signed[:remember_cbo_token] || [nil, nil]
     end
     
-    def store_location
-      session[:return_to] = request.fullpath
-    end
+   
     
     def clear_return_to
       session[:return_to] = nil

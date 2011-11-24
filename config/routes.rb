@@ -28,7 +28,7 @@ Tcproj::Application.routes.draw do
   
   resources :memberships do
     member do
-      post 'confirm'
+      put 'confirm'
     end
   end
   

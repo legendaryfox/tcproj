@@ -1,20 +1,31 @@
 <h1>Sign in</h1>
 
 <%= form_for(:session, :url => sessions_path) do |session_form| %>
-	<div class="field">
-		<%= session_form.label :email %><br />
-		<%= session_form.text_field :email %><br />
-	</div>
-	
-	<div class="field">
-		<%= session_form.label :password %><br />
-		<%= session_form.password_field :password %><br />
-	</div>
-	
-	<div class="field">
-		<%= session_form.label "Student? " %>
-		<%= session_form.check_box :student, :checked => 'checked' %><br /><br />
-	<div class="actions">
-		<%= session_form.submit "Sign in", :class => "btn primary" %>
-	</div>
+	<fieldset>
+		<legend>Login Below</legend>
+		<div class="clearfix">
+			<%= session_form.label :email, :class => "xlInput" %>
+			<div class="input">
+				<%= session_form.text_field :email, :class => "xlarge" %>
+			</div>
+		</div>
+		
+		<div class="clearfix">
+			<%= session_form.label :password, :class => "xlInput" %>
+			<div class="input">
+				<%= session_form.password_field :password, :class => "xlarge" %>
+			</div>
+		</div>
+		
+		<div class="clearfix">
+			<%= session_form.label "Student", :class => "xlInput" %>
+			<div class="input">
+				<%= session_form.check_box :student, :checked => 'checked', :class => "xlarge" %>
+			</div>
+		</div>
+		
+		<div class="actions">
+			<%= session_form.submit "Sign in", :class => "btn primary" %>
+		</div>
+	</fieldset>
 <% end %>
