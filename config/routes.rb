@@ -19,6 +19,13 @@ Tcproj::Application.routes.draw do
     end
   end
   
+  resources :cbos do
+    collection do
+      get 'confirmpage'
+      post 'confirm'
+    end
+  end
+  
   
   
   resources :userprofiles

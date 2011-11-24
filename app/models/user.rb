@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     self.toggle!(:confirmed)
   end
   
+  def confirmed?
+    self.confirmed != 0
+  end
+  
   def self.authenticate(email, submitted_password)
     user = find_by_email(email)
     return nil if user.nil?

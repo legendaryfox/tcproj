@@ -46,6 +46,14 @@ class Cbo < ActiveRecord::Base
     (cbo && cbo.salt == cookie_salt) ? cbo : nil
   end
   
+  def confirm!(level=1)
+    self.toggle!(:confirmed)
+  end
+  
+  def confirmed?
+    self.confirmed != 0
+  end
+  
   private
   
     

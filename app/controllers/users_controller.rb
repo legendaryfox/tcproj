@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user, :except => [:new, :create, :confirm, :confirmpage] #in app/helpers/sessions_helper.rb
   before_filter :correct_user, :only => [:edit, :update]
+  before_filter :check_confirmed_user, :only => [:show]
   
   
   def index
@@ -56,7 +57,7 @@ class UsersController < ApplicationController
       #redirect_to @user
       
       #force them to confirm
-      redirect_to confirmpage_users_path, :notice => "User created. Please confirm your account here."""
+      redirect_to confirmpage_users_path, :notice => "User created. Please confirm your account here."
     else
       @title = "Sign up"
       @user.build_userprofile(params[:user][:userprofile_attributes])
@@ -87,6 +88,13 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
+    
+    def check_confirmed_user
+      # checks if the TARGET user is confirmed.
+      @user = User.find(params[:id])
+      redirect_to(users_path) unless @user.confirmed?
+    end
+      
     
 
 end

@@ -13,12 +13,12 @@ class SessionsController < ApplicationController
         flash.now[:error] = "Invalid email/password combination."
         @title = "Sign in"
         render 'new'
-=begin
+        
       elsif (user.confirmed == 0)
         flash.now[:error] = "You are not a confirmed user."
         @title = "Sign in"
         render 'new'
-=end
+     
       else
         sign_in_user user
         redirect_to user
@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
         flash.now[:error] = "Invalid CBO email/password combination."
         @title = "Sign in"
         render 'new'
-      elsif (user.confirmed == 0)
+      elsif (cbo.confirmed == 0)
         flash.now[:error] = "You are not a confirmed CBO."
         @title = "Sign in"
         render 'new'
