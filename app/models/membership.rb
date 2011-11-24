@@ -3,6 +3,7 @@ class Membership < ActiveRecord::Base
   belongs_to :cbo,      :class_name => "Cbo"
 end
 
+
 # == Schema Information
 #
 # Table name: memberships
@@ -12,5 +13,6 @@ end
 #  cbo_id     :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  confirmed  :integer         default(0)
 #
 

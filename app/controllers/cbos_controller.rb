@@ -28,7 +28,7 @@ class CbosController < ApplicationController
   
   
   def index
-    @cbos = Cbo.all
+    @cbos = Cbo.find_all_by_confirmed(1)
     @title = "All CBOs"
   end
   

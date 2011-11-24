@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
     memberships.find_by_cbo_id(cbo)
   end
   
+  def confirm!(level=1)
+    self.toggle!(:confirmed)
+  end
+  
   def self.authenticate(email, submitted_password)
     user = find_by_email(email)
     return nil if user.nil?
@@ -53,6 +57,9 @@ class User < ActiveRecord::Base
     user = find_by_id(id)
     (user && user.salt == cookie_salt) ? user : nil
   end
+  
+  
+  
   
   private
     
@@ -77,6 +84,7 @@ class User < ActiveRecord::Base
   
 end
 
+
 # == Schema Information
 #
 # Table name: users
@@ -90,5 +98,6 @@ end
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
+#  confirmed          :integer         default(0)
 #
 

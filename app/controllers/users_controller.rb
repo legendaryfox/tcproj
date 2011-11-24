@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user, :except => [:new, :create] #in app/helpers/sessions_helper.rb
+  before_filter :authenticate_user, :except => [:new, :create, :confirm, :confirmpage] #in app/helpers/sessions_helper.rb
   before_filter :correct_user, :only => [:edit, :update]
   
   
   def index
-    @users = User.all
+    @users = User.find_all_by_confirmed(1)
   end
   
   def show
@@ -18,11 +18,45 @@ class UsersController < ApplicationController
     @user.build_userprofile
   end
   
+  def confirmpage
+    @title = "Confirm User"
+    @user = User.new
+  end
+  
+  def confirm
+    @title = "Confirm"
+    #@user = params[:user]
+    
+    #first, check their passwords
+    user = User.authenticate(params[:user][:email], params[:user][:password])
+    if user.nil?
+      flash.now[:error] = "Invalid email/password combination."
+      @title = "Confirm User"
+      @user = User.new
+      render 'confirmpage'
+    else
+      # ok, they're a real user. Confirm them.
+      
+      #have to re-add their password...
+      user.password = params[:user][:password]
+      
+      if user.confirm!
+        redirect_to signin_path, :notice => "User confirmed. Please sign in."
+      end
+    end
+    
+  end
+  
   def create
     @user = User.new(params[:user])
     if @user.save 
-      sign_in_user @user
-      redirect_to @user
+      #successfully created new user
+      
+      #sign_in_user @user
+      #redirect_to @user
+      
+      #force them to confirm
+      redirect_to confirmpage_users_path, :notice => "User created. Please confirm your account here."""
     else
       @title = "Sign up"
       @user.build_userprofile(params[:user][:userprofile_attributes])

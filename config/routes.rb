@@ -12,7 +12,15 @@ Tcproj::Application.routes.draw do
   
   root :to => "sessions#new"
   
-  resources :users
+  resources :users do
+    collection do
+      get 'confirmpage'
+      post 'confirm'
+    end
+  end
+  
+  
+  
   resources :userprofiles
   resources :cbos
   resources :categories
