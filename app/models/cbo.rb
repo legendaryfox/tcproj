@@ -46,6 +46,48 @@ class Cbo < ActiveRecord::Base
     (cbo && cbo.salt == cookie_salt) ? cbo : nil
   end
   
+  def confirm!(level=1)
+    self.toggle!(:confirmed)
+  end
+  
+  def confirmed?
+    self.confirmed != 0
+  end
+  
+  def confirmed_users_memberships(confirm_level = 1)
+    self.memberships.find_all_by_confirmed(confirm_level)
+  end
+  
+  def confirmed_users(confirm_level = 1)
+    #self.cbos.find_all_by_confirmed
+    
+    #first, get the memberships
+    #all_memberships = self.memberships.find_all_by_confirmed(confirm_level)
+    users_list = Array.new
+    self.confirmed_users_memberships(confirm_level).each do |membership|
+      users_list.push(membership.user_id)
+    end
+    return User.find_all_by_id(users_list)
+  end
+  
+  def pending_users_memberships
+    self.confirmed_users_memberships(0)
+  end
+  
+  def pending_users
+    self.confirmed_users(0)
+  end
+  
+  
+  def confirm_user!(user)
+    # check the user to make sure user is part of CBO's pending
+    if user.pending_of_cbo?(self)
+      cbo.memberships.find_by_user_id(user).confirm!
+    end
+  end
+  
+  
+  
   private
   
     
@@ -73,6 +115,7 @@ class Cbo < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: cbos
@@ -84,5 +127,6 @@ end
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
+#  confirmed          :integer         default(0)
 #
 

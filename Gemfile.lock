@@ -77,6 +77,7 @@ GEM
     rspec-rails (2.0.1)
       rspec (~> 2.0.0)
     sqlite3-ruby (1.2.5)
+    stamp (0.1.6)
     thor (0.14.6)
     treetop (1.4.10)
       polyglot
@@ -97,4 +98,5 @@ DEPENDENCIES
   rspec (= 2.0.1)
   rspec-rails (= 2.0.1)
   sqlite3-ruby (= 1.2.5)
+  stamp
   webrat (= 0.7.1)

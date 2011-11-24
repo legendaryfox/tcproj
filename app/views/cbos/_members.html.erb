@@ -1,0 +1,6 @@
+<p>Your organization currently has these members:</p>
+<ul>
+	<% @cbo.users.each do |user| %>
+		<li><%= link_to user.userprofile.name, user.userprofile %></li>
+	<% end %>
+</ul>

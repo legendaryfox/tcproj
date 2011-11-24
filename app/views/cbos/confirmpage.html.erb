@@ -1,0 +1,28 @@
+<h1>Confirm CBO</h1>
+
+<%= form_for(@cbo, :url => { :action => "confirm" }) do |cbo_form| %>
+	<%= render 'shared/error_messages', :object => cbo_form.object %>
+	<p>Please re-enter your CBO e-mail and password to confirm your account.</p>
+	
+	<fieldset>
+		<legend>Login Information</legend>
+		<div class="clearfix">
+			<%= cbo_form.label :email, :class => "xlInput" %>
+			<div class="input">
+				<%= cbo_form.text_field :email, :class => "xlarge" %>
+			</div>
+		</div>
+		
+		<div class="clearfix">
+			<%= cbo_form.label :password, :class => "xlInput" %>
+			<div class="input">
+				<%= cbo_form.password_field :password, :class => "xlarge" %>
+			</div>
+		</div>
+	
+		<div class="actions">
+			<%= cbo_form.submit "Confirm", :class => "btn primary"  %>
+		</div>
+	</fieldset>
+
+<% end %>

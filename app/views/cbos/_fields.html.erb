@@ -1,21 +1,30 @@
-<div class="field">
-	<%= cbo_form.label :name %><br />
-	<%= cbo_form.text_field :name %>
-</div>
-
-<div class="field">
-	<%= cbo_form.label :email %><br />
-	<%= cbo_form.text_field :email %>
-</div>
-
-
-
-<div class="field">
-	<%= cbo_form.label :password %><br />
-	<%= cbo_form.password_field :password %>
-</div>
-
-<div class="field">
-	<%= cbo_form.label :password_confirmation, "Confirm password" %><br />
-	<%= cbo_form.password_field :password_confirmation %>
-</div>
+<fieldset>
+	<legend>Login Information</legend>
+	<div class="clearfix">
+		<%= cbo_form.label :name, :class => "xlInput" %>
+		<div class="input">
+			<%= cbo_form.text_field :name, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= cbo_form.label :email, :class => "xlInput" %>
+		<div class="input">
+			<%= cbo_form.text_field :email, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= cbo_form.label :password, :class => "xlInput" %>
+		<div class="input">
+			<%= cbo_form.password_field :password, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= cbo_form.label :password_confirmation, "Password Again", :class => "xlInput" %>
+		<div class="input">
+			<%= cbo_form.password_field :password_confirmation, :class => "xlarge" %>
+		</div>
+	</div>
+</fieldset>

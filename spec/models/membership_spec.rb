@@ -4,6 +4,7 @@ describe Membership do
   pending "add some examples to (or delete) #{__FILE__}"
 end
 
+
 # == Schema Information
 #
 # Table name: memberships
@@ -13,5 +14,6 @@ end
 #  cbo_id     :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  confirmed  :integer         default(0)
 #
 
