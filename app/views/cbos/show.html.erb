@@ -8,32 +8,16 @@
 </p>
 
 <% if signed_in_user? %>
+	<%= render 'membership', :cbo => @cbo %>
 
-	You are signed in.
-	<% if current_user.part_of_cbo?(@cbo) %>
-	
-		Remove yourself from this CBO:<br /><br />
-		<%= form_for(current_user.memberships.find_by_cbo_id(@cbo),
-					:html => { :method => :delete }) do |f| %>
-			<% f.submit "Remove membership", :class => "btn danger" %>
-		<% end %>
-	<% else %>
-	
-		Be a part of this CBO:<br /><br />
-		<%= form_for(current_user.memberships.build(:cbo_id => @cbo.id)) do |f| %>
-			<%= f.hidden_field :cbo_id %>
-			<%= f.submit "Become a member", :class => "btn primary"  %>
-		<% end %>
-	<% end %>
 <% end %>
 
 <% if current_cbo?(@cbo) %>
-	<p>Your organization currently has these members:</p>
-	<ul>
-		<% @cbo.users.each do |user| %>
-			<li><%= link_to user.userprofile.name, user.userprofile %></li>
-		<% end %>
-	</ul>
+	
+	<%= render 'admin_members', :cbo => @cbo %>
+
+
+
 
 	<p><%= link_to "Edit Profile", edit_cbo_path(@cbo) %></p>
 <% end %>

@@ -26,6 +26,12 @@ Tcproj::Application.routes.draw do
     end
   end
   
+  resources :memberships do
+    member do
+      post 'confirm'
+    end
+  end
+  
   
   
   resources :userprofiles

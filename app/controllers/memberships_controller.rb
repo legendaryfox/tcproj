@@ -10,7 +10,7 @@ class MembershipsController < ApplicationController
     #puts params
     @cbo = Cbo.find_by_id(params[:membership][:cbo_id])
     current_user.join_cbo!(@cbo)
-    redirect_to @cbo, :flash => { :success => "You have successfully joined this CBO." }
+    redirect_to @cbo, :flash => { :success => "You have applied to this CBO." }
     
   end
   
@@ -20,5 +20,6 @@ class MembershipsController < ApplicationController
     redirect_to @cbo, :flash => { :succes => "You have successfully left this CBO." }
     
   end
+  
 
 end

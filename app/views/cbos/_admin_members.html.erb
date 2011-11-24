@@ -1,0 +1,48 @@
+<p>Your organization currently has these members:</p>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Join Date</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @cbo.confirmed_users_memberships.each do |membership| %>
+		<tr>
+			<td><%= link_to User.find_by_id(membership.user_id).userprofile.name, User.find_by_id(membership.user_id).userprofile %></td>
+			<td><%= membership.updated_at.stamp("January 1, 1999 at 20:12") %></td>
+			<td><%= link_to "Remove", "#", :class => "btn small danger"%></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<p>The following members need to be confirmed:</p>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Apply Date</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @cbo.pending_users_memberships.each do |membership| %>
+		<tr>
+			<td><%= link_to User.find_by_id(membership.user_id).userprofile.name, User.find_by_id(membership.user_id).userprofile %></td>
+			<td><%= membership.updated_at.stamp("January 1, 1999 at 20:12")%></td>
+			<td><%= link_to "Approve", "#", :class => "btn small primary" %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+
+<p>Your organization currently has these members:</p>
+<ul>
+	<% @cbo.users.each do |user| %>
+		<li><%= link_to user.userprofile.name, user.userprofile %></li>
+	<% end %>
+</ul>

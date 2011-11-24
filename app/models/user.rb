@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
     encrypted_password == encrypt(submitted_password)
   end
   
-  def join_cbo!(cbo)
-    self.memberships.create!(:cbo_id => cbo.id)
+  def join_cbo!(cbo, default_confirm = 0)
+    self.memberships.create!(:cbo_id => cbo.id, :confirmed => default_confirm)
   end
   
   def leave_cbo!(cbo)
@@ -40,8 +40,44 @@ class User < ActiveRecord::Base
   end
   
   def part_of_cbo?(cbo)
-    memberships.find_by_cbo_id(cbo)
+    # you are only a part of a CBO if you have a confirmed membership
+    membership = self.memberships.find_by_cbo_id(cbo)
+    if membership
+      return membership unless membership.confirmed == 0
+    end
   end
+  
+  def pending_of_cbo?(cbo)
+    membership = self.memberships.find_by_cbo_id(cbo)
+    if membership
+      return membership if membership.confirmed == 0
+    end
+  end
+  
+  def confirmed_cbos_memberships(confirm_level = 1)
+    self.memberships.find_all_by_confirmed(confirm_level)
+  end
+  
+  def confirmed_cbos(confirm_level = 1)
+    #self.cbos.find_all_by_confirmed
+    
+    #first, get the memberships
+    #all_memberships = self.memberships.find_all_by_confirmed(confirm_level)
+    cbos_list = Array.new
+    self.confirmed_cbos_memberships(confirm_level).each do |membership|
+      cbos_list.push(membership.cbo_id)
+    end
+    return Cbo.find_all_by_id(cbos_list)
+  end
+  
+  def pending_cbos_memberships
+    self.confirmed_cbos_memberships(0)
+  end
+  
+  def pending_cbos
+    self.confirmed_cbos(0)
+  end
+
   
   def confirm!(level=1)
     self.toggle!(:confirmed)
