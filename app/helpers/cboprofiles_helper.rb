@@ -1,0 +1,2 @@
+module CboprofilesHelper
+end

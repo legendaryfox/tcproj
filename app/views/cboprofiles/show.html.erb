@@ -1,0 +1,18 @@
+<h1>Full Profile for <%= @cboprofile.name %></h1>
+
+<p>
+	<ul>
+		<li>Name: <%= @cboprofile.name %></li>
+		<li>Description: <%= @cboprofile.description %></li>
+		<li>Address: <%= @cboprofile.address %></li>
+		<li>Latitude: <%= @cboprofile.latitude %></li>
+		<li>Longitude: <%= @cboprofile.longitude %></li>
+	</ul>
+</p>
+
+
+<% if signed_in_cbo? %>
+	<% if @cboprofile.id == current_cbo.id %>
+		<p><%= link_to "Edit Profile", edit_cboprofile_path(current_cbo.cboprofile) %></p>
+	<% end %>
+<% end %>

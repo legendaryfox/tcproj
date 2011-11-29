@@ -7,7 +7,9 @@ class CbosController < ApplicationController
   
   
   def new
+    @title = "New CBO"
     @cbo = Cbo.new
+    @cbo.build_cboprofile
   end
   
   def show
@@ -69,6 +71,8 @@ class CbosController < ApplicationController
       redirect_to confirmpage_cbos_path, :notice => "CBO created. Please confirm your account here."
       
     else
+      @title = "New CBO"
+      @cbo.build_cboprofile(params[:cbo][:cboprofile_attributes])
       render 'new'
     end
   end

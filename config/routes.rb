@@ -1,5 +1,6 @@
 Tcproj::Application.routes.draw do
   
+  
   resources :sessions, :only => [:new, :create, :destroy]
   
   match '/signin', :to => 'sessions#new'
@@ -35,6 +36,7 @@ Tcproj::Application.routes.draw do
   
   
   resources :userprofiles
+  resources :cboprofiles
   resources :cbos
   resources :categories
   resources :opportunities

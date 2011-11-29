@@ -4,6 +4,10 @@
 	<%= render 'shared/error_messages', :object => cbo_form.object %>
 	<%= render 'fields', :cbo_form => cbo_form %>
 	
+	<%= cbo_form.fields_for :cboprofile do |cboprofile_form| %>
+		<%= render 'cboprofiles/fields', :cboprofile_form => cboprofile_form, :label => "Profile" %>	
+	<% end %>
+	
 	<div class="actions">
 		<%= cbo_form.submit "Create CBO", :class => "btn primary" %>
 	</div>

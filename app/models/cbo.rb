@@ -3,6 +3,8 @@
 class Cbo < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :cboprofile_attributes
+  
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
@@ -26,6 +28,11 @@ class Cbo < ActiveRecord::Base
   
   has_many :categorizations, :foreign_key => "cbo_id"
   has_many :categories, :through => :categorizations, :source => :category
+  
+  
+  has_one :cboprofile
+  
+  accepts_nested_attributes_for :cboprofile
                     
   def add_to_category!(category)
     self.categorizations.create!(:category_id => category.id)

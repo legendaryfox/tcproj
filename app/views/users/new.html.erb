@@ -4,7 +4,6 @@
 	<%= render 'shared/error_messages', :object => user_form.object %>
 	<%= render 'fields', :user_form => user_form %>
 
-
 	<%= user_form.fields_for :userprofile do |userprofile_form| %>
 		<%= render 'userprofiles/fields', :userprofile_form => userprofile_form, :label => "Profile" %>	
 	<% end %>	
