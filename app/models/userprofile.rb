@@ -29,6 +29,7 @@ class Userprofile < ActiveRecord::Base
   
 end
 
+
 # == Schema Information
 #
 # Table name: userprofiles
@@ -40,5 +41,11 @@ end
 #  lastname   :string(255)
 #  nickname   :string(255)
 #  user_id    :integer
+#  street1    :string(255)
+#  street2    :string(255)
+#  city       :string(255)
+#  state      :string(255)
+#  zip        :string(255)
+#  country    :string(255)
 #
 

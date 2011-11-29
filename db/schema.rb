@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111129100911) do
+ActiveRecord::Schema.define(:version => 20111129111221) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -32,12 +32,17 @@ ActiveRecord::Schema.define(:version => 20111129100911) do
   create_table "cboprofiles", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "cbo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "street1",     :default => ""
+    t.string   "street2",     :default => ""
+    t.string   "city",        :default => ""
+    t.string   "state",       :default => ""
+    t.string   "zip",         :default => ""
+    t.string   "country",     :default => ""
   end
 
   add_index "cboprofiles", ["cbo_id"], :name => "index_cboprofiles_on_cbo_id"
@@ -93,6 +98,12 @@ ActiveRecord::Schema.define(:version => 20111129100911) do
     t.string   "lastname"
     t.string   "nickname"
     t.integer  "user_id"
+    t.string   "street1",    :default => ""
+    t.string   "street2",    :default => ""
+    t.string   "city",       :default => ""
+    t.string   "state",      :default => ""
+    t.string   "zip",        :default => ""
+    t.string   "country",    :default => ""
   end
 
   add_index "userprofiles", ["user_id"], :name => "index_userprofiles_on_user_id", :unique => true

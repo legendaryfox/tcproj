@@ -4,11 +4,14 @@
 	<ul>
 		<li>Name: <%= @cboprofile.name %></li>
 		<li>Description: <%= @cboprofile.description %></li>
-		<li>Address: <%= @cboprofile.address %></li>
+		<li>Address: <%= @cboprofile.full_address %></li>
 		<li>Latitude: <%= @cboprofile.latitude %></li>
 		<li>Longitude: <%= @cboprofile.longitude %></li>
 	</ul>
 </p>
+
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@cboprofile.latitude}%2C#{@cboprofile.longitude}" %>
 
 
 <% if signed_in_cbo? %>
