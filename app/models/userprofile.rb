@@ -3,6 +3,11 @@
 
 class Userprofile < ActiveRecord::Base
   attr_accessible :firstname, :lastname, :nickname
+  attr_accessible :street1, :street2, :city, :state, :zip, :country
+  
+  geocoded_by :full_address #TODO - split address up into street, state, etc, then glue back into an "address" method instead.
+  after_validation :geocode, :if => (:street1_changed? || :street2_changed? || :city_changed? || :state_changed? || :zip_changed? || :country_changed?)
+  
   
   belongs_to :user
   
@@ -14,10 +19,41 @@ class Userprofile < ActiveRecord::Base
   end
   
   
+  
   def name
     nickname.blank? ? firstname : nickname
   end
+
+
+  def full_address
+    running_address = ""
+    if !self.street1.empty?
+      running_address += self.street1 + ', '
+    end
     
+    if !self.street2.empty?
+      running_address += self.street2 + ', '
+    end
+    
+    if !self.city.empty?
+      running_address += self.city + ', '
+    end
+    
+    if !self.state.empty?
+      running_address += self.state + ', '
+    end
+    
+    if !self.zip.empty?
+      running_address += self.zip + ', '
+    end
+    
+    if !self.country.empty?
+      running_address += self.country
+    end
+    
+    return running_address
+    
+  end
     
   private
   

@@ -1,0 +1,16 @@
+<h1>All Users</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @userprofiles.each do |userprofile| %>
+		<tr>
+			<td><%= link_to userprofile.name, userprofile %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

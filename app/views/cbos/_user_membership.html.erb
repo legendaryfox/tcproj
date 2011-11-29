@@ -1,18 +1,18 @@
 
-<% if current_user.part_of_cbo?(@cbo) %>
+<% if current_user.part_of_cbo?(cbo) %>
 	<% puts "I GET IN HERE!" %>
 	Remove yourself from this CBO:<br /><br />
-	<%= form_for(current_user.memberships.find_by_cbo_id(@cbo),
+	<%= form_for(current_user.memberships.find_by_cbo_id(cbo),
 				:html => { :method => :delete }) do |f| %>
 		<% f.submit "Remove membership", :class => "btn danger" %>
 	<% end %>
 
-<% elsif current_user.pending_of_cbo?(@cbo) %>
+<% elsif current_user.pending_of_cbo?(cbo) %>
 	<a href="#" class="btn disabled">Your membership is pending.</a>
 <% else %>
 
 	Be a part of this CBO:<br /><br />
-	<%= form_for(current_user.memberships.build(:cbo_id => @cbo.id)) do |f| %>
+	<%= form_for(current_user.memberships.build(:cbo_id => cbo.id)) do |f| %>
 		<%= f.hidden_field :cbo_id %>
 		<%= f.submit "Become a member", :class => "btn primary"  %>
 	<% end %>

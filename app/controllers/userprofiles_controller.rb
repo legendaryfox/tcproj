@@ -2,6 +2,9 @@ class UserprofilesController < ApplicationController
   before_filter :authenticate_user, :except => [:new, :create] #in app/helpers/sessions_helper.rb
   before_filter :correct_userprofile_user, :only => [:edit, :update] 
   
+  def index
+    @userprofiles = Userprofile.find_all_by_confirmed(1)
+  end
   
   def show
     @userprofile = Userprofile.find(params[:id])

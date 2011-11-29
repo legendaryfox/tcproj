@@ -7,11 +7,24 @@
 		<li>Address: <%= @cboprofile.full_address %></li>
 		<li>Latitude: <%= @cboprofile.latitude %></li>
 		<li>Longitude: <%= @cboprofile.longitude %></li>
+		<% if signed_in_user? %>
+		<li>Distance to you: <%= current_user.userprofile.distance_to(@cboprofile.full_address).round(2) %> miles</li>
+		<% end %>
 	</ul>
 </p>
 
 
+<% if signed_in_user? %>
+<p>
+	<%= render 'cbos/user_membership', :cbo => @cboprofile.cbo %>
+</p>
+<% end %>
+
+
+<p>
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@cboprofile.latitude}%2C#{@cboprofile.longitude}" %>
+</p>
+
 
 
 <% if signed_in_cbo? %>

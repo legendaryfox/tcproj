@@ -8,9 +8,19 @@ class MembershipsController < ApplicationController
     #@cbo = Cbo.find(params[:participations][:cbo_id])
     #redirect_to @cbo
     #puts params
+    
+    #first need to check if such a membership already exists (pending or not)
     @cbo = Cbo.find_by_id(params[:membership][:cbo_id])
-    current_user.join_cbo!(@cbo)
-    redirect_to @cbo, :flash => { :success => "You have applied to this CBO." }
+    
+    
+    if(Membership.all(:conditions => "cbo_id = " + params[:membership][:cbo_id].to_s + " AND user_id = " + current_user.id.to_s).count == 0)
+      
+      
+      current_user.join_cbo!(@cbo)
+      redirect_to @cbo.cboprofile, :flash => { :success => "You have applied to this CBO." }
+    else
+      redirect_to @cbo.cboprofile, :flash => { :error => "There was an error in processing your request." }
+    end
     
   end
 =begin
