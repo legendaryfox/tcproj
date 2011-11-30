@@ -1,0 +1,18 @@
+<h1><%= @title %></h1>
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @cboprofiles.each do |cboprofile| %>
+		<tr>
+			<td><%= link_to cboprofile.name, cboprofile %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+

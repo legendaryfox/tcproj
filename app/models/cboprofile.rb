@@ -40,6 +40,10 @@ class Cboprofile < ActiveRecord::Base
     
   end
   
+  def self.near_location(lat, long, distance, confirmed_level=1)
+    return Cboprofile.near([lat, long], distance).all.delete_if{ |cboprofile| !cboprofile.cbo.confirmed? }
+  end
+  
   
 end
 

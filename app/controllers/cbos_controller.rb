@@ -63,6 +63,8 @@ class CbosController < ApplicationController
     @title = "All CBOs"
   end
   
+  
+  
   def create
     @cbo = Cbo.new(params[:cbo])
     if @cbo.save

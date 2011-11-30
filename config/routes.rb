@@ -27,6 +27,12 @@ Tcproj::Application.routes.draw do
     end
   end
   
+  resources :cboprofiles do
+    collection do
+      get 'nearby'
+    end
+  end
+  
   resources :memberships do
     member do
       put 'confirm'
@@ -49,6 +55,7 @@ Tcproj::Application.routes.draw do
   get "pages/contact"
   
   get "pages/about"
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
