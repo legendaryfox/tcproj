@@ -24,6 +24,10 @@ class CboprofilesController < ApplicationController
   
   def nearby
     @distance = 50
+    if params[:distance]
+      @distance = params[:distance].to_f
+    end
+    
     @cboprofiles = Cboprofile.near_location(current_user.userprofile.latitude, current_user.userprofile.longitude, @distance)
     @title = "All CBOs within " + @distance.to_s + " miles of you."
   end

@@ -6,6 +6,7 @@ Tcproj::Application.routes.draw do
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/signup', :to => 'users#new'
+  match '/nearby_cbos', :to => 'cboprofiles#nearby'
   get "sessions/new"
 
   get "categorizations/new"
@@ -56,6 +57,7 @@ Tcproj::Application.routes.draw do
   
   get "pages/about"
   
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

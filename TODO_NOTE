@@ -1,0 +1,4 @@
+Model: Community
+-anyone (CBO, student) can join
+-has its own location, and its own set of CBOs/users
+--good for caching later on
