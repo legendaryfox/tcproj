@@ -1,0 +1,12 @@
+<h1>Create a new Community</h1>
+
+<%= form_for(@community) do |community_form| %>
+	<%= render 'shared/error_messages', :object => community_form.object %>
+	<%= render 'fields', :community_form => community_form %>
+	
+	
+	<div class="actions">
+		<%= community_form.submit "Create CBO", :class => "btn primary" %>
+	</div>
+	
+<% end %>

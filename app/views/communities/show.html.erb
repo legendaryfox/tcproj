@@ -1,0 +1,63 @@
+<h1>Community: <%= @community.name %></h1>
+
+<p>
+	<ul>
+		<li>Name: <%= @community.name %></li>
+		<li>Address: <%= @community.full_address %></li>
+		<li>Latitude: <%= @community.latitude %></li>
+		<li>Longitude: <%= @community.longitude %></li>
+	</ul>
+</p>
+
+<p>
+<h2>Users in this community:</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<% @community.users.each do |user| %>
+		<tr>
+			<td><%= link_to user.userprofile.name, user.userprofile %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<h2>CBOs in this community:</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @community.cbos.each do |cbo| %>
+		<tr>
+			<td><%= link_to cbo.cboprofile.name, cbo.cboprofile %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</p>
+
+
+<% if signed_in_user? %>
+	<p>
+		<%= render 'user_join_community', :community => @community %>
+	</p>
+
+<% elsif signed_in_cbo? %>
+	<p>
+		<%= render 'cbo_join_community', :community => @community %>
+	</p>
+<% end %>
+
+
+<p>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@community.latitude}%2C#{@community.longitude}" %>
+</p>
+

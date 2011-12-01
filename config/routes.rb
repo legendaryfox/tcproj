@@ -1,6 +1,20 @@
 Tcproj::Application.routes.draw do
   
   
+  get "cbo_community_memberships/create"
+
+  get "cbo_community_memberships/destroy"
+
+  get "communities/new"
+
+  get "communities/show"
+
+  get "communities/index"
+
+  get "user_community_memberships/create"
+
+  get "user_community_memberships/destroy"
+
   resources :sessions, :only => [:new, :create, :destroy]
   
   match '/signin', :to => 'sessions#new'
@@ -49,6 +63,9 @@ Tcproj::Application.routes.draw do
   resources :opportunities
   resources :participations
   resources :memberships
+  resources :communities
+  resources :user_community_memberships
+  resources :cbo_community_memberships
     
 
   get "pages/home"

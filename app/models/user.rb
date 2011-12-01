@@ -22,6 +22,9 @@ class User < ActiveRecord::Base
   has_many :memberships #, :foreign_key => "user_id"               
   has_many :cbos, :through => :memberships, :source => :cbo
   
+  has_many :user_community_memberships
+  has_many :communities, :through => :user_community_memberships, :source => :community
+  
   has_one :userprofile
   
   accepts_nested_attributes_for :userprofile
@@ -35,8 +38,16 @@ class User < ActiveRecord::Base
     self.memberships.create!(:cbo_id => cbo.id, :confirmed => default_confirm)
   end
   
+  def join_community!(community)
+    self.user_community_memberships.create!(:community_id => community.id)
+  end
+  
   def leave_cbo!(cbo)
     self.memberships.find_by_cbo_id(cbo).destroy
+  end
+  
+  def leave_community!(community)
+    self.user_community_memberships.find_by_community_id(community).destroy
   end
   
   def part_of_cbo?(cbo)
@@ -46,6 +57,11 @@ class User < ActiveRecord::Base
       return membership unless membership.confirmed == 0
     end
   end
+  
+  def part_of_community?(community)
+    return self.user_community_memberships.find_by_community_id(community)
+  end
+    
   
   def pending_of_cbo?(cbo)
     membership = self.memberships.find_by_cbo_id(cbo)

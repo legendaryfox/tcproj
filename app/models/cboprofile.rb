@@ -48,6 +48,7 @@ class Cboprofile < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: cboprofiles
@@ -60,11 +61,11 @@ end
 #  cbo_id      :integer
 #  created_at  :datetime
 #  updated_at  :datetime
-#  street1     :string(255)
-#  street2     :string(255)
-#  city        :string(255)
-#  state       :string(255)
-#  zip         :string(255)
-#  country     :string(255)
+#  street1     :string(255)     default("")
+#  street2     :string(255)     default("")
+#  city        :string(255)     default("")
+#  state       :string(255)     default("")
+#  zip         :string(255)     default("")
+#  country     :string(255)     default("")
 #
 

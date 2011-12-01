@@ -26,6 +26,9 @@ class Cbo < ActiveRecord::Base
   has_many :memberships #, :foreign_key => "cbo_id"
   has_many :users, :through => :memberships, :source => :user
   
+  has_many :cbo_community_memberships
+  has_many :communities, :through => :cbo_community_memberships, :source => :community
+  
   has_many :categorizations, :foreign_key => "cbo_id"
   has_many :categories, :through => :categorizations, :source => :category
   
@@ -52,6 +55,20 @@ class Cbo < ActiveRecord::Base
     cbo = find_by_id(id)
     (cbo && cbo.salt == cookie_salt) ? cbo : nil
   end
+  
+  def join_community!(community)
+    self.cbo_community_memberships.create!(:community_id => community.id)
+  end
+  
+  def leave_community!(community)
+    self.cbo_community_memberships.find_by_community_id(community).destroy
+  end
+  
+  def part_of_community?(community)
+    return self.cbo_community_memberships.find_by_community_id(community)
+  end
+  
+  
   
   
   def confirm!(level=1)

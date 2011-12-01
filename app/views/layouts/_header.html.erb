@@ -24,6 +24,9 @@
 								<li><%= link_to "All CBOS", cbos_path %></li>
 							</ul>
 						</li>
+						
+						<li><%= link_to "Communities", communities_path %></li>
+						
 						<li><%= link_to "Sign Out", signout_path %></li>		
 	
 		
@@ -32,6 +35,8 @@
 						<li><%= link_to "CBO Home", current_cbo %>
 						<li><%= link_to current_cbo.name.possessive + " Organization Profile", current_cbo.cboprofile %></li>
 						<li><%= link_to "CBO Listing", cbos_path %></li>
+						<li><%= link_to "Communities", communities_path %></li>
+						
 						<li><%= link_to "Sign Out", signout_path %></li>
 			
 					<% else %>
@@ -41,6 +46,8 @@
 						<li><%= link_to "New User", signup_path %></li>
 						<li><%= link_to "New CBO", new_cbo_path %>
 						<li><%= link_to "CBO Listing", cbos_path %></li>
+						<li><%= link_to "Communities", communities_path %></li>
+						
 					<% end %>
 				</ul>
 			</div>

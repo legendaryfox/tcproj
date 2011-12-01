@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111129145844) do
+ActiveRecord::Schema.define(:version => 20111201160325) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(:version => 20111129145844) do
 
   add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
   add_index "categorizations", ["cbo_id"], :name => "index_categorizations_on_cbo_id"
+
+  create_table "cbo_community_memberships", :force => true do |t|
+    t.integer  "cbo_id"
+    t.integer  "community_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cbo_community_memberships", ["cbo_id", "community_id"], :name => "index_cbo_community_memberships_on_cbo_id_and_community_id", :unique => true
+  add_index "cbo_community_memberships", ["cbo_id"], :name => "index_cbo_community_memberships_on_cbo_id"
+  add_index "cbo_community_memberships", ["community_id"], :name => "index_cbo_community_memberships_on_community_id"
 
   create_table "cboprofiles", :force => true do |t|
     t.string   "name"
@@ -58,6 +69,21 @@ ActiveRecord::Schema.define(:version => 20111129145844) do
   end
 
   add_index "cbos", ["email"], :name => "index_cbos_on_email", :unique => true
+
+  create_table "communities", :force => true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "state"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "zip"
+  end
+
+  add_index "communities", ["city"], :name => "index_communities_on_city"
+  add_index "communities", ["name"], :name => "index_communities_on_name"
+  add_index "communities", ["state"], :name => "index_communities_on_state"
 
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
@@ -90,6 +116,17 @@ ActiveRecord::Schema.define(:version => 20111129145844) do
 
   add_index "participations", ["cbo_id"], :name => "index_participations_on_cbo_id"
   add_index "participations", ["user_id"], :name => "index_participations_on_student_id"
+
+  create_table "user_community_memberships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "community_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_community_memberships", ["community_id"], :name => "index_user_community_memberships_on_community_id"
+  add_index "user_community_memberships", ["user_id", "community_id"], :name => "index_user_community_memberships_on_user_id_and_community_id", :unique => true
+  add_index "user_community_memberships", ["user_id"], :name => "index_user_community_memberships_on_user_id"
 
   create_table "userprofiles", :force => true do |t|
     t.datetime "created_at"

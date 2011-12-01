@@ -1,0 +1,2 @@
+module CboCommunityMembershipsHelper
+end

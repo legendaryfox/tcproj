@@ -2,3 +2,9 @@ Model: Community
 -anyone (CBO, student) can join
 -has its own location, and its own set of CBOs/users
 --good for caching later on
+--although, maybe this is better added to Seeds. Iuno.
+
+NEED to generate two :through join relations for belonging Users to communities and CBOs to communities...ugh.
+
+
+Add a default distance to scope the community's "jurisdiction"

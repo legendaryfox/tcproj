@@ -207,3 +207,9 @@ cbo6.create_cboprofile(
   :zip => "08691",
   :country => "USA")
 
+  
+  
+  
+community1 = Community.create!(:name => "Boston", :city => "Boston", :state => "MA", :zip => "07733")
+communuty2 = Community.create!(:name => "New York City", :city => "New York", :state => "NY", :zip => "10118")
+
