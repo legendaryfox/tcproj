@@ -27,7 +27,8 @@ Tcproj::Application.routes.draw do
   get "categorizations/new"
     
   
-  root :to => "sessions#new"
+  # root :to => "sessions#new"
+  root :to => "pages#landing"
   
   resources :users do
     collection do
@@ -82,6 +83,8 @@ Tcproj::Application.routes.draw do
   get "pages/contact"
   
   get "pages/about"
+  
+  get "pages/landing"
   
 
 

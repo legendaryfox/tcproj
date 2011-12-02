@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="span6">
+		<h4><%= cboprofile.name %> <small><%= communities_tagline(cboprofile.cbo) %></small></h4>
+		<%= render 'cbos/user_membership_small', :cbo => cboprofile.cbo %>
+	</div>
+	<div class="span2">
+		<%= image_tag "100x100.gif" %>
+	</div>
+</div>
+<div class="row">
+	<div class="span 8">
+		<p><%= cboprofile.description %></p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+	</div>
+</div>

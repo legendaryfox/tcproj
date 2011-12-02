@@ -3,8 +3,9 @@
 	<head>
 		<title><%= title %></title>
 		<%= csrf_meta_tag %>
-		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+		<%= render 'layouts/stylesheets' %>
+		<%= javascript_include_tag "jquery" %>
+		
 		<%= javascript_include_tag "bootstrap-dropdown" %>
 		
 		<style type="text/css">
@@ -19,7 +20,7 @@
 		        text-align: center; /* center align it with the container */
 		      }
 		      .container {
-		        width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+		        width: 940px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
 		      }
 
 		      /* The white background content wrapper */
@@ -42,17 +43,18 @@
 		        margin: -20px -20px 20px;
 		      }
 
-		      /* Styles you shouldn't keep as they are for displaying this base example only */
+		      /* Styles you shouldn't keep as they are for displaying this base example only 
 		      .content .span10,
 		      .content .span4 {
 		        min-height: 500px;
 		      }
-		      /* Give a quick and non-cross-browser friendly divider */
+		      /* Give a quick and non-cross-browser friendly divider 
 		      .content .span4 {
 		        margin-left: 0;
 		        padding-left: 19px;
-		        border-left: 1px solid #eee;
+		        border-right: 1px solid #eee;
 		      }
+		*/
 
 		      .topbar .btn {
 		        border: 0;
@@ -64,18 +66,18 @@
 	
 	</head>
 	<body>
+		
+		<%= render 'layouts/header' %>
+
+
 		<div class="container">
-			<%= render 'layouts/header' %>
-		</div>
-		<div class="container">
-			<div class="content">
-				
-				<%= render :partial => "shared/flash_messages", :locals => {:flash => flash} %>
-				
 			
+			<div class="content">
+				<%= render :partial => "shared/flash_messages", :locals => {:flash => flash} %>
+		
+	
 				<%= yield %>
 			</div>
-		
 			<%= render 'layouts/footer' %>
 		</div>
 	</body>

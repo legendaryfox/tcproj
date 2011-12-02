@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user, :except => [:new, :create, :confirm, :confirmpage] #in app/helpers/sessions_helper.rb
-  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :correct_user, :only => [:edit, :update, :show]
   before_filter :check_confirmed_user, :only => [:show]
   
   
@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    # @header_title = "User Home"
+    # @header_tagline = "Your new home."
     #@cbos = @user.cbos.all
   end
   

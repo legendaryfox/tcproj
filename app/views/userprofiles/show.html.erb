@@ -1,10 +1,32 @@
-<h1>Full Profile for <%= @userprofile.name_full %></h1>
+<div class="page-header">
+	<h1><%= @userprofile.name %> <small><%= communities_tagline(@userprofile.user) %></small></h1>
+</div>
 
-<%= render 'userprofile_basic_info', :userprofile => @userprofile%>
-
-
+<!-- <h1>Full Profile for <%= @userprofile.name %></h1> !-->
 <% if signed_in_user? %>
 	<% if @userprofile.id == current_user.id %>
 		<p><%= link_to "Edit Profile", edit_userprofile_path(current_user.userprofile) %></p>
 	<% end %>
 <% end %>
+
+<div class="row">
+	<div class="span4">
+		<h2>Picture</h2>
+		<%= image_tag "200x250.gif"%>
+		<br /><br />
+		<address>
+			<strong><%= @userprofile.name_full %></strong><br />
+			<%= mail_to @userprofile.user.email %>
+		</address>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+	</div>
+	<div class="span11" style="border-left: 1px solid #eee; margin-left: 0; padding-left: 19px">
+		<h2>Main Info</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+	</div>
+</div>
+
+
+

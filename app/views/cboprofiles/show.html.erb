@@ -1,18 +1,12 @@
-<h1>Full Profile for <%= @cboprofile.name %></h1>
-
-<%= render 'cboprofile_basic_info', :cboprofile => @cboprofile %>
-
-
-<% if signed_in_user? %>
-<p>
+<div class="page-header">
+	<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small></h1>
+	
 	<%= render 'cbos/user_membership', :cbo => @cboprofile.cbo %>
-</p>
-<% end %>
+	
+</div>
 
-
-<p>
-<%= google_map_static_image_for(@cboprofile) %>
-</p>
+<center><%= image_tag "900x250.gif" %></center>
+<br />
 
 
 
@@ -21,3 +15,92 @@
 		<p><%= link_to "Edit Profile", edit_cboprofile_path(current_cbo.cboprofile) %></p>
 	<% end %>
 <% end %>
+
+<div class="row">
+	<div class="span6">
+		<h2>Location</h2>
+		<p><%= google_map_static_image_for(@cboprofile, 320, 200) %></p>
+		<address>
+			<strong><%= @cboprofile.name %></strong><br />
+			<%= profile_address_formatted(@cboprofile) %>
+		</address>
+		<h3>Location Notes</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+	</div>
+	
+	<div class="span10" style="border-left: 1px solid #eee; margin-left: 0; padding-left: 19px">
+		<h2>Information</h2>
+		<p><%= @cboprofile.description %></p>
+		
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+		
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+		
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+		
+		<% if signed_in_user? %>
+		<p>
+			<%= render 'cbos/user_membership', :cbo => @cboprofile.cbo %>
+		</p>
+		<% end %>
+		
+	</div>
+</div>
+
+<br />
+
+<div class="row">
+	<div class="span16">
+		<h2>How to Volunteer</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+		
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+		
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+	</div>
+</div>
+		
+<br />		
+
+<h2>Volunteer Opportunities</h2>
+<p>Here are some ways you can volunteer for us.</p>
+<div class="row">
+	<div class="span12 offset2">
+		<table>
+			<thead>
+				<tr>
+					<th>Opportunity Name</th>
+					<th>Start</th>
+					<th>End</th>
+					<th>Notes</th>
+				<tr>
+			<thead>
+			<tbody>
+				<tr>
+					<td>Clean the lawn</td>
+					<td>January 1, 2012</td>
+					<td>September 2, 2012</td>
+					<td>Do a really good job!</td>
+				</tr>
+				<tr>
+					<td>Clean the lawn</td>
+					<td>January 1, 2012</td>
+					<td>September 2, 2012</td>
+					<td>Do a really good job!</td>
+				</tr>
+				<tr>
+					<td>Clean the lawn</td>
+					<td>January 1, 2012</td>
+					<td>September 2, 2012</td>
+					<td>Do a really good job!</td>
+				</tr>
+			</tbody>
+		</table>
+					
+	</div>
+</div>
+
+
+
+
+
