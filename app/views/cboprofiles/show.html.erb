@@ -22,7 +22,8 @@
 		<p><%= google_map_static_image_for(@cboprofile, 320, 200) %></p>
 		<address>
 			<strong><%= @cboprofile.name %></strong><br />
-			<%= profile_address_formatted(@cboprofile) %>
+			<%= profile_address_formatted(@cboprofile) %><br />
+			<%= mail_to @cboprofile.cbo.email %>
 		</address>
 		<h3>Location Notes</h3>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
