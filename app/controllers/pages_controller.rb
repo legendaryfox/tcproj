@@ -11,5 +11,9 @@ class PagesController < ApplicationController
     @title = "About"
     #How about now?
   end
+  
+  def landing
+    @title = "The College Project"
+  end
 
 end

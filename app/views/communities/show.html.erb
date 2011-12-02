@@ -1,17 +1,19 @@
 <h1>Community: <%= @community.name %></h1>
 
-<%= render 'community_basic_info', :community => @community %>
 
 <p>
+<%= google_map_static_image_for(@community, 200, 150, 12) %>
+</p>
 
 
-	
-	
-<h2>Users in this community:</h2>
-<%= render 'users/users_table', :users => @community.users %>
+<%= render 'community_basic_info', :community => @community %>
 
+<p>	
 <h2>CBOs in this community:</h2>
 <%= render 'cbos/cbos_table', :cbos => @community.cbos %>
+
+<h2>Users in this community:</h2>
+<%= render 'users/users_table', :users => @community.users %>
 
 </p>
 
@@ -27,7 +29,4 @@
 	</p>
 <% end %>
 
-<p>
-<%= google_map_static_image_for(@community) %>
-</p>
 

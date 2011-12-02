@@ -1,4 +1,7 @@
 <h1>My Communities</h1>
 
-<%= render 'communities_table', :communities => @communities %>
-
+<% if !current_user.communities.empty? %>
+	<%= render 'communities_table', :communities => @communities %>
+<% else %>
+	<p>You are not part of any communities. See some nearby communities <%= link_to "here", nearby_communities_path %>.</p>
+<% end %>

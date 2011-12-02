@@ -1,19 +1,52 @@
-<h1>Welcome, <%= @user.userprofile.name %>!</h1>
+<div class="hero-unit">
+	<h1>Welcome, <%= @user.userprofile.name %>!</h1>
+	<p>You are making a difference in this world.</p>
+</div>
 
-<p>This is your user page. Edit your account information <%= link_to "here", edit_user_path(current_user) %>.</p>
-<p>Your e-mail address is <%= @user.email %>.</p>
-<p>Click <%= link_to "here", @user.userprofile %> to visit your personal profile.</p>
+<div class="row">
+	
+	<div class="span5">
+		<h2>Local Community</h2>
+		<p>See who is in your local <%= link_to "community", my_communities_path %>! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+	</div>
+	
+	<div class="span5">
+		<h2>CBOs</h2>
+		<p>CBOs, or Community Based Organizations, are the heart and soul of the community. Take part in the action <%= link_to "here", my_cbos_path %>.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>	
+	</div>
+	
+	
+	
+	<div class="span5">
+		<h2>You</h2>
+		<p>After all, what is community without people?</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+	
+	</div>
+	
+</div>
 
+<!--
+<br><br><br>
+<div class="row">
+	<div class="span16">
 <% if !@user.cbos.empty? %>
 
 	<p>These are all the CBOs <%= current_user.id == @user.id ? "you are" : "this user is" %> currently part of:
-		
+
 		<%= render 'cbos/cbos_table', :cbos => @user.cbos %>
-	
+
 	</p>
 <% else %>
 
 	<p>You are currently not a part of any CBOs. See the list of CBOs <%= link_to "here", cbos_path %>.</p>
-	
+
 <% end %>
+	</div>
+</div>
+!-->
+
+
+
 

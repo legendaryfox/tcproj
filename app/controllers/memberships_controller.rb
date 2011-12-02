@@ -38,7 +38,7 @@ class MembershipsController < ApplicationController
     cbo = membership.cbo
     user.leave_cbo!(cbo)
     if signed_in_user?
-      redirect_to cbo, :flash => { :success => "You have successfully left this CBO." }
+      redirect_to cbo.cboprofile, :flash => { :success => "You have successfully left this CBO." }
     else
       redirect_to cbo, :flash => { :success => "You have successfully removed " + user.userprofile.name + "." }
     end

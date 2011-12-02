@@ -1,0 +1,10 @@
+<% cbos.each_slice(2) do |cbo_slice| %>
+	<div class="row">
+		<% cbo_slice.each do |cbo| %>
+			<div class="span8">
+				<%= render 'cboprofiles/mini_cell', :cboprofile => cbo.cboprofile %>
+			</div>
+		<% end %>
+	</div>
+	<br /><br />
+<% end %>

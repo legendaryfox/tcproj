@@ -1,6 +1,17 @@
-<h1>My CBOs</h1>
+<div class="page-header">
+	<h1>My CBOs</h1>
+</div>
 
-<%= render 'cbos_table', :cbos => @cbos %>
+<%= render 'cbos_grid_view', :cbos => @cbos %>
+
+
+
+
+
+
+<% if current_user.cbos.empty? %>
+	<p>You are not part of any CBOs. See some nearby CBOs <%= link_to "here", nearby_cbos_path %>.</p>
+<% end %>
 
 
 

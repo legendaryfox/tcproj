@@ -1,4 +1,7 @@
-<h1>Nearby CBOs</h1>
+<div class="page-header">
+	<h1>Nearby CBOs <small>Showing within <%= @distance.to_s %> miles of your location</h1>
+</div>
+
 
 <p>
 	You can search CBOs that are nearby your preferred location.
@@ -6,11 +9,12 @@
 
 <%= form_tag nearby_cbos_path, :method => :get do %>
 	<p>
-		<%= text_field_tag :distance, params[:distance], :class => "xlInput" %>
-		<%= submit_tag "Search near", :name => nil, :class => "btn primary" %>
+		Search within <%= text_field_tag :distance, params[:distance], :class => "span1" %> miles <%= submit_tag "Search", :name => nil, :class => "btn small primary" %>
 	</p>
 <% end %>
 
-<h2>Showing all CBOs within <%= @distance.to_s %> miles of your location:</h2>
-<%= render 'cboprofiles_table', :cboprofiles => @cboprofiles %>
+
+
+
+<%= render 'cboprofiles_grid_view', :cboprofiles => @cboprofiles %>
 
