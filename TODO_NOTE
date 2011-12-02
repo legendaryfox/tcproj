@@ -8,3 +8,33 @@ NEED to generate two :through join relations for belonging Users to communities 
 
 
 Add a default distance to scope the community's "jurisdiction"
+
+-"Post to Community" - user or cbo can write a short message, post to a community; a post has_many communities and a community has_many posts
+
+-to deal with admin viewing, give them proxy users and proxy cbos
+
+Dec 2 2011 Refactoring:
+authentication
+
+verification
+
+display clean up + tidying
+-BannerBranding link
+-homepage = what?
+-users/:id
+-userprofile/cboprofile
+-User listing
+-my CBOs
+-community page
+-new communities
+-code organization + commenting
+-DRY
+-routing
+
+partials
+
+misc
+-seed more communities
+-seed more CBOs?
+-seed more users
+-add default joins

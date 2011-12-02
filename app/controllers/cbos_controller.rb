@@ -4,6 +4,7 @@ class CbosController < ApplicationController
   before_filter :authenticate_cbo, :only => [:edit, :update]
   before_filter :correct_cbo, :only => [:edit, :update]
   before_filter :check_confirmed_cbo, :only => [:show]
+  before_filter :authenticate_user, :only => [:my]
   
   
   def new
@@ -28,6 +29,12 @@ class CbosController < ApplicationController
       render 'edit'
     end
   end
+  
+  def my
+    @cbos = current_user.cbos
+    @title = "My CBOs"
+  end
+  
   
   def confirmpage
     @title = "Confirm CBO"

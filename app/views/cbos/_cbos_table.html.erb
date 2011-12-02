@@ -1,0 +1,14 @@
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% cbos.each do |cbo| %>
+		<tr>
+			<td><%= link_to cbo.cboprofile.name, cbo.cboprofile %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

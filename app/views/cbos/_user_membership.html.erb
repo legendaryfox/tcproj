@@ -1,6 +1,5 @@
 
 <% if current_user.part_of_cbo?(cbo) %>
-	<% puts "I GET IN HERE!" %>
 	Remove yourself from this CBO:<br /><br />
 	<%= form_for(current_user.memberships.find_by_cbo_id(cbo),
 				:html => { :method => :delete }) do |f| %>

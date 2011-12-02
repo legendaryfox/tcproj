@@ -23,6 +23,10 @@ module ApplicationHelper
         key.to_s
     end
   end
+  
+  def google_map_static_image_for(geo_object, xsize=450, ysize=300, zoom=16)
+    image_tag("http://maps.google.com/maps/api/staticmap?size=#{xsize}x#{ysize}&sensor=false&zoom=#{zoom}&markers=#{geo_object.latitude}%2C#{geo_object.longitude}")
+  end
 
   
 end

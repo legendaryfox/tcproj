@@ -1,0 +1,12 @@
+<p>
+	<ul>
+		<li>Name: <%= cboprofile.name %></li>
+		<li>Description: <%= cboprofile.description %></li>
+		<li>Address: <%= cboprofile.full_address %></li>
+		<li>Latitude: <%= cboprofile.latitude %></li>
+		<li>Longitude: <%= cboprofile.longitude %></li>
+		<% if signed_in_user? %>
+		<li>Distance to you: <%= current_user.userprofile.distance_to(cboprofile.full_address).round(2) %> miles</li>
+		<% end %>
+	</ul>
+</p>

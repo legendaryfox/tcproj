@@ -21,6 +21,7 @@ Tcproj::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   match '/signup', :to => 'users#new'
   match '/nearby_cbos', :to => 'cboprofiles#nearby'
+  match '/my_cbos', :to => 'cbos#my'
   get "sessions/new"
 
   get "categorizations/new"
@@ -38,6 +39,7 @@ Tcproj::Application.routes.draw do
   resources :cbos do
     collection do
       get 'confirmpage'
+      get 'my'
       post 'confirm'
     end
   end
@@ -45,6 +47,13 @@ Tcproj::Application.routes.draw do
   resources :cboprofiles do
     collection do
       get 'nearby'
+    end
+  end
+  
+  resources :communities do
+    collection do
+      get 'nearby'
+      get 'my'
     end
   end
   

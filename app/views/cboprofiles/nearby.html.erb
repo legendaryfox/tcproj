@@ -12,18 +12,5 @@
 <% end %>
 
 <h2>Showing all CBOs within <%= @distance.to_s %> miles of your location:</h2>
-<table>
-	<thead>
-		<tr>
-			<th>Name</th>
-		</tr>
-	</thead>
-	<tbody>
-	<% @cboprofiles.each do |cboprofile| %>
-		<tr>
-			<td><%= link_to cboprofile.name, cboprofile %></td>
-		</tr>
-	<% end %>
-	</tbody>
-</table>
+<%= render 'cboprofiles_table', :cboprofiles => @cboprofiles %>
 

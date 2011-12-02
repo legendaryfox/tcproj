@@ -1,0 +1,17 @@
+<h1>Nearby Communities</h1>
+
+<p>
+	You can search Communities that are nearby your preferred location.
+</p>
+
+<%= form_tag nearby_communities_path, :method => :get do %>
+	<p>
+		<%= text_field_tag :distance, params[:distance], :class => "xlInput" %>
+		<%= submit_tag "Search near", :name => nil, :class => "btn primary" %>
+	</p>
+<% end %>
+
+<h2>Showing all Communities within <%= @distance.to_s %> miles of your location:</h2>
+<%= render 'communities_table', :communities => @communities %>
+
+

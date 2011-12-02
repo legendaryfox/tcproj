@@ -33,6 +33,10 @@ class Community < ActiveRecord::Base
 
    end
    
+   def self.near_location(lat, long, distance, confirmed_level=1)
+     return Community.near([lat, long], distance).all #.delete_if{ |community| !cboprofile.cbo.confirmed? }
+   end
+   
    private
    
     def auto_add_objects

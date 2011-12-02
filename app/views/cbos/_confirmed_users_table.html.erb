@@ -1,0 +1,23 @@
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Join Date</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% cbo.confirmed_users_memberships.each do |membership| %>
+		<tr>
+			<td><%= link_to User.find_by_id(membership.user_id).userprofile.name, User.find_by_id(membership.user_id).userprofile %></td>
+			<td><%= membership.updated_at.stamp("January 1, 1999 at 20:12") %></td>
+			<td>
+				<%= form_for(membership, :html => { :method => :delete}) do |f| %>
+					<%= f.submit "Remove", :class => "btn small danger" %>
+				<% end %>
+			</td>
+			
+		</tr>
+		<% end %>
+	</tbody>
+</table>

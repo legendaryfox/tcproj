@@ -1,0 +1,14 @@
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% users.each do |user| %>
+		<tr>
+			<td><%= link_to user.userprofile.name, user.userprofile %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

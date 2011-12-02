@@ -1,17 +1,6 @@
 <h1>Full Profile for <%= @cboprofile.name %></h1>
 
-<p>
-	<ul>
-		<li>Name: <%= @cboprofile.name %></li>
-		<li>Description: <%= @cboprofile.description %></li>
-		<li>Address: <%= @cboprofile.full_address %></li>
-		<li>Latitude: <%= @cboprofile.latitude %></li>
-		<li>Longitude: <%= @cboprofile.longitude %></li>
-		<% if signed_in_user? %>
-		<li>Distance to you: <%= current_user.userprofile.distance_to(@cboprofile.full_address).round(2) %> miles</li>
-		<% end %>
-	</ul>
-</p>
+<%= render 'cboprofile_basic_info', :cboprofile => @cboprofile %>
 
 
 <% if signed_in_user? %>
@@ -22,7 +11,7 @@
 
 
 <p>
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@cboprofile.latitude}%2C#{@cboprofile.longitude}" %>
+<%= google_map_static_image_for(@cboprofile) %>
 </p>
 
 

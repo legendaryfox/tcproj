@@ -1,13 +1,7 @@
 <h1>Full Profile for <%= @userprofile.name_full %></h1>
 
-<p>
-	<ul>
-		<li>First Name: <%= @userprofile.firstname %></li>
-		<li>Last Name: <%= @userprofile.lastname %></li>
-		<li>Nick Name: <%= @userprofile.nickname.blank? ? "N/A" : @userprofile.nickname %></li>
-		<li>Address: <%= @userprofile.full_address %></li>
-	</ul>
-</p>
+<%= render 'userprofile_basic_info', :userprofile => @userprofile%>
+
 
 <% if signed_in_user? %>
 	<% if @userprofile.id == current_user.id %>

@@ -1,0 +1,16 @@
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Location</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% communities.each do |community| %>
+		<tr>
+			<td><%= link_to community.name, community %></td>
+			<td><%= community.full_address %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
