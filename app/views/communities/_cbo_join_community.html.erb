@@ -2,7 +2,6 @@
 <% if current_cbo.part_of_community?(community) %>
 
 
-	Remove yourself from this community:<br /><br />
 	<%= form_for(current_cbo.cbo_community_memberships.find_by_community_id(community),
 				:html => { :method => :delete }) do |f| %>
 		<% f.submit "Leave Community", :class => "btn danger" %>
@@ -11,7 +10,6 @@
 
 <% else %>
 
-	Be a part of this Community:<br /><br />
 	<%= form_for(current_cbo.cbo_community_memberships.build(:community_id => community.id)) do |f| %>
 		<%= f.hidden_field :community_id %>
 		<%= f.submit "Join Community", :class => "btn primary"  %>

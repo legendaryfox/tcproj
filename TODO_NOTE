@@ -38,3 +38,33 @@ misc
 -seed more CBOs?
 -seed more users
 -add default joins
+
+opportunity
+name
+description
+location
+:cbo:
+:questionnaire:
+
+
+
+A cbo has many opportunities
+An opportunity has one CBO
+Cbo (one to many) opportunities
+
+a user has many opportunities
+an opportunity has many users
+A user (many to many) opportunity
+
+an opportunity has one questionnaire
+a questionnaire has one opportunity
+an opportunity (one to one) questionnaire
+
+a questionnaire has many responses
+a response has one questionnaire
+a questionnaire (one to many) responses
+
+a (specific) response has one user
+a user has one (specific) response
+a (specific) response (one to one) user
+

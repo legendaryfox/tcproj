@@ -1,32 +1,53 @@
-<h1>Community: <%= @community.name %></h1>
+<div class="page-header">
+	<h1><%= @community.name %> <small><%= @community.full_address %></small></h1>
+	<%= render 'join_community', :community => @community %>
+</div>
 
 
-<p>
-<%= google_map_static_image_for(@community, 200, 150, 12) %>
-</p>
+<center><%= image_tag "900x250.gif" %></center>
+<br />
 
 
-<%= render 'community_basic_info', :community => @community %>
+<div class="row">
+	<div class="span8">
+		<h2>Location</h2>
+		<br />
+		<p><%= google_map_static_image_for(@community, 400, 300) %></p>
+		<address>
+			<strong><%= @community.full_address%></strong>
+		</address>
+	</div>
+	
+	<div class="span8">
+		<h2>Recent Activity</h2>
+		<br />
+		<div style="height: 300px; overflow: scroll">
+		<%= render 'community_activity_feed' %>
+		</div>
+	</div>
+	
+</div>
+		
 
-<p>	
-<h2>CBOs in this community:</h2>
-<%= render 'cbos/cbos_table', :cbos => @community.cbos %>
+<div class="row">
+	<div class="span8">
+		<h2>CBOs in this community</h2>
+		<br />
+		<%= render 'cbos/cbos_table', :cbos => @community.cbos %>
+	</div>
+	
+	<div class="span8">
+		<h2>Users in this community</h2>
+		<br />
+		<%= render 'users/users_table', :users => @community.users %>
+	</div>
+</div> 
 
-<h2>Users in this community:</h2>
-<%= render 'users/users_table', :users => @community.users %>
-
-</p>
-
-
-<% if signed_in_user? %>
-	<p>
-		<%= render 'user_join_community', :community => @community %>
-	</p>
-
-<% elsif signed_in_cbo? %>
-	<p>
-		<%= render 'cbo_join_community', :community => @community %>
-	</p>
-<% end %>
+<!-- 
+<center>
+<%= google_map_static_image_for(@community, 900, 250, 12) %>
+</center>
+<br />
+!-->
 
 

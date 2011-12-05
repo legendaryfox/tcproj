@@ -1,0 +1,15 @@
+<% communities.each_slice(2) do |community_slice| %>
+	<div class="row">
+		<% community_slice.each do |community| %>
+			<div class="span8">
+				<h3><%= community.name %> <small><%= community.full_address %> <%= link_to "[View]", community %></small></h3>
+				<br />
+				<div style="height: 300px; overflow: scroll">
+					<%= render 'community_activity_feed' %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<br /><br />
+<% end %>
+				

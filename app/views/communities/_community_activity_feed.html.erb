@@ -1,0 +1,17 @@
+<table class="condensed-table">
+	<thead>
+		<tr>
+			<th>News Item</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% (1..50).each do |i| %>
+			<tr>
+				<td>
+					<p><%= image_tag "50x50.gif", :class => "pull-left", :style => "padding-right: 10px" %><strong>Author</strong> <small>(2/23/12 at 12:32)</small> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam et.
+					</p>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

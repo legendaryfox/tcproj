@@ -1,0 +1,10 @@
+<% if signed_in_user? %>
+	<p>
+		<%= render 'user_join_community', :community => community %>
+	</p>
+
+<% elsif signed_in_cbo? %>
+	<p>
+		<%= render 'cbo_join_community', :community => community %>
+	</p>
+<% end %>
