@@ -7,6 +7,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: userprofiles
@@ -26,5 +27,7 @@ end
 #  country    :string(255)     default("")
 #  latitude   :float
 #  longitude  :float
+#  short_bio  :text
+#  long_bio   :text
 #
 

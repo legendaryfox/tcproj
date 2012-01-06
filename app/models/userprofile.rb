@@ -4,6 +4,7 @@
 class Userprofile < ActiveRecord::Base
   attr_accessible :firstname, :lastname, :nickname
   attr_accessible :street1, :street2, :city, :state, :zip, :country
+  attr_accessible :short_bio, :long_bio
   
   geocoded_by :full_address #TODO - split address up into street, state, etc, then glue back into an "address" method instead.
   after_validation :geocode, :if => (:street1_changed? || :street2_changed? || :city_changed? || :state_changed? || :zip_changed? || :country_changed?)
@@ -13,6 +14,9 @@ class Userprofile < ActiveRecord::Base
   
   validates :firstname, :presence => true
   validates :lastname, :presence => true
+  
+  validates :short_bio, :length => { :maximum => 140 }
+  validates :long_bio, :length => { :maximum => 1000 }
   
   def name_full(include_nickname = true)
     firstname + (nickname_with_quotes && include_nickname ? " " + nickname_with_quotes : "" ) + " " + lastname
@@ -67,6 +71,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: userprofiles
@@ -86,5 +91,7 @@ end
 #  country    :string(255)     default("")
 #  latitude   :float
 #  longitude  :float
+#  short_bio  :text
+#  long_bio   :text
 #
 
