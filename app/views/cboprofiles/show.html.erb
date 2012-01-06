@@ -26,18 +26,18 @@
 			<%= mail_to @cboprofile.cbo.email %>
 		</address>
 		<h3>Location Notes</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+		<%= simple_format(@cboprofile.location_notes) %>
+		
 	</div>
 	
 	<div class="span10" style="border-left: 1px solid #eee; margin-left: 0; padding-left: 19px">
+		<h2>Description</h2>
+		<%= simple_format(@cboprofile.description) %>
+		
 		<h2>Information</h2>
-		<p><%= @cboprofile.description %></p>
+		<%= simple_format(@cboprofile.information) %>
 		
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
 		
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
-		
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
 		
 		<% if signed_in_user? %>
 		<p>
@@ -53,11 +53,10 @@
 <div class="row">
 	<div class="span16">
 		<h2>How to Volunteer</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+		<%= simple_format(@cboprofile.how_to_volunteer) %>
 		
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
 		
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+		
 	</div>
 </div>
 		
