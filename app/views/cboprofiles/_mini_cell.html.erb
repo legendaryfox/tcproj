@@ -9,7 +9,7 @@
 </div>
 <div class="row">
 	<div class="span 8">
-		<p><%= cboprofile.description %></p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p>
+		<%= simple_format(cboprofile.description) %>
+		<%= truncate(cboprofile.information, :length => 150, :separator => '.', :omission => '... (continued)') %>
 	</div>
 </div>
