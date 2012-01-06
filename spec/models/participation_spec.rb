@@ -5,14 +5,16 @@ describe Participation do
 end
 
 
+
 # == Schema Information
 #
 # Table name: participations
 #
-#  id         :integer         not null, primary key
-#  user_id    :integer
-#  cbo_id     :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id             :integer         not null, primary key
+#  user_id        :integer
+#  opportunity_id :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#  confirmed      :integer         default(0)
 #
 

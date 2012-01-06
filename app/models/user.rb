@@ -22,6 +22,9 @@ class User < ActiveRecord::Base
   has_many :memberships #, :foreign_key => "user_id"               
   has_many :cbos, :through => :memberships, :source => :cbo
   
+  has_many :participations
+  has_many :opportunities, :through => :participations, :source => :opportunity
+  
   has_many :user_community_memberships
   has_many :communities, :through => :user_community_memberships, :source => :community
   
@@ -42,8 +45,16 @@ class User < ActiveRecord::Base
     self.user_community_memberships.create!(:community_id => community.id)
   end
   
+  def join_opportunity!(opportunity, default_confirm = 0)
+    self.participations.create!(:opportunity_id => opportunity.id, :confirmed => default_confirm)
+  end
+  
   def leave_cbo!(cbo)
     self.memberships.find_by_cbo_id(cbo).destroy
+  end
+  
+  def leave_opportunity!(opportunity)
+    self.participations.find_by_opportunity_id(opportunity).destroy
   end
   
   def leave_community!(community)
@@ -61,12 +72,25 @@ class User < ActiveRecord::Base
   def part_of_community?(community)
     return self.user_community_memberships.find_by_community_id(community)
   end
-    
+  
+  def part_of_opportunity?(opportunity)
+    participation = self.participations.find_by_opportunity_id(opportunity)
+    if participation
+      return participation unless participation.confirmed == 0
+    end
+  end
   
   def pending_of_cbo?(cbo)
     membership = self.memberships.find_by_cbo_id(cbo)
     if membership
       return membership if membership.confirmed == 0
+    end
+  end
+  
+  def pending_of_opportunity?(opportunity)
+    participation = self.participations.find_by_opportunity_id(opportunity)
+    if participation
+      return participation if participation.confirmed == 0
     end
   end
   
@@ -93,6 +117,29 @@ class User < ActiveRecord::Base
   def pending_cbos
     self.confirmed_cbos(0)
   end
+  
+  def confirmed_opportunities_participations(confirm_level = 1)
+    self.participations.find_all_by_confirmed(confirm_level)
+  end
+  
+  def confirmed_opportunities(confirm_level = 1)
+    
+    opportunities_list = Array.new
+    self.confirmed_opportunities_participations(confirm_level).each do |participation|
+      opportunities_list.push(participation.opportunity_id)
+    end
+    return Opportunity.find_all_by_id(opportunities_list)
+  end
+  
+  def pending_opportunity_participations
+    self.confirmed_opportunity_participations(0)
+  end
+  
+  def pending_opportunities
+    self.confirmed_opportunities(0)
+  end
+  
+
 
   
   def confirm!(level=1)

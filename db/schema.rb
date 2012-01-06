@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120106212532) do
+ActiveRecord::Schema.define(:version => 20120106215652) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -112,12 +112,13 @@ ActiveRecord::Schema.define(:version => 20120106212532) do
 
   create_table "participations", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "cbo_id"
+    t.integer  "opportunity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "confirmed",      :default => 0
   end
 
-  add_index "participations", ["cbo_id"], :name => "index_participations_on_cbo_id"
+  add_index "participations", ["opportunity_id"], :name => "index_participations_on_cbo_id"
   add_index "participations", ["user_id"], :name => "index_participations_on_student_id"
 
   create_table "user_community_memberships", :force => true do |t|
