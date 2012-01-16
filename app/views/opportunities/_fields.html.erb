@@ -1,0 +1,44 @@
+<fieldset>
+	<legend>Opportunity Information</legend>
+	<div class="clearfix">
+		<%= opportunity_form.label :name, :class => "xlInput" %>
+		<div class="input">
+			<%= opportunity_form.text_field :name, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= opportunity_form.label :description, :class => "xlInput" %>
+		<div class="input">
+			<%= opportunity_form.text_field :description, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= opportunity_form.label :start_date, :class => "xlInput" %>
+		<div class="input">
+			<%= opportunity_form.datetime_select :start_date, {:class => "medium"} %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= opportunity_form.label :end_date, :class => "xlInput" %>
+		<div class="input">
+			<%= opportunity_form.datetime_select :end_date, {:class => "medium"} %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= opportunity_form.label :address, :class => "xlInput" %>
+		<div class="input">
+			<%= opportunity_form.text_field :address, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+</fieldset>
+

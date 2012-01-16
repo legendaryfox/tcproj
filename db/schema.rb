@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120106215652) do
+ActiveRecord::Schema.define(:version => 20120112182839) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -106,6 +106,12 @@ ActiveRecord::Schema.define(:version => 20120106215652) do
     t.integer  "questionnaire_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.text     "information"
   end
 
   add_index "opportunities", ["cbo_id"], :name => "index_opportunities_on_cbo_id"

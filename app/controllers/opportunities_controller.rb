@@ -6,10 +6,11 @@ class OpportunitiesController < ApplicationController
   def new
     @title = "New Opportunity"
     @opportunity = Opportunity.new
+    #params[:opportunity][:cbo] = 'hello' #current_cbo
   end
   
   def create
-    @opportunity = Opportunity.new(params[:opportunity])
+    @opportunity = current_cbo.opportunities.build(params[:opportunity])
     if @opportunity.save
       redirect_to @opportunity
     else
