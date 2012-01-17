@@ -76,24 +76,15 @@
 				<tr>
 			<thead>
 			<tbody>
+				<% @opportunities.each do |opportunity| %>
 				<tr>
-					<td>Clean the lawn</td>
-					<td>January 1, 2012</td>
-					<td>September 2, 2012</td>
-					<td>Do a really good job!</td>
+					<td><%= link_to opportunity.name, opportunity %></td>
+					<td><%= opportunity.start_date %></td>
+					<td><%= opportunity.end_date %></td>
+					<td><%= opportunity.description %></td>
 				</tr>
-				<tr>
-					<td>Clean the lawn</td>
-					<td>January 1, 2012</td>
-					<td>September 2, 2012</td>
-					<td>Do a really good job!</td>
-				</tr>
-				<tr>
-					<td>Clean the lawn</td>
-					<td>January 1, 2012</td>
-					<td>September 2, 2012</td>
-					<td>Do a really good job!</td>
-				</tr>
+				<% end %>
+				
 			</tbody>
 		</table>
 					

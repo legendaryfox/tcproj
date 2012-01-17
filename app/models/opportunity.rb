@@ -4,6 +4,7 @@
 class Opportunity < ActiveRecord::Base
   attr_accessible :name, :description, :cbo_id, :questionnaire_id
   attr_accessible :address, :latitude, :longitude
+  attr_accessible :start_date, :end_date
   
   geocoded_by :address
   
@@ -14,6 +15,7 @@ class Opportunity < ActiveRecord::Base
   has_many :users, :through => :participations, :source => :user
   
   validates :cbo_id, :presence => true
+  validates :name, :presence => true
   
   
   def confirmed_users_participations(confirm_level = 1)

@@ -4,6 +4,7 @@ class CboprofilesController < ApplicationController
   
   def show
     @cboprofile = Cboprofile.find(params[:id])
+    @opportunities = @cboprofile.cbo.opportunities
   end
 
   def edit
