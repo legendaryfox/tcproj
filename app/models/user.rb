@@ -22,8 +22,8 @@ class User < ActiveRecord::Base
   has_many :memberships #, :foreign_key => "user_id"               
   has_many :cbos, :through => :memberships, :source => :cbo
   
-  has_many :participations
-  has_many :opportunities, :through => :participations, :source => :opportunity
+  #has_many :participations
+  #has_many :opportunities, :through => :participations, :source => :opportunity
   
   has_many :user_community_memberships
   has_many :communities, :through => :user_community_memberships, :source => :community

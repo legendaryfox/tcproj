@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120120213000) do
+ActiveRecord::Schema.define(:version => 20120120221821) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -127,6 +127,23 @@ ActiveRecord::Schema.define(:version => 20120120213000) do
   add_index "participations", ["opportunity_id"], :name => "index_participations_on_cbo_id"
   add_index "participations", ["user_id"], :name => "index_participations_on_student_id"
 
+  create_table "questionnaires", :force => true do |t|
+    t.integer  "cbo_id"
+    t.text     "question1_text"
+    t.text     "question2_text"
+    t.text     "question3_text"
+    t.text     "question4_text"
+    t.text     "question5_text"
+    t.text     "question6_text"
+    t.text     "question7_text"
+    t.text     "question8_text"
+    t.text     "question9_text"
+    t.text     "question10_text"
+    t.text     "additional_instructions"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_community_memberships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "community_id"
@@ -145,20 +162,20 @@ ActiveRecord::Schema.define(:version => 20120120213000) do
     t.string   "lastname"
     t.string   "nickname"
     t.integer  "user_id"
-    t.string   "street1",            :default => ""
-    t.string   "street2",            :default => ""
-    t.string   "city",               :default => ""
-    t.string   "state",              :default => ""
-    t.string   "zip",                :default => ""
-    t.string   "country",            :default => ""
+    t.string   "street1",                 :default => ""
+    t.string   "street2",                 :default => ""
+    t.string   "city",                    :default => ""
+    t.string   "state",                   :default => ""
+    t.string   "zip",                     :default => ""
+    t.string   "country",                 :default => ""
     t.float    "latitude"
     t.float    "longitude"
     t.text     "short_bio"
     t.text     "long_bio"
-    t.text     "question1_response"
-    t.text     "question2_response"
-    t.text     "question3_response"
-    t.text     "question4_response"
+    t.text     "core_question1_response"
+    t.text     "core_question2_response"
+    t.text     "core_question3_response"
+    t.text     "core_question4_response"
   end
 
   add_index "userprofiles", ["user_id"], :name => "index_userprofiles_on_user_id", :unique => true

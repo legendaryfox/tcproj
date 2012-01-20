@@ -9,30 +9,31 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: userprofiles
 #
-#  id         :integer         not null, primary key
-#  created_at :datetime
-#  updated_at :datetime
-#  firstname  :string(255)
-#  lastname   :string(255)
-#  nickname   :string(255)
-#  user_id    :integer
-#  street1    :string(255)     default("")
-#  street2    :string(255)     default("")
-#  city       :string(255)     default("")
-#  state      :string(255)     default("")
-#  zip        :string(255)     default("")
-#  country    :string(255)     default("")
-#  latitude   :float
-#  longitude  :float
-#  short_bio  :text
-#  long_bio   :text
-#  question1  :text
-#  question2  :text
-#  question3  :text
-#  question4  :text
+#  id                      :integer         not null, primary key
+#  created_at              :datetime
+#  updated_at              :datetime
+#  firstname               :string(255)
+#  lastname                :string(255)
+#  nickname                :string(255)
+#  user_id                 :integer
+#  street1                 :string(255)     default("")
+#  street2                 :string(255)     default("")
+#  city                    :string(255)     default("")
+#  state                   :string(255)     default("")
+#  zip                     :string(255)     default("")
+#  country                 :string(255)     default("")
+#  latitude                :float
+#  longitude               :float
+#  short_bio               :text
+#  long_bio                :text
+#  core_question1_response :text
+#  core_question2_response :text
+#  core_question3_response :text
+#  core_question4_response :text
 #
 

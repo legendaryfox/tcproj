@@ -21,7 +21,7 @@ class Cbo < ActiveRecord::Base
                         
   before_save :encrypt_password
                     
-  has_many :opportunities
+  # has_many :opportunities
   
   has_many :memberships #, :foreign_key => "cbo_id"
   has_many :users, :through => :memberships, :source => :user
@@ -34,8 +34,10 @@ class Cbo < ActiveRecord::Base
   
   
   has_one :cboprofile
+  has_one :questionnaire
   
   accepts_nested_attributes_for :cboprofile
+  accepts_nested_attributes_for :questionnaire
                     
   def add_to_category!(category)
     self.categorizations.create!(:category_id => category.id)

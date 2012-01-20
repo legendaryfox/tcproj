@@ -3,7 +3,7 @@
 
 en:
   hello: "Hello world"
-  question1_text: "What is one interesting thing about yourself you want us to know?"
-  question2_text: "What's the most interesting thing you've learned during your time in college?"
-  question3_text: "What was your most interesting volunteering experience?"
-  question4_text: "How was your previous volunteering experience?"
+  core_question1_text: "What is one interesting thing about yourself you want us to know?"
+  core_question2_text: "What's the most interesting thing you've learned during your time in college?"
+  core_question3_text: "What was your most interesting volunteering experience?"
+  core_question4_text: "How was your previous volunteering experience?"
