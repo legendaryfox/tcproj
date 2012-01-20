@@ -62,6 +62,10 @@
 			<%= userprofile_form.text_field :country, :class => "xlarge" %>
 		</div>
 	</div>
+</fieldset>
+
+<fieldset>
+	<legend>Biographical Information</legend>
 	
 	<div class="clearfix">
 		<%= userprofile_form.label "Short Biography", :class => "xlInput" %>
@@ -73,7 +77,35 @@
 	<div class="clearfix">
 		<%= userprofile_form.label "Long Biography", :class => "xlInput" %>
 		<div class="input">
-			<%= userprofile_form.text_area :long_bio, :class => "xxlarge" %>
+			<%= userprofile_form.text_area :long_bio, :class => "xxlarge", :rows => 8 %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= userprofile_form.label t(:question1_text), :class => "xlInput" %>
+		<div class="input">
+			<%= userprofile_form.text_area :question1_response, :class => "xxlarge", :rows => 8 %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= userprofile_form.label t(:question2_text), :class => "xlInput" %>
+		<div class="input">
+			<%= userprofile_form.text_area :question2_response, :class => "xxlarge", :rows => 8 %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= userprofile_form.label t(:question3_text), :class => "xlInput" %>
+		<div class="input">
+			<%= userprofile_form.text_area :question3_response, :class => "xxlarge", :rows => 8 %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= userprofile_form.label t(:question4_text), :class => "xlInput" %>
+		<div class="input">
+			<%= userprofile_form.text_area :question4_response, :class => "xxlarge", :rows => 8 %>
 		</div>
 	</div>
 	

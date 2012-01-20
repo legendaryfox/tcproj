@@ -27,9 +27,26 @@
 	</div>
 	<div class="span11" style="border-left: 1px solid #eee; margin-left: 0; padding-left: 19px">
 		<h2>Main Info</h2>
-
+		
+		<h3>Biography</h3>
 		<%= simple_format(@userprofile.long_bio) %>
-
+		<br />
+		
+		<h3><%=t :question1_text %></h3>
+		<%= simple_format(@userprofile.question1_response) %>
+		<br />
+		
+		<h3><%=t :question2_text %></h3>
+		<%= simple_format(@userprofile.question2_response) %>
+		<br />
+		
+		<h3><%=t :question3_text %></h3>
+		<%= simple_format(@userprofile.question3_response) %>
+		<br />
+		
+		<h3><%=t :question4_text %></h3>
+		<%= simple_format(@userprofile.question4_response) %>
+		<br />
 	
 	</div>
 </div>

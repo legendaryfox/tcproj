@@ -15,6 +15,7 @@ PART II: CREATE QUESTIONNAIRES
 -questionnaires belong to CBOs; opportunities can reference questionnaires
 --strongly advise against editing a published questionnaire
 -opportunity has at most only one questionnaire; a questionnaire can be used for multiple opportunities
+-a questionnaire response (qresponse) - flat text file??
 
 PART III: Users applying via questionnaires
 

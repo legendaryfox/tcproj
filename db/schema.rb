@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120112182839) do
+ActiveRecord::Schema.define(:version => 20120120213000) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -145,16 +145,20 @@ ActiveRecord::Schema.define(:version => 20120112182839) do
     t.string   "lastname"
     t.string   "nickname"
     t.integer  "user_id"
-    t.string   "street1",    :default => ""
-    t.string   "street2",    :default => ""
-    t.string   "city",       :default => ""
-    t.string   "state",      :default => ""
-    t.string   "zip",        :default => ""
-    t.string   "country",    :default => ""
+    t.string   "street1",            :default => ""
+    t.string   "street2",            :default => ""
+    t.string   "city",               :default => ""
+    t.string   "state",              :default => ""
+    t.string   "zip",                :default => ""
+    t.string   "country",            :default => ""
     t.float    "latitude"
     t.float    "longitude"
     t.text     "short_bio"
     t.text     "long_bio"
+    t.text     "question1_response"
+    t.text     "question2_response"
+    t.text     "question3_response"
+    t.text     "question4_response"
   end
 
   add_index "userprofiles", ["user_id"], :name => "index_userprofiles_on_user_id", :unique => true

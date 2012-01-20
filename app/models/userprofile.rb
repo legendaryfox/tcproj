@@ -4,7 +4,7 @@
 class Userprofile < ActiveRecord::Base
   attr_accessible :firstname, :lastname, :nickname
   attr_accessible :street1, :street2, :city, :state, :zip, :country
-  attr_accessible :short_bio, :long_bio
+  attr_accessible :short_bio, :long_bio, :question1_response, :question2_response, :question3_response, :question4_response
   
   geocoded_by :full_address #TODO - split address up into street, state, etc, then glue back into an "address" method instead.
   after_validation :geocode, :if => (:street1_changed? || :street2_changed? || :city_changed? || :state_changed? || :zip_changed? || :country_changed?)
@@ -72,6 +72,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: userprofiles
@@ -93,5 +94,9 @@ end
 #  longitude  :float
 #  short_bio  :text
 #  long_bio   :text
+#  question1  :text
+#  question2  :text
+#  question3  :text
+#  question4  :text
 #
 

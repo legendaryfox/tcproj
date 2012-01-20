@@ -8,6 +8,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: userprofiles
@@ -29,5 +30,9 @@ end
 #  longitude  :float
 #  short_bio  :text
 #  long_bio   :text
+#  question1  :text
+#  question2  :text
+#  question3  :text
+#  question4  :text
 #
 
