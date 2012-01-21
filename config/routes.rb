@@ -1,6 +1,12 @@
 Tcproj::Application.routes.draw do
   
   
+  get "questionnaires/new"
+
+  get "questionnaires/create"
+
+  get "questionnaires/show"
+
   get "cbo_community_memberships/create"
 
   get "cbo_community_memberships/destroy"
@@ -76,6 +82,7 @@ Tcproj::Application.routes.draw do
   resources :communities
   resources :user_community_memberships
   resources :cbo_community_memberships
+  resources :questionnaires
     
 
   get "pages/home"

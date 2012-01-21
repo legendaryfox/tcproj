@@ -14,6 +14,11 @@ class Questionnaire < ActiveRecord::Base
 
                   
   belongs_to :cbo
+  
+ 
+  
+  
+  
 end
 
 

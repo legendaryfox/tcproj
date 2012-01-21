@@ -2,6 +2,8 @@
 	<h1><%= @userprofile.name %> <small><%= communities_tagline(@userprofile.user) %></small></h1>
 </div>
 
+
+
 <!-- <h1>Full Profile for <%= @userprofile.name %></h1> !-->
 <% if signed_in_user? %>
 	<% if @userprofile.id == current_user.id %>

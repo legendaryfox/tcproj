@@ -1,0 +1,10 @@
+<h1>Questionnaires</h1>
+
+<%= form_for(@questionnaire) do |questionnaire_form| %>
+	<%= render 'shared/error_messages', :object => questionnaire_form.object %>
+	<%= render 'fields', :questionnaire_form => questionnaire_form %>
+	
+	<div class="actions">
+		<%= questionnaire_form.submit "Update", :class => "btn primary" %>
+	</div>
+<% end %>
