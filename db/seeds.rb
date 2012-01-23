@@ -25,6 +25,9 @@ cbo1.create_cboprofile(
   :state => "MA",
   :zip => "02215",
   :country => "USA")
+cbo1.create_questionnaire(
+  :question1_text => "Question 1 cbo1",
+  :question2_text => "Question 2 cbo1")
   
 cbo2 = Cbo.create!(
   :name => "Anyday Time",
@@ -40,6 +43,9 @@ cbo2.create_cboprofile(
   :state => "MA",
   :zip => "02215",
   :country => "USA")
+cbo2.create_questionnaire(
+  :question1_text => "Question 1 cbo2",
+  :question4_text => "Question 4 cbo2")
   
 cbo3 = Cbo.create!(
   :name => "Macho Men",
@@ -55,6 +61,9 @@ cbo3.create_cboprofile(
   :state => "MA",
   :zip => "02215",
   :country => "USA")
+cbo3.create_questionnaire(
+  :question5_text => "Question 5 cbo3",
+  :question6_text => "Question 6 cbo3")
   
 cbo4 = Cbo.create!(
   :name => "Chocofactory",
@@ -70,6 +79,7 @@ cbo4.create_cboprofile(
   :state => "MA",
   :zip => "02215",
   :country => "USA")
+cbo4.create_questionnaire()
   
 cbo5 = Cbo.create!(
   :name => "Robocop Corps",
@@ -85,6 +95,9 @@ cbo5.create_cboprofile(
   :state => "NJ",
   :zip => "08879",
   :country => "USA")
+cbo5.create_questionnaire(
+  :question1_text => "This is my first question for CBO 5",
+  :additional_instructions => "These are additional instructions")
   
 cbo6 = Cbo.create!(
   :name => "Empire Holdings",
@@ -100,6 +113,10 @@ cbo6.create_cboprofile(
   :state => "NJ",
   :zip => "08691",
   :country => "USA")
+cbo6.create_questionnaire(
+  :question1_text => "This is cbo6",
+  :question2_text => "this is question 2 text for cbo6",
+  :additional_instructions => "These are CBO6 additional instructions")
 
   
 community1 = Community.create!(:name => "Boston", :city => "Boston", :state => "MA", :zip => "02215")

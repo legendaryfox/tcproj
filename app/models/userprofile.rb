@@ -15,13 +15,13 @@ class Userprofile < ActiveRecord::Base
   validates :firstname, :presence => true
   validates :lastname, :presence => true
   
-  validates :short_bio, :presence => true, :length => { :maximum => 140 }
-  validates :long_bio, :presence => true, :length => { :maximum => 1000 }
+  #validates :short_bio, :presence => true, :length => { :maximum => 140 }
+  #validates :long_bio, :presence => true, :length => { :maximum => 1000 }
   
-  validates :core_question1_response, :presence => true, :length => { :maximum => 1000 }
-  validates :core_question2_response, :presence => true, :length => { :maximum => 1000 }
-  validates :core_question3_response, :presence => true, :length => { :maximum => 1000 }
-  validates :core_question4_response, :presence => true, :length => { :maximum => 1000 }
+  #validates :core_question1_response, :presence => true, :length => { :maximum => 1000 }
+  #validates :core_question2_response, :presence => true, :length => { :maximum => 1000 }
+  #validates :core_question3_response, :presence => true, :length => { :maximum => 1000 }
+  #validates :core_question4_response, :presence => true, :length => { :maximum => 1000 }
   
   def name_full(include_nickname = true)
     firstname + (nickname_with_quotes && include_nickname ? " " + nickname_with_quotes : "" ) + " " + lastname

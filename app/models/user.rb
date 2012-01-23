@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   has_many :communities, :through => :user_community_memberships, :source => :community
   
   has_one :userprofile
+  has_many :qresponses
   
   accepts_nested_attributes_for :userprofile
   
