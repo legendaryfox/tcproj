@@ -11,6 +11,7 @@ class CbosController < ApplicationController
     @title = "New CBO"
     @cbo = Cbo.new
     @cbo.build_cboprofile
+    @cbo.build_questionnaire
   end
   
   def show
@@ -82,6 +83,7 @@ class CbosController < ApplicationController
     else
       @title = "New CBO"
       @cbo.build_cboprofile(params[:cbo][:cboprofile_attributes])
+      @cbo.build_questionnaire(params[:cbo][:questionnaire_attributes])
       render 'new'
     end
   end

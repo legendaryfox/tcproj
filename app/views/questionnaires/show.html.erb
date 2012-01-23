@@ -1,50 +1,74 @@
-<h1>Questionnaires#show</h1>
-<p>Find me in app/views/questionnaires/show.html.erb</p>
+<div class="page-header">
+	<h1>Questionnaire <small>Student Application</small></h1>	
+</div>
 
+<p>Below you will find your current questionnaire applications. Feel free to edit.</p>
 
 
 
 <% if !@questionnaire.question1_text.blank? %>
+	<hr>
+	<h3>Question 1:</h3>
 	<%= simple_format(@questionnaire.question1_text) %>
 <% end %>
 
 <% if !@questionnaire.question2_text.blank? %>
+	<hr>
+	<h3>Question 2:</h3>
 	<%= simple_format(@questionnaire.question2_text) %>
 <% end %>
 
 <% if !@questionnaire.question3_text.blank? %>
+	<hr>
+	<h3>Question 3:</h3>
 	<%= simple_format(@questionnaire.question3_text) %>
 <% end %>
 
 <% if !@questionnaire.question4_text.blank? %>
+	<hr>
+	<h3>Question 4:</h3>
 	<%= simple_format(@questionnaire.question4_text) %>
 <% end %>
 
 <% if !@questionnaire.question5_text.blank? %>
+	<hr>
+	<h3>Question 5:</h3>
 	<%= simple_format(@questionnaire.question5_text) %>
 <% end %>
 
 <% if !@questionnaire.question6_text.blank? %>
+	<hr>
+	<h3>Question 6:</h3>
 	<%= simple_format(@questionnaire.question6_text) %>
 <% end %>
 
 <% if !@questionnaire.question7_text.blank? %>
+	<hr>
+	<h3>Question 7:</h3>
 	<%= simple_format(@questionnaire.question7_text) %>
 <% end %>
 
 <% if !@questionnaire.question8_text.blank? %>
+	<hr>
+	<h3>Question 8:</h3>
 	<%= simple_format(@questionnaire.question8_text) %>
 <% end %>
 
 <% if !@questionnaire.question9_text.blank? %>
+	<hr>
+	<h3>Question 9:</h3>
 	<%= simple_format(@questionnaire.question9_text) %>
 <% end %>
 
 <% if !@questionnaire.question10_text.blank? %>
+	<hr>
+	<h3>Question 10:</h3>
 	<%= simple_format(@questionnaire.question10_text) %>
 <% end %>
 
 <% if !@questionnaire.additional_instructions.blank? %>
-<%= simple_format(@questionnaire.additional_instructions) %>
+	<hr>
+	<h3>Additional Instructions:</h3>
+	<%= simple_format(@questionnaire.additional_instructions) %>
 <% end %>
 	

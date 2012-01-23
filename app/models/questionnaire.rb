@@ -11,9 +11,11 @@ class Questionnaire < ActiveRecord::Base
                   :question10_text
   attr_accessible :additional_instructions
                   
+  validates :question1_text, :presence => true
 
                   
   belongs_to :cbo
+  
   
  
   

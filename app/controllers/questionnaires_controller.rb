@@ -6,6 +6,22 @@ class QuestionnairesController < ApplicationController
     @title = "New Questionnaire"
     @questionnaire = Questionnaire.new
   end
+  
+  def edit
+    @questionnaire = Questionnaire.find(params[:id])
+    @title = "Edit Questionnaire"
+
+  end
+
+  def update
+    @cboprofile = Cboprofile.find(params[:id])
+    if @cboprofile.update_attributes(params[:cboprofile])
+      redirect_to @cboprofile, :flash => { :success => "Profile updated." }
+    else
+      @title = "Edit User Profile"
+      render 'edit'
+    end
+  end
 
   def create
     @questionnaire = current_cbo.build_questionnaire(params[:questionnaire])
@@ -21,5 +37,6 @@ class QuestionnairesController < ApplicationController
   def show
     @questionnaire = Questionnaire.find(params[:id])
   end
-
+  
+ 
 end
