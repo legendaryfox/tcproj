@@ -1,3 +1,17 @@
+One CBO has_one quesitonnaire
+one questionnaire has_many responses
+one user has_many responses
+one response has_one questionnaire
+
+.'.
+
+A user has_many questionnaires through responses
+a questionnaire has_many users through responses
+each response has...question1_answer, question2_answer, etc.... + flag_level; notes_field (changeable by admin and CBO)
+-flag_level: 0 is pending TCP Admin, 1 is pending CBO admin, 2 is accepted, 3 is rejected
+
+
+
 CBO signs up
 Creates a default questionnaire
 

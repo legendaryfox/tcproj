@@ -14,11 +14,11 @@ class QuestionnairesController < ApplicationController
   end
 
   def update
-    @cboprofile = Cboprofile.find(params[:id])
-    if @cboprofile.update_attributes(params[:cboprofile])
-      redirect_to @cboprofile, :flash => { :success => "Profile updated." }
+    @questionnaire = Questionnaire.find(params[:id])
+    if @questionnaire.update_attributes(params[:questionnaire])
+      redirect_to @questionnaire, :flash => { :success => "Questionnaire updated." }
     else
-      @title = "Edit User Profile"
+      @title = "Edit Questionnaire"
       render 'edit'
     end
   end
