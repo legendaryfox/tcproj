@@ -1,0 +1,5 @@
+<h1>Qresponses#index</h1>
+
+<% @qresponses.each do |qresponse| %>
+<%= link_to "Qresponse " + qresponse.id.to_s, qresponse %><br />
+<% end %>

@@ -32,6 +32,12 @@ class QuestionnairesController < ApplicationController
       render 'new'
     end
   end
+  
+  def reply
+    @title = "New Questionnaire Response"
+    @questionnaire = Questionnaire.find(params[:id])
+    @qresponse = current_user.qresponses.new(:questionnaire_id => @questionnaire.id)
+  end
     
     
   def show

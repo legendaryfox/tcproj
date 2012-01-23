@@ -1,0 +1,2 @@
+module QresponsesHelper
+end

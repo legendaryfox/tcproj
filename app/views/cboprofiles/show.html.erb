@@ -1,7 +1,6 @@
 <div class="page-header">
 	<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small></h1>
 	
-	<%= render 'cbos/user_membership', :cbo => @cboprofile.cbo %>
 	
 </div>
 
@@ -11,7 +10,7 @@
 
 
 <% if signed_in_cbo? %>
-	<% if @cboprofile.id == current_cbo.id %>
+	<% if @cboprofile.id == current_cbo.cboprofile.id %>
 		<p><%= link_to "Edit Profile", edit_cboprofile_path(current_cbo.cboprofile) %></p>
 	<% end %>
 <% end %>
@@ -36,14 +35,37 @@
 		
 		<h2>Information</h2>
 		<%= simple_format(@cboprofile.information) %>
+		<%= link_to "Questionnaire", @cboprofile.cbo.questionnaire %>
+		<%= link_to "Respond to Questionnaire", reply_questionnaire_path(@cboprofile.cbo.questionnaire) %>
 		
 		
-		
+		<!-- BEGIN QUESTIONNAIRE MODAL !-->
 		<% if signed_in_user? %>
 		<p>
+			<div id="questionnaire-modal" class="modal hide fade">
+				<div class="modal-header">
+					<a href="#" class="close">&times;</a>
+					<h3>Questionnaire Heading</h3>
+				</div>
+				<div class="modal-body">
+					
+					
+					<p>This is where questions go!</p>
+					
+					
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn primary">Primary Action</a>
+					<a href="#" class="btn secondary">Secondary Action</a>
+				</div>
+			</div>
+			
+			<a class="btn" data-controls-modal="questionnaire-modal" data-backdrop="static" data-keyboard="true">View Application</a>
+			
 			<%= render 'cbos/user_membership', :cbo => @cboprofile.cbo %>
 		</p>
 		<% end %>
+		<!-- END QUESTIONNAIRE/MEMBERSHIP MODAL !-->
 		
 	</div>
 </div>

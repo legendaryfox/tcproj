@@ -1,0 +1,73 @@
+<h1>Questionnaire Response</h1>
+<p>Response by <%= link_to @qresponse.user.userprofile.name_full, @qresponse.user.userprofile %></p>
+
+<% if !@qresponse.question1_text.blank? %>
+	<hr>
+	<h3>Question 1:</h3>
+	<%= simple_format(@qresponse.question1_text) %>
+	<%= simple_format(@qresponse.question1_response) %>
+<% end %>
+
+<% if !@qresponse.question2_text.blank? %>
+	<hr>
+	<h3>Question 2:</h3>
+	<%= simple_format(@qresponse.question2_text) %>
+	<%= simple_format(@qresponse.question2_response) %>
+<% end %>
+
+<% if !@qresponse.question3_text.blank? %>
+	<hr>
+	<h3>Question 3:</h3>
+	<%= simple_format(@qresponse.question3_text) %>
+	<%= simple_format(@qresponse.question3_response) %>
+<% end %>
+
+<% if !@qresponse.question4_text.blank? %>
+	<hr>
+	<h3>Question 4:</h3>
+	<%= simple_format(@qresponse.question4_text) %>
+	<%= simple_format(@qresponse.question4_response) %>
+<% end %>
+
+<% if !@qresponse.question5_text.blank? %>
+	<hr>
+	<h3>Question 5:</h3>
+	<%= simple_format(@qresponse.question5_text) %>
+	<%= simple_format(@qresponse.question5_response) %>
+<% end %>
+
+
+<% if !@qresponse.question6_text.blank? %>
+	<hr>
+	<h3>Question 6:</h3>
+	<%= simple_format(@qresponse.question6_text) %>
+	<%= simple_format(@qresponse.question6_response) %>
+<% end %>
+
+<% if !@qresponse.question7_text.blank? %>
+	<hr>
+	<h3>Question 7:</h3>
+	<%= simple_format(@qresponse.question7_text) %>
+	<%= simple_format(@qresponse.question7_response) %>
+<% end %>
+
+<% if !@qresponse.question8_text.blank? %>
+	<hr>
+	<h3>Question 8:</h3>
+	<%= simple_format(@qresponse.question8_text) %>
+	<%= simple_format(@qresponse.question8_response) %>
+<% end %>
+
+<% if !@qresponse.question9_text.blank? %>
+	<hr>
+	<h3>Question 9:</h3>
+	<%= simple_format(@qresponse.question9_text) %>
+	<%= simple_format(@qresponse.question9_response) %>
+<% end %>
+
+<% if !@qresponse.question10_text.blank? %>
+	<hr>
+	<h3>Question 10:</h3>
+	<%= simple_format(@qresponse.question10_text) %>
+	<%= simple_format(@qresponse.question10_response) %>
+<% end %>

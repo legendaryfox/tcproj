@@ -1,6 +1,12 @@
 Tcproj::Application.routes.draw do
   
   
+  get "qresponses/new"
+
+  get "qresponses/show"
+
+  get "qresponses/index"
+
   get "questionnaires/new"
 
   get "questionnaires/create"
@@ -64,6 +70,12 @@ Tcproj::Application.routes.draw do
     end
   end
   
+  resources :questionnaires do
+    member do
+      get 'reply'
+    end
+  end
+  
   resources :memberships do
     member do
       put 'confirm'
@@ -83,6 +95,7 @@ Tcproj::Application.routes.draw do
   resources :user_community_memberships
   resources :cbo_community_memberships
   resources :questionnaires
+  resources :qresponses
     
 
   get "pages/home"

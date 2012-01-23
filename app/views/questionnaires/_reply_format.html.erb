@@ -1,0 +1,5 @@
+<% if !@questionnaire.question1_text.blank? %>
+	<hr>
+	<h3>Question 1: </h3>
+	<%= simple_format(@questionnaire.question1_text, :class => "strong") %>
+<% end %>
