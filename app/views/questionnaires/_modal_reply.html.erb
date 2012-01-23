@@ -1,4 +1,3 @@
-<h1>Reply to Questionnaire <%= questionnaire.id %></h1>
 
 <%= form_for(qresponse, :html => { :class => "form-stacked" }) do |qresponse_form| %>
 	<%= render 'shared/error_messages', :object => qresponse_form.object %>
@@ -13,6 +12,7 @@
 				<%= qresponse_form.text_area :question1_response, :class => "xxlarge span8", :rows => 4 %>
 			</div>
 		</div>
+		<hr /><br />
 	<% end %>
 	
 	<% if !questionnaire.question2_text.blank? %>
@@ -23,6 +23,8 @@
 				<%= qresponse_form.text_area :question2_response, :class => "xxlarge span8", :rows => 4 %>
 			</div>
 		</div>
+		<hr /><br />
+		
 	<% end %>
 	
 	<% if !questionnaire.question3_text.blank? %>
@@ -33,6 +35,8 @@
 				<%= qresponse_form.text_area :question3_response, :class => "xxlarge span8", :rows => 4 %>
 			</div>
 		</div>
+		<hr /><br />
+		
 	<% end %>
 	
 	<% if !questionnaire.question4_text.blank? %>
@@ -43,6 +47,8 @@
 				<%= qresponse_form.text_area :question4_response, :class => "xxlarge span8", :rows => 4 %>
 			</div>
 		</div>
+		<hr /><br />
+		
 	<% end %>
 	
 	<% if !questionnaire.question5_text.blank? %>
@@ -53,6 +59,8 @@
 				<%= qresponse_form.text_area :question5_response, :class => "xxlarge span8", :rows => 4 %>
 			</div>
 		</div>
+		<hr /><br />
+		
 	<% end %>
 	
 	<% if !questionnaire.question6_text.blank? %>
@@ -63,6 +71,8 @@
 				<%= qresponse_form.text_area :question6_response, :class => "xxlarge span8", :rows => 4 %>
 			</div>
 		</div>
+		<hr /><br />
+		
 	<% end %>
 	
 	<% if !questionnaire.question7_text.blank? %>
@@ -73,6 +83,8 @@
 				<%= qresponse_form.text_area :question7_response, :class => "xxlarge span8", :rows => 4 %>
 			</div>
 		</div>
+		<hr /><br />
+		
 	<% end %>
 	
 	<% if !questionnaire.question8_text.blank? %>
@@ -83,6 +95,8 @@
 				<%= qresponse_form.text_area :question8_response, :class => "xxlarge span8", :rows => 4 %>
 			</div>
 		</div>
+		<hr /><br />
+		
 	<% end %>
 	
 	<% if !questionnaire.question9_text.blank? %>
@@ -93,6 +107,8 @@
 				<%= qresponse_form.text_area :question9_response, :class => "xxlarge span8", :rows => 4 %>
 			</div>
 		</div>
+		<hr /><br />
+		
 	<% end %>
 	
 	<% if !questionnaire.question10_text.blank? %>
@@ -103,6 +119,8 @@
 				<%= qresponse_form.text_area :question10_response, :class => "xxlarge span8", :rows => 4 %>
 			</div>
 		</div>
+		<hr /><br />
+		
 	<% end %>
 	
 	<hr>

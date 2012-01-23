@@ -30,6 +30,8 @@
 							<li><%= link_to "Nearby CBOS", nearby_cbos_path %></li>
 							<li class="divider"></li>
 							<li><%= link_to "All CBOS", cbos_path %></li>
+							<li class="divider"></li>
+							<li><%= link_to "View  Applications", my_qresponses_path %></li>
 						</ul>
 					</li>
 					<li class="dropdown" data-dropdown="dropdown">
@@ -67,7 +69,9 @@
 						<a href="#" class="dropdown-toggle">CBO Actions</a>
 						<ul class="dropdown-menu">
 							<li><%= link_to current_cbo.name.possessive + " Organization Profile", current_cbo.cboprofile %></li>
-							<li><%= link_to "Application Questionnaire", current_cbo.questionnaire %></li>
+							<li class="divider"></li>
+							<li><%= link_to "View Application Form", current_cbo.questionnaire %></li>
+							<li><%= link_to "View  Applications", my_qresponses_path %></li>
 						</ul>
 					</li>
 							

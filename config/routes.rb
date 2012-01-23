@@ -82,6 +82,12 @@ Tcproj::Application.routes.draw do
     end
   end
   
+  resources :qresponses do
+    collection do
+      get 'my'
+    end
+  end
+  
   
   
   resources :userprofiles
@@ -96,6 +102,7 @@ Tcproj::Application.routes.draw do
   resources :cbo_community_memberships
   resources :questionnaires
   resources :qresponses
+
     
 
   get "pages/home"

@@ -67,5 +67,17 @@ class QresponsesController < ApplicationController
     @qresponses = Qresponse.all
     @title = "Questionnaire Responses"
   end
+  
+  def my
+    if signed_in_user?
+      @qresponses = current_user.qresponses
+    elsif signed_in_cbo?
+      @qresponses = current_cbo.questionnaire.qresponses
+    else
+      authenticate_user
+    end
+      
+    
+  end
 
 end

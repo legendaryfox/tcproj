@@ -35,8 +35,6 @@
 		
 		<h2>Information</h2>
 		<%= simple_format(@cboprofile.information) %>
-		<%= link_to "Questionnaire", @cboprofile.cbo.questionnaire %>
-		<%= link_to "Respond to Questionnaire", reply_questionnaire_path(@cboprofile.cbo.questionnaire) %>
 		
 		
 		<!-- BEGIN QUESTIONNAIRE MODAL !-->
@@ -45,21 +43,22 @@
 			<div id="questionnaire-modal" class="modal hide fade" style="overflow-y:auto; max-height: 90%; margin-top:-45%;">
 				<div class="modal-header">
 					<a href="#" class="close">&times;</a>
-					<h3>Questionnaire Heading</h3>
+					<h3>Application Form to <%= @cboprofile.name %></h3>
 				</div>
 				<div class="modal-body">
 					
 					
 					<%= render 'questionnaires/modal_reply', :questionnaire => @cboprofile.cbo.questionnaire, :qresponse => Qresponse.new(:questionnaire_id => @cboprofile.cbo.questionnaire.id) %>
 					
-					<p>This is where questions go!</p>
 					
 					
 				</div>
+				<!-- 
 				<div class="modal-footer">
 					<a href="#" class="btn primary">Primary Action</a>
 					<a href="#" class="btn secondary">Secondary Action</a>
 				</div>
+				!-->
 			</div>
 			
 			<a class="btn" data-controls-modal="questionnaire-modal" data-backdrop="static" data-keyboard="true">View Application</a>
