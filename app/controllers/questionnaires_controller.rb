@@ -1,6 +1,7 @@
 class QuestionnairesController < ApplicationController
   
   before_filter :authenticate_cbo, :only => [:new, :create]
+  before_filter :authenticate_user, :only => [:reply]
   
   def new
     @title = "New Questionnaire"
@@ -34,15 +35,24 @@ class QuestionnairesController < ApplicationController
   end
   
   def reply
-    @title = "New Questionnaire Response"
     @questionnaire = Questionnaire.find(params[:id])
-    @qresponse = current_user.qresponses.new(:questionnaire_id => @questionnaire.id)
+    
+    if current_user.qresponses.find_by_questionnaire_id(params[:id])
+      # they have already answered this
+      redirect_to @questionnaire.cbo.cboprofile, :flash => { :error => "You have already filled out an application." }
+    else
+      
+      @title = "New Questionnaire Response"
+      @qresponse = current_user.qresponses.new(:questionnaire_id => @questionnaire.id)
+    end
+    
   end
     
     
   def show
     @questionnaire = Questionnaire.find(params[:id])
   end
+  
   
  
 end

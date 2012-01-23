@@ -1,5 +1,5 @@
-<h1>Qresponses#index</h1>
+<h1>Responses</h1>
 
 <% @qresponses.each do |qresponse| %>
-<%= link_to "Qresponse " + qresponse.id.to_s, qresponse %><br />
+<%= link_to "Response " + qresponse.id.to_s, qresponse %>, by <%= link_to qresponse.user.userprofile.name, qresponse.user.userprofile %> for <%= link_to qresponse.questionnaire.cbo.cboprofile.name, qresponse.questionnaire.cbo.cboprofile %><br />
 <% end %>
