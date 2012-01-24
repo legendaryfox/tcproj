@@ -1,6 +1,6 @@
 <h1>Reply to Questionnaire <%= @questionnaire.id %></h1>
 
-<%= form_for(@qresponse, :html => { :class => "form-stacked" }) do |qresponse_form| %>
+<%= form_for(qresponse, :html => { :class => "form-stacked" }) do |qresponse_form| %>
 	<%= render 'shared/error_messages', :object => qresponse_form.object %>
 	
 	

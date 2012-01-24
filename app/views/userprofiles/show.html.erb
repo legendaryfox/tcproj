@@ -1,56 +1,103 @@
-<div class="page-header">
-	<h1><%= @userprofile.name %> <small><%= communities_tagline(@userprofile.user) %></small></h1>
-</div>
-
-
-
-<!-- <h1>Full Profile for <%= @userprofile.name %></h1> !-->
-<% if signed_in_user? %>
-	<% if @userprofile.id == current_user.id %>
-		<p><%= link_to "Edit Profile", edit_userprofile_path(current_user.userprofile) %></p>
-	<% end %>
-<% end %>
-
 <div class="row">
 	<div class="span4">
-		<h2>Picture</h2>
 		<%= image_tag "200x250.gif"%>
 		<br /><br />
-		<address>
-			<strong><%= @userprofile.name_full %></strong><br />
-			<%= mail_to @userprofile.user.email %>
-		</address>
-		
-		<!-- ><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sollicitudin augue, sit amet posuere diam lacinia et. Duis nec dolor facilisis libero gravida volutpat. Integer lacinia mollis tellus eget fringilla. Phasellus nec velit ut ligula semper vehicula eget non metus.</p> !-->
-
-		<%= simple_format(@userprofile.short_bio) %>
-
-		
+		<% if signed_in_user? %>
+			<div class="btn">
+			<% if @userprofile.id == current_user.id %>
+				<%= link_to "Edit Profile", edit_userprofile_path(current_user.userprofile) %>
+			<% end %>
+			</div>
+		<% end %>
 	</div>
-	<div class="span11" style="border-left: 1px solid #eee; margin-left: 0; padding-left: 19px">
-		<h2>Main Info</h2>
-		
-		<h3>Biography</h3>
-		<%= simple_format(@userprofile.long_bio) %>
-		<br />
-		
-		<h3><%=t :core_question1_text %></h3>
-		<%= simple_format(@userprofile.core_question1_response) %>
-		<br />
-		
-		<h3><%=t :core_question2_text %></h3>
-		<%= simple_format(@userprofile.core_question2_response) %>
-		<br />
-		
-		<h3><%=t :core_question3_text %></h3>
-		<%= simple_format(@userprofile.core_question3_response) %>
-		<br />
-		
-		<h3><%=t :core_question4_text %></h3>
-		<%= simple_format(@userprofile.core_question4_response) %>
-		<br />
+	
+	<div class="span11" style="border-left: 1px solid #eee; border-right: 1px solid #eee; margin-left: 0; padding-left: 19px">
+		<h1><%= @userprofile.name %>&nbsp;<small><%= communities_tagline(@userprofile.user) %></small></h1>
+
+		<dl class="tabs">
+
+			<dd><a href="#1" class="active">Information</a></dd>
+			<dd><a href="#2">Biography</a></dd>
+			<dd><a href="#3">Active Communities</a></dd>
+            <dd><a href="#4">Active Projects</a></dd>
+			<dd><a href="#5">Latest Tweets</a></dd>
+		</dl>
+
+		<ul class="tabs-content">
+			<li class="active" id="1Tab">
+            	<ul class="leftinfo">
+					<li>Full Name</li>
+					<li>Contact E-mail</li>
+					<li>School</li>
+					<li>Year</li>
+					<li>Area</li>
+				</ul>
+
+				<ul class="rightinfo">
+					<li><%= @userprofile.name_full %></li>
+					<li><%= @userprofile.user.email %></li>
+					<li>Boston University</li>
+					<li>2011</li>
+					<li>Boston</li>
+				</ul>
+			</li>
+			
+			<li id="2Tab">
+			
+				
+				<%= simple_format(@userprofile.short_bio) %>
+				<hr />
+				<%= simple_format(@userprofile.long_bio) %>
+			
+			
+<!-- 
+				<h3><%=t :core_question1_text %></h3>
+				<%= simple_format(@userprofile.core_question1_response) %>
+				<br />
+
+				<h3><%=t :core_question2_text %></h3>
+				<%= simple_format(@userprofile.core_question2_response) %>
+				<br />
+
+				<h3><%=t :core_question3_text %></h3>
+				<%= simple_format(@userprofile.core_question3_response) %>
+				<br />
+
+				<h3><%=t :core_question4_text %></h3>
+				<%= simple_format(@userprofile.core_question4_response) %>
+				<br />
+	!-->
+			</li>
+
+			<li id="3Tab">
+				<ul class="infolist">
+					<% @userprofile.user.communities.each do |community|%>
+					<li><%= link_to community.name, community %></li>
+					<% end %>
+				</ul>
+			</li>
+			
+			<li id="4Tab">
+				<ul class="infolist">
+					<% @userprofile.user.cbos.each do |cbo|%>
+					<li><%= link_to cbo.name, cbo.cboprofile %></li>
+					<% end %>
+				</ul>
+			</li>
+			
+			<li id="5Tab">
+				<ul class="infolist">
+					
+					<li>Tweet 1</li>
+					<li>Tweet 2</li>
+					<li>Tweet 3</li>
+
+				</ul>
+			</li>
+ 		</div>
 	
 	</div>
+
 </div>
 
 

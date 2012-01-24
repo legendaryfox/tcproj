@@ -1,136 +1,143 @@
+<% if !current_user.qresponses.find_by_questionnaire_id(questionnaire.id) %>
+	<%= form_for(qresponse, :html => { :class => "form-stacked" }) do |qresponse_form| %>
+		<%= render 'shared/error_messages', :object => qresponse_form.object %>
+	
+	
+	
+		<% if !questionnaire.question1_text.blank? %>
+			<div class="clearfix">
+				<%= simple_format(questionnaire.question1_text) %>
+			
+				<div class="input">
+					<%= qresponse_form.text_area :question1_response, :class => "xxlarge span8", :rows => 4 %>
+				</div>
+			</div>
+			<hr /><br />
+		<% end %>
+	
+		<% if !questionnaire.question2_text.blank? %>
+			<div class="clearfix">
+				<%= simple_format(questionnaire.question2_text) %>
+			
+				<div class="input">
+					<%= qresponse_form.text_area :question2_response, :class => "xxlarge span8", :rows => 4 %>
+				</div>
+			</div>
+			<hr /><br />
+		
+		<% end %>
+	
+		<% if !questionnaire.question3_text.blank? %>
+			<div class="clearfix">
+				<%= simple_format(questionnaire.question3_text) %>
+			
+				<div class="input">
+					<%= qresponse_form.text_area :question3_response, :class => "xxlarge span8", :rows => 4 %>
+				</div>
+			</div>
+			<hr /><br />
+		
+		<% end %>
+	
+		<% if !questionnaire.question4_text.blank? %>
+			<div class="clearfix">
+				<%= simple_format(questionnaire.question4_text) %>
+			
+				<div class="input">
+					<%= qresponse_form.text_area :question4_response, :class => "xxlarge span8", :rows => 4 %>
+				</div>
+			</div>
+			<hr /><br />
+		
+		<% end %>
+	
+		<% if !questionnaire.question5_text.blank? %>
+			<div class="clearfix">
+				<%= simple_format(questionnaire.question5_text) %>
+			
+				<div class="input">
+					<%= qresponse_form.text_area :question5_response, :class => "xxlarge span8", :rows => 4 %>
+				</div>
+			</div>
+			<hr /><br />
+		
+		<% end %>
+	
+		<% if !questionnaire.question6_text.blank? %>
+			<div class="clearfix">
+				<%= simple_format(questionnaire.question6_text) %>
+			
+				<div class="input">
+					<%= qresponse_form.text_area :question6_response, :class => "xxlarge span8", :rows => 4 %>
+				</div>
+			</div>
+			<hr /><br />
+		
+		<% end %>
+	
+		<% if !questionnaire.question7_text.blank? %>
+			<div class="clearfix">
+				<%= simple_format(questionnaire.question7_text) %>
+			
+				<div class="input">
+					<%= qresponse_form.text_area :question7_response, :class => "xxlarge span8", :rows => 4 %>
+				</div>
+			</div>
+			<hr /><br />
+		
+		<% end %>
+	
+		<% if !questionnaire.question8_text.blank? %>
+			<div class="clearfix">
+				<%= simple_format(questionnaire.question8_text) %>
+			
+				<div class="input">
+					<%= qresponse_form.text_area :question8_response, :class => "xxlarge span8", :rows => 4 %>
+				</div>
+			</div>
+			<hr /><br />
+		
+		<% end %>
+	
+		<% if !questionnaire.question9_text.blank? %>
+			<div class="clearfix">
+				<%= simple_format(questionnaire.question9_text) %>
+			
+				<div class="input">
+					<%= qresponse_form.text_area :question9_response, :class => "xxlarge span8", :rows => 4 %>
+				</div>
+			</div>
+			<hr /><br />
+		
+		<% end %>
+	
+		<% if !questionnaire.question10_text.blank? %>
+			<div class="clearfix">
+				<%= simple_format(questionnaire.question10_text) %>
+			
+				<div class="input">
+					<%= qresponse_form.text_area :question10_response, :class => "xxlarge span8", :rows => 4 %>
+				</div>
+			</div>
+			<hr /><br />
+		
+		<% end %>
+	
+		<hr>
+		<%= simple_format(questionnaire.additional_instructions) %>
+	
+		<%= qresponse_form.hidden_field :questionnaire_id %>
+	
+	
+	
+		<div class="actions">
+			<%= qresponse_form.submit "Submit", :class => "btn primary" %>
+		</div>
+	<% end %>
+<% else %>
+	You've already filled out this application! Your submitted response is as follows: 
+	
+	<%= render 'qresponses/already_submitted', :qresponse => current_user.qresponses.find_by_questionnaire_id(questionnaire.id) %>
+	
 
-<%= form_for(qresponse, :html => { :class => "form-stacked" }) do |qresponse_form| %>
-	<%= render 'shared/error_messages', :object => qresponse_form.object %>
-	
-	
-	
-	<% if !questionnaire.question1_text.blank? %>
-		<div class="clearfix">
-			<%= simple_format(questionnaire.question1_text) %>
-			
-			<div class="input">
-				<%= qresponse_form.text_area :question1_response, :class => "xxlarge span8", :rows => 4 %>
-			</div>
-		</div>
-		<hr /><br />
-	<% end %>
-	
-	<% if !questionnaire.question2_text.blank? %>
-		<div class="clearfix">
-			<%= simple_format(questionnaire.question2_text) %>
-			
-			<div class="input">
-				<%= qresponse_form.text_area :question2_response, :class => "xxlarge span8", :rows => 4 %>
-			</div>
-		</div>
-		<hr /><br />
-		
-	<% end %>
-	
-	<% if !questionnaire.question3_text.blank? %>
-		<div class="clearfix">
-			<%= simple_format(questionnaire.question3_text) %>
-			
-			<div class="input">
-				<%= qresponse_form.text_area :question3_response, :class => "xxlarge span8", :rows => 4 %>
-			</div>
-		</div>
-		<hr /><br />
-		
-	<% end %>
-	
-	<% if !questionnaire.question4_text.blank? %>
-		<div class="clearfix">
-			<%= simple_format(questionnaire.question4_text) %>
-			
-			<div class="input">
-				<%= qresponse_form.text_area :question4_response, :class => "xxlarge span8", :rows => 4 %>
-			</div>
-		</div>
-		<hr /><br />
-		
-	<% end %>
-	
-	<% if !questionnaire.question5_text.blank? %>
-		<div class="clearfix">
-			<%= simple_format(questionnaire.question5_text) %>
-			
-			<div class="input">
-				<%= qresponse_form.text_area :question5_response, :class => "xxlarge span8", :rows => 4 %>
-			</div>
-		</div>
-		<hr /><br />
-		
-	<% end %>
-	
-	<% if !questionnaire.question6_text.blank? %>
-		<div class="clearfix">
-			<%= simple_format(questionnaire.question6_text) %>
-			
-			<div class="input">
-				<%= qresponse_form.text_area :question6_response, :class => "xxlarge span8", :rows => 4 %>
-			</div>
-		</div>
-		<hr /><br />
-		
-	<% end %>
-	
-	<% if !questionnaire.question7_text.blank? %>
-		<div class="clearfix">
-			<%= simple_format(questionnaire.question7_text) %>
-			
-			<div class="input">
-				<%= qresponse_form.text_area :question7_response, :class => "xxlarge span8", :rows => 4 %>
-			</div>
-		</div>
-		<hr /><br />
-		
-	<% end %>
-	
-	<% if !questionnaire.question8_text.blank? %>
-		<div class="clearfix">
-			<%= simple_format(questionnaire.question8_text) %>
-			
-			<div class="input">
-				<%= qresponse_form.text_area :question8_response, :class => "xxlarge span8", :rows => 4 %>
-			</div>
-		</div>
-		<hr /><br />
-		
-	<% end %>
-	
-	<% if !questionnaire.question9_text.blank? %>
-		<div class="clearfix">
-			<%= simple_format(questionnaire.question9_text) %>
-			
-			<div class="input">
-				<%= qresponse_form.text_area :question9_response, :class => "xxlarge span8", :rows => 4 %>
-			</div>
-		</div>
-		<hr /><br />
-		
-	<% end %>
-	
-	<% if !questionnaire.question10_text.blank? %>
-		<div class="clearfix">
-			<%= simple_format(questionnaire.question10_text) %>
-			
-			<div class="input">
-				<%= qresponse_form.text_area :question10_response, :class => "xxlarge span8", :rows => 4 %>
-			</div>
-		</div>
-		<hr /><br />
-		
-	<% end %>
-	
-	<hr>
-	<%= simple_format(questionnaire.additional_instructions) %>
-	
-	<%= qresponse_form.hidden_field :questionnaire_id %>
-	
-	
-	
-	<div class="actions">
-		<%= qresponse_form.submit "Submit", :class => "btn primary" %>
-	</div>
 <% end %>

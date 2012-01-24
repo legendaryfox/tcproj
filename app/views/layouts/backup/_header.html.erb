@@ -1,20 +1,10 @@
-<div class="heading">
-	<ul class="nav">
-		<a style="font-size:30px; margin-left:20px; letter-spacing:-1px;" href="<%= root_path %>">the col&#183;lege pro&#183;ject</a>	
-	</ul><!--End ul class="nav">-->
-                
-	<ul style="float:right; margin-right: 30px;" class="nav">
-		<li><a href="#">40 Likes</a></li>
-  		<li><a href="#">About Us</a></li>
-		<li><a href="#">Press</a></li>
-		<li><a href="#">Donate</a></li>
-	</ul>			
-</div><!--end heading-->
+
 
 
 <div class="topbar">
-	<div class="topbar-inner">
-		<div class="container-fluid">
+	<div class="fill">
+		<div class="container">
+			<h3><%= link_to "The College Project", root_path, :class => "brand" %></h3>
 			
 			<% if signed_in_user? %>
 
