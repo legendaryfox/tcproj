@@ -15,7 +15,7 @@ class UserCommunityMembershipsController < ApplicationController
     
     @community = UserCommunityMembership.find_by_id(params[:id]).community
     if current_user.leave_community!(@community)
-      redirect_to @community, :flash => { :success => "You ahve successfully left this Community." }
+      redirect_to @community, :flash => { :success => "You have successfully left this Community." }
     else
       reidrect_to @community, :flash => { :error => "There was an error in processing your request." }
     end
