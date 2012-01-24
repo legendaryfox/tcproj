@@ -1,5 +1,5 @@
 <h1>Applications</h1>
 
-<% qresponses.each do |qresponse| %>
+<% @qresponses.each do |qresponse| %>
 <%= link_to "Response " + sprintf('%08d', qresponse.id), qresponse %>, by <%= link_to qresponse.user.userprofile.name, qresponse.user.userprofile %> for <%= link_to qresponse.questionnaire.cbo.cboprofile.name, qresponse.questionnaire.cbo.cboprofile %><br />
 <% end %>
