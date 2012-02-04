@@ -5,7 +5,7 @@ class UserCommunityMembershipsController < ApplicationController
     
     @community = Community.find_by_id(params[:user_community_membership][:community_id])
     if current_user.join_community!(@community)
-      redirect_to @community, :flash => { :success => "You have successfuly joined this CBO." }
+      redirect_to @community, :flash => { :success => "You have successfuly joined this Community." }
     else
       redirect_to @community, :flash => { :error => "There was an error in processing your request." }
     end
