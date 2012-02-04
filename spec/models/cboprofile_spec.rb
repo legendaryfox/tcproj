@@ -7,6 +7,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: cboprofiles
@@ -28,5 +29,7 @@ end
 #  information      :text
 #  location_notes   :text
 #  how_to_volunteer :text
+#  phone            :string(255)
+#  website          :string(255)
 #
 

@@ -20,7 +20,7 @@
 			<dd><a href="#2">Biography</a></dd>
 			<dd><a href="#3">Active Communities</a></dd>
             <dd><a href="#4">Active Projects</a></dd>
-			<dd><a href="#5">Latest Tweets</a></dd>
+			<!-- <dd><a href="#5">Latest Tweets</a></dd> !-->
 		</dl>
 
 		<ul class="tabs-content">
@@ -29,16 +29,16 @@
 					<li>Full Name</li>
 					<li>Contact E-mail</li>
 					<li>School</li>
-					<li>Year</li>
-					<li>Area</li>
+					<!--<li>Year</li>
+					<li>Area</li> !-->
 				</ul>
 
 				<ul class="rightinfo">
 					<li><%= @userprofile.name_full %></li>
 					<li><%= @userprofile.user.email %></li>
-					<li>Boston University</li>
-					<li>2011</li>
-					<li>Boston</li>
+					<li><%= @userprofile.school %></li>
+					<!-- <li>2011</li>
+					<li>Boston</li> !-->
 				</ul>
 			</li>
 			
@@ -85,6 +85,7 @@
 				</ul>
 			</li>
 			
+			<!--
 			<li id="5Tab">
 				<ul class="infolist">
 					
@@ -94,6 +95,7 @@
 
 				</ul>
 			</li>
+			!-->
  		</div>
 	
 	</div>

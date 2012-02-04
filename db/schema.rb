@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120123042202) do
+ActiveRecord::Schema.define(:version => 20120204071919) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(:version => 20120123042202) do
     t.text     "information"
     t.text     "location_notes"
     t.text     "how_to_volunteer"
+    t.string   "phone"
+    t.string   "website"
   end
 
   add_index "cboprofiles", ["cbo_id"], :name => "index_cboprofiles_on_cbo_id"
@@ -205,6 +207,7 @@ ActiveRecord::Schema.define(:version => 20120123042202) do
     t.text     "core_question2_response"
     t.text     "core_question3_response"
     t.text     "core_question4_response"
+    t.string   "school"
   end
 
   add_index "userprofiles", ["user_id"], :name => "index_userprofiles_on_user_id", :unique => true

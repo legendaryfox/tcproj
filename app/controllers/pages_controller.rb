@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   
   def landing
     @title = "The College Project"
+    @cboprofiles = Cboprofile.all
   end
 
 end

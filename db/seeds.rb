@@ -8,9 +8,226 @@
 # Is this oky now?
 
 
+cbo1 = Cbo.create!(
+  :name => "Greater Boston Food Bank",
+  :email => "volunteer@gbfb.org",
+  :password => "foobar",
+  :password_confirmation => "foobar"
+)
+cbo1.confirm!
+cbo1.create_cboprofile(
+  :name => "Greater Boston Food Bank",
+  :street1 => "70 South Bay Ave",
+  :city => "Boston",
+  :state => "MA",
+  :zip => "02118",
+  :country => "USA",
+  :website => "http://www.gbfb.org",
+  :phone => "(617) 427-5200"
+)
+cbo1.create_questionnaire(
+  :question1_text => "Question 1 cbo1",
+  :question2_text => "Question 2 cbo1")
+
+cbo2 = Cbo.create!(
+  :name => "Quincy Asian Resources",
+  :email => "quincy@email.com",
+  :password => "foobar",
+  :password_confirmation => "foobar"
+)
+cbo2.confirm!
+cbo2.create_cboprofile(
+  :name => "Quincy Asian Resources",
+  :street1 => "1509 Hancock St",
+  :city => "Quincy",
+  :state => "MA",
+  :zip => "02169",
+  :country => "USA",
+  :website => "http://www.quincyasianresources.org",
+  :phone => "(617) 472-2200"
+)
+cbo2.create_questionnaire(
+  :question1_text => "Question 1 cbo2",
+  :question2_text => "Question 2 cbo2")
+
+cbo3 = Cbo.create!(
+  :name => "Rosie's Place",
+  :email => "rosie@email.com",
+  :password => "foobar",
+  :password_confirmation => "foobar"
+)
+cbo3.confirm!
+cbo3.create_cboprofile(
+  :name => "Rosie's Place",
+  :street1 => "880 Harrison Ave",
+  :city => "Boston",
+  :state => "MA",
+  :zip => "02118",
+  :country => "USA",
+  :website => "http://www.rosiesplace.org",
+  :phone => "(617) 442-9322"
+)
+cbo3.create_questionnaire(
+  :question1_text => "Question 1 cbo3",
+  :question2_text => "Question 2 cbo3")
+  
+  
+
+cbo4 = Cbo.create!(
+  :name => "Cradles to Crayons",
+  :email => "cradles@email.com",
+  :password => "foobar",
+  :password_confirmation => "foobar"
+)
+cbo4.confirm!
+cbo4.create_cboprofile(
+  :name => "Cradles to Crayons",
+  :street1 => "155 North Beacon St",
+  :city => "Brighton",
+  :state => "MA",
+  :zip => "02135",
+  :country => "USA",
+  :website => "http://www.cradlestocrayons.org/boston",
+  :phone => "(617) 779-4700"
+)
+cbo4.create_questionnaire(
+  :question1_text => "Question 1 cbo4",
+  :question2_text => "Question 2 cbo4")
+
+cbo5 = Cbo.create!(
+  :name => "Boston Rescue Mission",
+  :email => "rescue@email.com",
+  :password => "foobar",
+  :password_confirmation => "foobar"
+)
+cbo5.confirm!
+cbo5.create_cboprofile(
+  :name => "Boston Rescue Mission",
+  :street1 => "39 Kingston Street",
+  :city => "Boston",
+  :state => "MA",
+  :zip => "02111",
+  :country => "USA",
+  :website => "http://www.brm.org",
+  :phone => "(617) 338-9000"
+)
+cbo5.create_questionnaire(
+  :question1_text => "Question 1 cbo5",
+  :question2_text => "Question 2 cbo5")
+
+cbo6 = Cbo.create!(
+  :name => "Big Sister/Big Brother of Massachusetts Bay",
+  :email => "bbbs@email.com",
+  :password => "foobar",
+  :password_confirmation => "foobar"
+)
+cbo6.confirm!
+cbo6.create_cboprofile(
+  :name => "Big Sister/Big Brother of Massachusetts Bay",
+  :street1 => "75 Federal Street",
+  :city => "Boston",
+  :state => "MA",
+  :zip => "02110",
+  :country => "USA",
+  :website => "http://www.bbbsmb.org",
+  :phone => "(617) 542-9090"
+)
+cbo6.create_questionnaire(
+  :question1_text => "Question 1 cbo6",
+  :question2_text => "Question 2 cbo6")
+
+cbo7 = Cbo.create!(
+  :name => "Samaritans of Boston",
+  :email => "samaritans@email.com",
+  :password => "foobar",
+  :password_confirmation => "foobar"
+)
+cbo7.confirm!
+cbo7.create_cboprofile(
+  :name => "Samaritans of Boston",
+  :street1 => "41 West St",
+  :city => "Boston",
+  :state => "MA",
+  :zip => "02111",
+  :country => "USA",
+  :website => "http://www.samaritanshope.org",
+  :phone => "(617) 536-2460"
+)
+cbo7.create_questionnaire(
+  :question1_text => "Question 1 cbo7",
+  :question2_text => "Question 2 cbo7")
+
+cbo8 = Cbo.create!(
+  :name => "Project Bread",
+  :email => "bread@email.com",
+  :password => "foobar",
+  :password_confirmation => "foobar"
+)
+cbo8.confirm!
+cbo8.create_cboprofile(
+  :name => "Project Bread",
+  :street1 => "145 Border Street",
+  :city => "Boston",
+  :state => "MA",
+  :zip => "02128",
+  :country => "USA",
+  :website => "http://www.projectbread.org",
+  :phone => "(617) 723-5000"
+)
+cbo8.create_questionnaire(
+  :question1_text => "Question 1 cbo8",
+  :question2_text => "Question 2 cbo8")
+
+cbo9 = Cbo.create!(
+  :name => "Boston Cares",
+  :email => "cares@email.com",
+  :password => "foobar",
+  :password_confirmation => "foobar"
+)
+cbo9.confirm!
+cbo9.create_cboprofile(
+  :name => "Boston Cares",
+  :street1 => "190 High Street",
+  :city => "Boston",
+  :state => "MA",
+  :zip => "02110",
+  :country => "USA",
+  :website => "http://www.bostoncares.org",
+  :phone => "(617) 442-0910"
+)
+cbo9.create_questionnaire(
+  :question1_text => "Question 1 cbo9",
+  :question2_text => "Question 2 cbo9")
+
+
+cbo10 = Cbo.create!(
+  :name => "Habitat for Humanity Greater Boston",
+  :email => "habitat@email.com",
+  :password => "foobar",
+  :password_confirmation => "foobar"
+)
+cbo10.confirm!
+cbo10.create_cboprofile(
+  :name => "Habitat for Humanity Greater Boston",
+  :street1 => "240 Commercial Street",
+  :city => "Boston",
+  :state => "MA",
+  :zip => "02109",
+  :country => "USA",
+  :website => "http://www.habitatboston.org",
+  :phone => "(617) 423-2223"
+)
+cbo10.create_questionnaire(
+  :question1_text => "Question 1 cbo10",
+  :question2_text => "Question 2 cbo10")
 
 
 
+
+
+
+
+=begin
 cbo1 = Cbo.create!(
   :name => "Moregood Doings",
   :email => "moregood@gmail.com",
@@ -117,7 +334,7 @@ cbo6.create_questionnaire(
   :question1_text => "This is cbo6",
   :question2_text => "this is question 2 text for cbo6",
   :additional_instructions => "These are CBO6 additional instructions")
-
+=end
   
 community1 = Community.create!(:name => "Boston", :city => "Boston", :state => "MA", :zip => "02215")
 community2 = Community.create!(:name => "New York City", :city => "New York", :state => "NY", :zip => "10118")
@@ -136,6 +353,7 @@ johnuser.create_userprofile(
   :firstname => "John", 
   :nickname => "Johnnie", 
   :lastname => "Smith",
+  :school => "Boston University",
   :street1 => "24 Woodruff Drive",
   :city => "Old Bridge",
   :state => "NJ",
@@ -158,6 +376,7 @@ mikeuser.confirm!
 mikeuser.create_userprofile(
   :firstname => "Michael", 
   :lastname => "Elton",
+  :school => "Boston University",
   :street1 => "11 Green Street",
   :city => "Old Bridge",
   :state => "NJ",
@@ -180,6 +399,7 @@ joshuser.create_userprofile(
   :firstname => "Joshua", 
   :nickname => "Josh", 
   :lastname => "Choe",
+  :school => "Boston University",
   :street1 => "1330 Beacon St",
   :city => "Brookline",
   :state => "MA",
@@ -201,6 +421,7 @@ meganuser.confirm!
 meganuser.create_userprofile(
   :firstname => "Megan", 
   :lastname => "Yu",
+  :school => "Boston University",
   :street1 => "12 Ashford Street",
   :city => "Boston",
   :state => "MA",
@@ -223,6 +444,7 @@ kevinuser.confirm!
 kevinuser.create_userprofile(
   :firstname => "Kevin", 
   :lastname => "Chang",
+  :school => "Boston University",
   :street1 => "457 Park Drive",
   :city => "Boston",
   :state => "MA",
@@ -245,6 +467,7 @@ enochuser.confirm!
 enochuser.create_userprofile(
   :firstname => "Enoch", 
   :lastname => "Zhu",
+  :school => "Boston University",
   :street1 => "700 Commonwealth Avenue",
   :city => "Boston",
   :state => "MA",
@@ -266,6 +489,7 @@ josiahuser.confirm!
 josiahuser.create_userprofile(
   :firstname => "Josiah", 
   :lastname => "Wang",
+  :school => "Boston University",
   :street1 => "55 Buswell Street",
   :city => "Boston",
   :state => "MA",

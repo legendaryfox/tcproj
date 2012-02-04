@@ -1,23 +1,30 @@
 <fieldset>
 	<legend>Profile Information</legend>
 	<div class="clearfix">
-		<%= userprofile_form.label :firstname, :class => "xlInput" %>
+		<%= userprofile_form.label "First Name", :class => "xlInput" %>
 		<div class="input">
 			<%= userprofile_form.text_field :firstname, :class => "xlarge" %>
 		</div>
 	</div>
 	
 	<div class="clearfix">
-		<%= userprofile_form.label :lastname, :class => "xlInput" %>
+		<%= userprofile_form.label "Last Name", :class => "xlInput" %>
 		<div class="input">
 			<%= userprofile_form.text_field :lastname, :class => "xlarge" %>
 		</div>
 	</div>
 	
 	<div class="clearfix">
-		<%= userprofile_form.label :nickname, :class => "xlInput" %>
+		<%= userprofile_form.label "Nick Name", :class => "xlInput" %>
 		<div class="input">
 			<%= userprofile_form.text_field :nickname, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= userprofile_form.label :school, :class => "xlInput" %>
+		<div class="input">
+			<%= userprofile_form.text_field :school, :class => "xlarge" %>
 		</div>
 	</div>
 	

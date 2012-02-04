@@ -1,6 +1,6 @@
 class Cboprofile < ActiveRecord::Base
   attr_accessible :name, :description, :latitude, :longitude
-  attr_accessible :street1, :street2, :city, :state, :zip, :country
+  attr_accessible :street1, :street2, :city, :state, :zip, :country, :phone, :website
   attr_accessible :information, :location_notes, :how_to_volunteer
   
   geocoded_by :full_address #TODO - split address up into street, state, etc, then glue back into an "address" method instead.
@@ -56,6 +56,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: cboprofiles
@@ -77,5 +78,7 @@ end
 #  information      :text
 #  location_notes   :text
 #  how_to_volunteer :text
+#  phone            :string(255)
+#  website          :string(255)
 #
 

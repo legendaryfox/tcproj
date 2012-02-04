@@ -10,6 +10,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: userprofiles
@@ -35,5 +36,6 @@ end
 #  core_question2_response :text
 #  core_question3_response :text
 #  core_question4_response :text
+#  school                  :string(255)
 #
 

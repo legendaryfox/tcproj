@@ -2,7 +2,7 @@
 
 
 class Userprofile < ActiveRecord::Base
-  attr_accessible :firstname, :lastname, :nickname
+  attr_accessible :firstname, :lastname, :nickname, :school
   attr_accessible :street1, :street2, :city, :state, :zip, :country
   attr_accessible :short_bio, :long_bio, :core_question1_response, :core_question2_response, :core_question3_response, :core_question4_response
   
@@ -14,14 +14,16 @@ class Userprofile < ActiveRecord::Base
   
   validates :firstname, :presence => true
   validates :lastname, :presence => true
+  validates :school, :presence => true
+
   
-  #validates :short_bio, :presence => true, :length => { :maximum => 140 }
-  #validates :long_bio, :presence => true, :length => { :maximum => 1000 }
+  validates :short_bio, :length => { :maximum => 140 }
+  validates :long_bio, :length => { :maximum => 1000 }
   
-  #validates :core_question1_response, :presence => true, :length => { :maximum => 1000 }
-  #validates :core_question2_response, :presence => true, :length => { :maximum => 1000 }
-  #validates :core_question3_response, :presence => true, :length => { :maximum => 1000 }
-  #validates :core_question4_response, :presence => true, :length => { :maximum => 1000 }
+  validates :core_question1_response, :length => { :maximum => 1000 }
+  validates :core_question2_response, :length => { :maximum => 1000 }
+  validates :core_question3_response, :length => { :maximum => 1000 }
+  validates :core_question4_response, :length => { :maximum => 1000 }
   
   def name_full(include_nickname = true)
     firstname + (nickname_with_quotes && include_nickname ? " " + nickname_with_quotes : "" ) + " " + lastname
@@ -79,6 +81,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: userprofiles
@@ -104,5 +107,6 @@ end
 #  core_question2_response :text
 #  core_question3_response :text
 #  core_question4_response :text
+#  school                  :string(255)
 #
 

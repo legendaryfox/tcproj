@@ -10,7 +10,7 @@ class Cbo < ActiveRecord::Base
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   validates :name,  :presence => true,
-                    :length => { :maximum => 32 }
+                    :length => { :maximum => 100 }
                     
   validates :email, :presence => true,
             :format => { :with => email_regex },
@@ -18,7 +18,7 @@ class Cbo < ActiveRecord::Base
             
   validates :password,  :presence => true,
                         :confirmation => true,
-                        :length => { :within => 6..10 }
+                        :length => { :within => 6..16 }
                         
   before_save :encrypt_password
                     
