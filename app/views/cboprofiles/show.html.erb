@@ -1,42 +1,13 @@
-<div class="page-header">
-	<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small></h1>
-	
-	
-</div>
-
-<center><%= image_tag "900x250.gif" %></center>
-<br />
-
-
-
-<% if signed_in_cbo? %>
-	<% if @cboprofile.id == current_cbo.cboprofile.id %>
-		<p><%= link_to "Edit Profile", edit_cboprofile_path(current_cbo.cboprofile) %></p>
-	<% end %>
-<% end %>
 
 <div class="row">
-	<div class="span6">
-		<h2>Location</h2>
-		<p><%= google_map_static_image_for(@cboprofile, 320, 200) %></p>
-		<address>
-			<strong><%= @cboprofile.name %></strong><br />
-			<%= profile_address_formatted(@cboprofile) %><br />
-			<%= mail_to @cboprofile.cbo.email %>
-		</address>
-		<h3>Location Notes</h3>
-		<%= simple_format(@cboprofile.location_notes) %>
-		
-	</div>
-	
-	<div class="span10" style="border-left: 1px solid #eee; margin-left: 0; padding-left: 19px">
-		<h2>Description</h2>
-		<%= simple_format(@cboprofile.description) %>
-		
-		<h2>Information</h2>
-		<%= simple_format(@cboprofile.information) %>
-		
-		
+	<div class="span4">
+		<%= image_tag "200x250.gif"%>
+		<br />
+		<a href="#">View More Photos</a>
+		<br /><br />
+
+
+
 		<!-- BEGIN QUESTIONNAIRE MODAL !-->
 		<% if signed_in_user? %>
 		<p>
@@ -68,66 +39,95 @@
 		<% end %>
 		<!-- END QUESTIONNAIRE/MEMBERSHIP MODAL !-->
 		
+		<br /><br />
+		<% if signed_in_cbo? %>
+			<% if @cboprofile.id == current_cbo.cboprofile.id %>
+				<div class="btn">
+					<%= link_to "Edit Profile", edit_cboprofile_path(current_cbo.cboprofile) %>
+				</div>
+			<% end %>
+		<% end %>
+
+		</div>
+
+		<div class="span11" style="border-left: 1px solid #eee; border-right: 1px solid #eee; margin-left: 0; padding-left: 19px">
+		<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small></h1>
+
+		<dl class="tabs">
+		<dd><a href="#1" class="active">Information</a></dd>
+		<dd><a href="#2">Volunteer Thoughts</a></dd>
+		<dd><a href="#3">Volunteer Notes</a></dd>
+		</dl>
+
+		<ul class="tabs-content">
+		<li class="active" id="1Tab">
+		
+
+			<ul class="leftinfo">
+				<li>Description</li>
+			</ul>
+
+			<ul class="rightinfo">
+				<li><%= simple_format(@cboprofile.description) %></li>
+			</ul>
+			
+			<ul class="leftinfo">
+				<li>Information</li>
+			</ul>
+
+			<ul class="rightinfo">
+				<li><%= simple_format(@cboprofile.information) %></li>
+			</ul>
+    
+		    <ul class="leftinfo">
+				<li>Contact Email</li>
+			</ul>
+
+			<ul class="rightinfo">
+				<li><%= mail_to @cboprofile.cbo.email %></li>
+			</ul>
+    
+    
+		    <ul class="leftinfo">
+				<li>Address</li>
+			</ul>
+
+			<ul class="rightinfo">
+				<li>
+				<address>
+					<strong><%= @cboprofile.name %></strong><br />
+					<%= profile_address_formatted(@cboprofile) %><br />
+
+				</address>
+				<%= google_map_static_image_for(@cboprofile, 320, 200) %>
+         
+		        </li>
+			</ul>
+
+    
+		</li>
+
+		<li id="2Tab">
+			<ul class="infolist">
+				<li><a href="#">Josiah Wang:</a> had a great time volunteering here.</li>
+				<li><a href="#">Kevin Chang:</a> Learned so much from the kids and my whole student group had fun. Go BU!</li>
+			</ul>
+		</li>
+
+		<li id="3Tab">
+			<ul class="leftinfo">
+				<li>Volunteering Information</li>
+			</ul>
+			
+			<ul class="rightinfo">
+				<li><%= simple_format(@cboprofile.how_to_volunteer) %></li>
+			</ul>
+			
+			
+		</li>
+
 	</div>
+
 </div>
-
-<br />
-
-<div class="row">
-	<div class="span16">
-		<h2>How to Volunteer</h2>
-		<%= simple_format(@cboprofile.how_to_volunteer) %>
-		
-		
-		
-	</div>
-</div>
-		
-<br />		
-
-<h2>Volunteer Opportunities</h2>
-<p>Here are some ways you can volunteer for us.</p>
-<div class="row">
-	<div class="span12 offset2">
-		<table>
-			<thead>
-				<tr>
-					<th>Opportunity Name</th>
-					<th>Start</th>
-					<th>End</th>
-					<th>Notes</th>
-				<tr>
-			<thead>
-			<tbody>
-				
-				<tr>
-					<td>Rake some leaves</td>
-					<td>Jan 1, 2012></td>
-					<td>Jan 12, 2012</td>
-					<td>Let's rake leaves together!</td>
-				</tr>
-				
-				<tr>
-					<td>Rake some leaves</td>
-					<td>Jan 1, 2012></td>
-					<td>Jan 12, 2012</td>
-					<td>Let's rake leaves together!</td>
-				</tr>
-				
-				<tr>
-					<td>Rake some leaves</td>
-					<td>Jan 1, 2012></td>
-					<td>Jan 12, 2012</td>
-					<td>Let's rake leaves together!</td>
-				</tr>
-				
-			</tbody>
-		</table>
-					
-	</div>
-</div>
-
-
-
 
 

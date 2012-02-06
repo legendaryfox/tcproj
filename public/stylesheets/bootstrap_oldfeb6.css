@@ -2397,12 +2397,12 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 			  }
 			  
 			  .leftinfo {float:left; list-style-type:none; text-align:right;}
-			  .leftinfo li {padding: 4px 0; width: 90px;}
+			  .leftinfo li {padding: 4px 0;}
 			  .rightinfo {float:left; list-style-type:none; color:#000 !important;}
-			  .rightinfo li {padding: 4px 0; color: #000 !important; width: 450px;}
+			  .rightinfo li {padding: 4px 0; color: #000 !important;}
 			  
 			  .infolist {list-style-type:none; margin-left: 0;}
-			  .infolist li {padding: 15px 0; border-bottom: 1px solid #ccc; width: 90%; color:#000;}
+			  .infolist li {padding: 15px 0; border-bottom: 1px solid #900; width: 90%; color:#000;}
 			  
 			 dl.tabs { display: block; margin: 0 0 20px 0; padding: 0; height: 30px; border-bottom: solid 1px #ddd; }
     dl.tabs dt { display: block; width: auto; height: 30px; padding: 0 9px 0 20px; line-height: 30px; float: left; color: #999; font-size: 11px; text-transform: uppercase; cursor: default; }
