@@ -1,53 +1,76 @@
-<div class="page-header">
-	<h1><%= @community.name %> <small><%= @community.full_address %></small></h1>
-	<%= render 'join_community', :community => @community %>
-</div>
-
-
-<center><%= image_tag "900x250.gif" %></center>
 <br />
 
-
 <div class="row">
-	<div class="span8">
-		<h2>Location</h2>
+	<div class="span4">
+		<%= image_tag "200x250.gif"%>
+		<br /><br />
+
+
+		<%= render 'join_community', :community => @community %>
+
+
 		<br />
-		<p><%= google_map_static_image_for(@community, 400, 300) %></p>
-		<address>
-			<strong><%= @community.full_address%></strong>
-		</address>
 	</div>
-	
-	<div class="span8">
-		<h2>Recent Activity</h2>
-		<br />
-		<div style="height: 300px; overflow: scroll">
-		<%= render 'community_activity_feed' %>
-		</div>
-	</div>
-	
-</div>
+
+	<div class="span11" style="border-left: 1px solid #eee; border-right: 1px solid #eee; margin-left: 0; padding-left: 19px">
+		<h1><%= @community.name %> <small><%= @community.full_address %></small></h1>
+
+		<dl class="tabs">
+			<dd><a href="#1" class="active">Information</a></dd>
+			<dd><a href="#2">Recent Activity</a></dd>
+			<dd><a href="#3">CBOs</a></dd>
+			<dd><a href="#4">Members</a></dd>
+			<dd><a href="#5">Opportunities</a></dd>
+		</dl>
+
+		<ul class="tabs-content">
 		
+			<li class="active" id="1Tab">
+				<div class="span11">
+					<h2>Location</h2>
+					<br />
+					<p><%= google_map_static_image_for(@community, 400, 300) %></p>
+					<address>
+						<strong><%= @community.full_address%></strong>
+					</address>
+				</div>
+				<br /><br />
+			</li>
+			
+			
+			<li id="2Tab">
+			    <div class="span11">
+					<div style="height: 400px; overflow-y: scroll">
+						<%= render 'community_activity_feed' %>
+					</div>
+				</div>
+			</li>
 
-<div class="row">
-	<div class="span8">
-		<h2>CBOs in this community</h2>
-		<br />
-		<%= render 'cbos/cbos_table', :cbos => @community.cbos %>
-	</div>
-	
-	<div class="span8">
-		<h2>Users in this community</h2>
-		<br />
-		<%= render 'users/users_table', :users => @community.users %>
-	</div>
-</div> 
+			<li id="3Tab">
+				<%= render 'cbos/cbos_table', :cbos => @community.cbos %>
+			</li>
 
-<!-- 
-<center>
-<%= google_map_static_image_for(@community, 900, 250, 12) %>
-</center>
-<br />
-!-->
+			<li id="4Tab">
+				<%= render 'users/users_table', :users => @community.users %>
+			</li>
+
+			<li id="5Tab">
+				<ul class="infolist">
+					<li><a href="#">Local Opportunity 1</a></li>
+					<li><a href="#">Local Opportunity 2</a></li>
+					<li><a href="#">Local Opportunity 3</a></li>
+				</ul>
+			</li>
+		
+		</ul>
+
+	</div>
+
+</div>
+
+
+
+
+
 
 

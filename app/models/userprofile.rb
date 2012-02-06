@@ -5,6 +5,7 @@ class Userprofile < ActiveRecord::Base
   attr_accessible :firstname, :lastname, :nickname, :school
   attr_accessible :street1, :street2, :city, :state, :zip, :country
   attr_accessible :short_bio, :long_bio, :core_question1_response, :core_question2_response, :core_question3_response, :core_question4_response
+  attr_accessible :latitude, :longitude
   
   geocoded_by :full_address #TODO - split address up into street, state, etc, then glue back into an "address" method instead.
   after_validation :geocode, :if => (:street1_changed? || :street2_changed? || :city_changed? || :state_changed? || :zip_changed? || :country_changed?)

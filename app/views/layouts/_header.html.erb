@@ -21,7 +21,7 @@
 
 		
 				<ul class="nav">
-				
+					<li><%= link_to "Local Map", root_path %></li>
 					<li><%= link_to "User Home", current_user %></li>
 					<li><%= link_to current_user.userprofile.name.possessive + " Profile", current_user.userprofile %></li>
 					<!-- <li><%= link_to "User Listing", users_path %></li> !-->
@@ -124,7 +124,6 @@
 						
 					<li><%= link_to "Sign In", signin_path %></li>
 					
-					<li><%= link_to "CBO Listing", cbos_path %></li>
 				
 				
 				

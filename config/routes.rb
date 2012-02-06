@@ -102,6 +102,8 @@ Tcproj::Application.routes.draw do
   resources :cbo_community_memberships
   resources :questionnaires
   resources :qresponses
+  
+  resources :pages
 
     
 
