@@ -40,7 +40,7 @@ Tcproj::Application.routes.draw do
     
   
   # root :to => "sessions#new"
-  root :to => "pages#landing"
+  root :to => "pages#map"
   
   resources :users do
     collection do

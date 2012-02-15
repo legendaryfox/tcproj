@@ -10,10 +10,13 @@ class Cboprofile < ActiveRecord::Base
   
   validates :name, :presence => true
   
+  validates :category_id, :presence => true
+  
   validates :information, :length => { :maximum => 2000 }
   validates :description, :length => { :maximum => 500 }
   validates :location_notes, :length => { :maximum => 255 }
   validates :how_to_volunteer, :length => { :maximum => 2000 }
+  
 
 =begin
   has_many :categorizations, :foreign_key => "cboprofile_id"

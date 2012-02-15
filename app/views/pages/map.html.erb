@@ -70,17 +70,6 @@ if (GBrowserIsCompatible()) {
 		return marker;
 	}
 
-<% 
-	if signed_in_user?
-		centerLat = current_user.userprofile.latitude
-		centerLng = current_user.userprofile.longitude
-		centerText = "#{current_user.userprofile.name}, Your Current Location"
-	
-		centerLat ||= 42.357778
-		centerLng ||= -71.061667
-		centerText ||= "Boston"
-	end 
-%>
 
 
   // Display the map, with some controls and set the initial location 
@@ -88,18 +77,19 @@ if (GBrowserIsCompatible()) {
   map.addControl(new GLargeMapControl());
   //map.addControl(new GMapTypeControl());
   //map.setCenter(new GLatLng(42.357778, -71.061667),13);
-	map.setCenter(new GLatLng(<%= centerLat %>, <%= centerLng %>), 13);
+	map.setCenter(new GLatLng(<%= @centerLat %>, <%= @centerLng %>), 13);
 	
 
-	var point = new GLatLng(<%= centerLat %>, <%= centerLng %>);
+	var point = new GLatLng(<%= @centerLat %>, <%= @centerLng %>);
 	var myIcon = new GIcon(G_DEFAULT_ICON);
 	myIcon.image = "images/beachflag.png";
+	myIcon.iconSize = new GSize(20, 32)
 	markerOptions = { 
 		icon:myIcon,
-		title: '<%= centerText %>'
+		title: '<%= @centerText %>'
 	};
 	//map.addOverlay(new GMarker(point, markerOptions));
-	var marker = createIconMarker(point, '<%= centerText %>', markerOptions);
+	var marker = createIconMarker(point, '<%= @centerText %>', markerOptions);
 	map.addOverlay(marker);
 	
 
@@ -107,14 +97,44 @@ if (GBrowserIsCompatible()) {
 
 	// SET UP CBO MARKERS
 
-	<% @cboprofiles.each do |cboprofile| %>
+	// UNJOINED CBOS
+	<% @unjoined_cboprofiles.each do |cboprofile| %>
 		var point = new GLatLng(<%= cboprofile.latitude %>, <%= cboprofile.longitude %>);
-		var marker = createMarker(point, '<div style="width:300px"> \
+		var myIcon = new GIcon(G_DEFAULT_ICON);
+		myIcon.image = "images/red_workdesk.png";
+		myIcon.iconSize = new GSize(32, 37);
+		myIcon.shadow = "images/shadow.png";
+		myIcon.shadowSize = new GSize(51, 37);
+		markerOptions = { 
+			icon:myIcon,
+			title: 'You are not part of this CBO.'
+		};
+		var marker = createIconMarker(point, '<div style="width:300px"> \
 		<strong><%= link_to escape_javascript(cboprofile.name), cboprofile %></strong> - <%= cboprofile.cbo.email %> <br /> \
 		<%= escape_javascript(cboprofile.description) %> <br />\
-		<%= escape_javascript(cboprofile.full_address) %> <br /><\/div>')
+		<%= escape_javascript(cboprofile.full_address) %> <br /><\/div>', markerOptions)
 		map.addOverlay(marker);
 	<% end %>
+	
+	// JOINED CBOS
+	<% @joined_cboprofiles.each do |cboprofile| %>
+		var point = new GLatLng(<%= cboprofile.latitude %>, <%= cboprofile.longitude %>);
+		var myIcon = new GIcon(G_DEFAULT_ICON);
+		myIcon.image = "images/green_workdesk.png";
+		myIcon.iconSize = new GSize(32, 37);
+		myIcon.shadow = "images/shadow.png";
+		myIcon.shadowSize = new GSize(51, 37);
+		markerOptions = { 
+			icon:myIcon,
+			title: 'You are a part of this CBO!'
+		};
+		var marker = createIconMarker(point, '<div style="width:300px"> \
+		<strong><%= link_to escape_javascript(cboprofile.name), cboprofile %></strong> - <%= cboprofile.cbo.email %> <br /> \
+		<%= escape_javascript(cboprofile.description) %> <br />\
+		<%= escape_javascript(cboprofile.full_address) %> <br /><\/div>', markerOptions)
+		map.addOverlay(marker);
+	<% end %>
+	
 
 
 }

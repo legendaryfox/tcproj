@@ -22,7 +22,7 @@
 
 
 			
-		<% if !current_page?(:controller => 'pages', :action => 'landing')%>
+		<% if !current_page?(:controller => 'pages', :action => 'map')%>
 		<div class="content">
 		<% end %>
 			<%= render :partial => "shared/flash_messages", :locals => {:flash => flash} %>
@@ -30,7 +30,7 @@
 
 			<%= yield %>
 			
-		<% if !current_page?(:controller => 'pages', :action => 'landing')%>
+		<% if !current_page?(:controller => 'pages', :action => 'map')%>
 		</div>
 		<% end %>
 		

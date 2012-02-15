@@ -7,6 +7,25 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 # Is this oky now?
 
+category1 = Category.create!(
+  :name => "Child Care",
+  :description => "Take care of children!"
+)
+
+category2 = Category.create!(
+  :name => "Cooking",
+  :description => "Cook for other people!"
+)
+
+category3 = Category.create!(
+  :name => "House Services",
+  :description => "Cooking, cleaning, etc"
+)
+
+category4 = Category.create!(
+  :name => "Manual Labor",
+  :description => "I lift things up and put them down"
+)
 
 cbo1 = Cbo.create!(
   :name => "Greater Boston Food Bank",
@@ -16,6 +35,7 @@ cbo1 = Cbo.create!(
 )
 cbo1.confirm!
 cbo1.create_cboprofile(
+  
   :name => "Greater Boston Food Bank",
   :street1 => "70 South Bay Ave",
   :city => "Boston",
@@ -37,6 +57,7 @@ cbo2 = Cbo.create!(
 )
 cbo2.confirm!
 cbo2.create_cboprofile(
+  :category_id => "2",
   :name => "Quincy Asian Resources",
   :street1 => "1509 Hancock St",
   :city => "Quincy",
@@ -58,6 +79,7 @@ cbo3 = Cbo.create!(
 )
 cbo3.confirm!
 cbo3.create_cboprofile(
+  :category_id => "3",
   :name => "Rosie's Place",
   :street1 => "880 Harrison Ave",
   :city => "Boston",
@@ -81,6 +103,7 @@ cbo4 = Cbo.create!(
 )
 cbo4.confirm!
 cbo4.create_cboprofile(
+  :category_id => "4",
   :name => "Cradles to Crayons",
   :street1 => "155 North Beacon St",
   :city => "Brighton",
@@ -102,6 +125,7 @@ cbo5 = Cbo.create!(
 )
 cbo5.confirm!
 cbo5.create_cboprofile(
+  :category_id => "1",
   :name => "Boston Rescue Mission",
   :street1 => "39 Kingston Street",
   :city => "Boston",
@@ -123,6 +147,7 @@ cbo6 = Cbo.create!(
 )
 cbo6.confirm!
 cbo6.create_cboprofile(
+  :category_id => "2",
   :name => "Big Sister/Big Brother of Massachusetts Bay",
   :street1 => "75 Federal Street",
   :city => "Boston",
@@ -144,6 +169,7 @@ cbo7 = Cbo.create!(
 )
 cbo7.confirm!
 cbo7.create_cboprofile(
+  :category_id => "3",
   :name => "Samaritans of Boston",
   :street1 => "41 West St",
   :city => "Boston",
@@ -165,6 +191,7 @@ cbo8 = Cbo.create!(
 )
 cbo8.confirm!
 cbo8.create_cboprofile(
+  :category_id => "4",
   :name => "Project Bread",
   :street1 => "145 Border Street",
   :city => "Boston",
@@ -186,6 +213,7 @@ cbo9 = Cbo.create!(
 )
 cbo9.confirm!
 cbo9.create_cboprofile(
+  :category_id => "1",
   :name => "Boston Cares",
   :street1 => "190 High Street",
   :city => "Boston",
@@ -208,6 +236,7 @@ cbo10 = Cbo.create!(
 )
 cbo10.confirm!
 cbo10.create_cboprofile(
+  :category_id => "2",
   :name => "Habitat for Humanity Greater Boston",
   :street1 => "240 Commercial Street",
   :city => "Boston",
