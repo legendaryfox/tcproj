@@ -35,7 +35,7 @@ cbo1 = Cbo.create!(
 )
 cbo1.confirm!
 cbo1.create_cboprofile(
-  
+  :category_id => "1",
   :name => "Greater Boston Food Bank",
   :street1 => "70 South Bay Ave",
   :city => "Boston",
@@ -369,6 +369,18 @@ community1 = Community.create!(:name => "Boston", :city => "Boston", :state => "
 community2 = Community.create!(:name => "New York City", :city => "New York", :state => "NY", :zip => "10118")
 community3 = Community.create!(:name => "Brookline", :city => "Brookline", :state => "MA", :zip => "02445")
 
+cbo1.join_community!(community1)
+cbo2.join_community!(community1)
+cbo3.join_community!(community1)
+cbo4.join_community!(community1)
+cbo5.join_community!(community1)
+cbo6.join_community!(community1)
+cbo7.join_community!(community1)
+cbo8.join_community!(community1)
+cbo8.join_community!(community2)
+cbo9.join_community!(community2)
+cbo10.join_community!(community2)
+
 
 
 
@@ -531,6 +543,8 @@ josiahuser.join_cbo!(cbo2, 1)
 josiahuser.join_cbo!(cbo3, 1)
 josiahuser.join_community!(community3)
 josiahuser.join_community!(community2)
+
+
   
 
 

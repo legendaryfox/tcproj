@@ -34,13 +34,13 @@ Tcproj::Application.routes.draw do
   match '/signup', :to => 'users#new'
   match '/nearby_cbos', :to => 'cboprofiles#nearby'
   match '/my_cbos', :to => 'cbos#my'
+  match '/map', :to => 'pages#map'
   get "sessions/new"
 
   get "categorizations/new"
     
   
-  # root :to => "sessions#new"
-  root :to => "pages#map"
+  root :to => "pages#home"
   
   resources :users do
     collection do
@@ -73,6 +73,12 @@ Tcproj::Application.routes.draw do
   resources :questionnaires do
     member do
       get 'reply'
+    end
+  end
+  
+  resources :pages do
+    member do
+      get 'map'
     end
   end
   
@@ -112,8 +118,6 @@ Tcproj::Application.routes.draw do
   get "pages/contact"
   
   get "pages/about"
-  
-  get "pages/landing"
   
 
 

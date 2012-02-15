@@ -1,4 +1,16 @@
+<%= form_tag map_path, :method => :get do %>
+<center>
+<strong>Filter By: </strong><%= @hello_text %>
+<%= select_tag "category_id", options_from_collection_for_select(@categories, "id", "name", @selected_category.to_i), :include_blank => "All Categories" %>
+<%= submit_tag "Filter", :name => nil, :class => "btn small primary" %>
+</p>
+</center>
 
+<% end %>
+
+
+</div>
+<!--
 <div class="mission">
         The College Project Mission:
         <p>We focus on students and their ever growing need to expand their intellectual horizon by offering them opportunities to connect with their local and immediate community.
@@ -7,7 +19,8 @@
         <div class="feed">
         News Feed
         </div>
-        
+!-->
+     
 <% if !signed_in_user? %>
 
 		<div id="modal-from-dom" class="modal hide fade in" style="display: block; width:347px;">
@@ -35,7 +48,7 @@
 
 
 
-<div id="map_canvas" style="width: 100%; height: 500px; z-index: 10"></div>
+<div id="map_canvas" style="width: 100%; height: 500px;"></div>
 
 
 <noscript><b>JavaScript must be enabled in order for you to use Google Maps.</b> 
@@ -146,6 +159,7 @@ else {
 
 </script>
 
+<div>
 
 		
 		
