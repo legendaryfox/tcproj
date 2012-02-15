@@ -1,3 +1,15 @@
+-Categories
+--add category
+--add map functionality
+---also, bug with not being logged in.
+
+-questionnaires
+--correct integration with memberships
+--admin panels?
+
+-image uploads
+
+
 //-Home page map - default to Boston, add dynamic map location, add markers for CBOs (static, then dynamic)
 -applications - approval process = membership
 -photo upload
