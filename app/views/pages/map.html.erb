@@ -23,7 +23,7 @@
 </div>
 
      
-<% if !signed_in_user? && @selected_category.nil? %>
+<% if !signed_in_user? && @selected_category.nil? && !signed_in_cbo? %>
 
 		<div id="modal-from-dom" class="modal hide fade in" style="display: block; width:347px; position: absolute; z-index: 100">
 		    <div class="modal-header">
@@ -98,8 +98,10 @@ if (GBrowserIsCompatible()) {
 
 	var point = new GLatLng(<%= @centerLat %>, <%= @centerLng %>);
 	var myIcon = new GIcon(G_DEFAULT_ICON);
-	myIcon.image = "images/beachflag.png";
-	myIcon.iconSize = new GSize(20, 32)
+	myIcon.image = "images/smiley_happy.png";
+	myIcon.iconSize = new GSize(32, 37)
+	myIcon.shadow = "images/shadow.png";
+	myIcon.shadowSize = new GSize(51, 37);
 	markerOptions = { 
 		icon:myIcon,
 		title: '<%= @centerText %>'
