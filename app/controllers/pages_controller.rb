@@ -57,6 +57,8 @@ class PagesController < ApplicationController
           @joined_cboprofiles.push(joined_cbo.cboprofile)
         end
       end
+     
+      @category_name = Category.find_by_id(@selected_category.to_i).name
       
       
       #@unjoined_cboprofiles = unjoined_cbos.collect {|unjoined_cbo| if (unjoined_cbo.cboprofile.category_id == @selected_category) unjoined_cbo.cboprofile end }
@@ -65,9 +67,15 @@ class PagesController < ApplicationController
       # No category provided - no filtering
       @unjoined_cboprofiles = unjoined_cbos.collect {|unjoined_cbo| unjoined_cbo.cboprofile }
   	  @joined_cboprofiles = joined_cbos.collect {|joined_cbo| joined_cbo.cboprofile }
+  	  
+  	  @category_name = 'All Categories'
+  	  
     end
 	  
 	  # End filter
+	  
+	  @cbo_count = @unjoined_cboprofiles.count + @joined_cboprofiles.count
+	 
     
     
     
