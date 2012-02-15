@@ -2375,8 +2375,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 			  
 			  .mission {
 			  position: fixed;
-			  margin:110px 0 0 30px;
-			  background-color: rgba(255,255,255,.9);
+			  margin:110px 0 0 50px;
+			  background-color: rgba(255,255,255,.8);
 			  width:200px;
 			  font-size: 14px;
 			  padding:20px;
@@ -2388,13 +2388,28 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 			  
 			  .feed {
 			  position: fixed;
-			  margin:320px 0 0 30px;
-			  background-color: rgba(255,255,255,.9);
+			  margin:320px 0 0 50px;
+			  background-color: rgba(255,255,255,.8);
 			  width:200px;
 			  font-size: 15px;
 			  padding:20px;
 			  font-weight: bold;
 			  }
+			
+			.map_filter {
+			  position: fixed;
+			  top: 200px;
+			  right: 30px;
+				
+			  background-color: rgba(255,255,255,.8);
+			  width:200px;
+			  font-size: 15px;
+			  padding:20px;
+			  font-weight: bold;
+			 }
+				
+				
+			
 			  
 			  .leftinfo {float:left; list-style-type:none; text-align:right;}
 			  .leftinfo li {padding: 4px 0; width: 90px;}

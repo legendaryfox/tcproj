@@ -1,29 +1,31 @@
+<div class="map_filter" style="z-index: 1">
 <%= form_tag map_path, :method => :get do %>
 <center>
-<strong>Filter By: </strong><%= @hello_text %>
+<strong>Filter By:</strong><br /><br />
+<p>
 <%= select_tag "category_id", options_from_collection_for_select(@categories, "id", "name", @selected_category.to_i), :include_blank => "All Categories" %>
-<%= submit_tag "Filter", :name => nil, :class => "btn small primary" %>
+<br /><br />
+<%= submit_tag "Filter", :name => nil, :class => "btn primary span4" %>
 </p>
 </center>
 
 <% end %>
-
-
 </div>
-<!--
-<div class="mission">
-        The College Project Mission:
-        <p>We focus on students and their ever growing need to expand their intellectual horizon by offering them opportunities to connect with their local and immediate community.
-        </div>
+
+
+<div class="mission" style="z-index: 1">
+	The College Project Mission:
+	<p>We focus on students and their ever growing need to expand their intellectual horizon by offering them opportunities to connect with their local and immediate community.
+</div>
         
-        <div class="feed">
-        News Feed
-        </div>
-!-->
+<div class="feed" style="z-index: 1">
+	News Feed
+</div>
+
      
 <% if !signed_in_user? %>
 
-		<div id="modal-from-dom" class="modal hide fade in" style="display: block; width:347px;">
+		<div id="modal-from-dom" class="modal hide fade in" style="display: block; width:347px; position: absolute; z-index: 100">
 		    <div class="modal-header">
 		    <a class="close" href="#">x</a>
 		    <h3>Welcome!</h3>
@@ -159,7 +161,7 @@ else {
 
 </script>
 
-<div>
+
 
 		
 		
