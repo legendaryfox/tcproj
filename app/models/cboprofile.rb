@@ -1,5 +1,5 @@
 class Cboprofile < ActiveRecord::Base
-  attr_accessible :name, :description, :latitude, :longitude
+  attr_accessible :name, :description, :latitude, :longitude, :category_id
   attr_accessible :street1, :street2, :city, :state, :zip, :country, :phone, :website
   attr_accessible :information, :location_notes, :how_to_volunteer
   
@@ -14,7 +14,17 @@ class Cboprofile < ActiveRecord::Base
   validates :description, :length => { :maximum => 500 }
   validates :location_notes, :length => { :maximum => 255 }
   validates :how_to_volunteer, :length => { :maximum => 2000 }
+
+=begin
+  has_many :categorizations, :foreign_key => "cboprofile_id"
+  has_many :categories, :through => :categorizations, :source => :category
   
+  def add_to_category!(category)
+    self.categorizations.create!(:category_id => category.id)
+  end
+=end  
+
+  belongs_to :category
   
   def full_address
     running_address = ""
@@ -57,6 +67,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: cboprofiles
@@ -80,5 +91,6 @@ end
 #  how_to_volunteer :text
 #  phone            :string(255)
 #  website          :string(255)
+#  category_id      :integer
 #
 

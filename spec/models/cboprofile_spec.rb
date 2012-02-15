@@ -8,6 +8,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: cboprofiles
@@ -31,5 +32,6 @@ end
 #  how_to_volunteer :text
 #  phone            :string(255)
 #  website          :string(255)
+#  category_id      :integer
 #
 

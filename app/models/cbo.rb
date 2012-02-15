@@ -30,8 +30,7 @@ class Cbo < ActiveRecord::Base
   has_many :cbo_community_memberships
   has_many :communities, :through => :cbo_community_memberships, :source => :community
   
-  has_many :categorizations, :foreign_key => "cbo_id"
-  has_many :categories, :through => :categorizations, :source => :category
+  
   
   
   has_one :cboprofile
@@ -40,9 +39,7 @@ class Cbo < ActiveRecord::Base
   accepts_nested_attributes_for :cboprofile
   accepts_nested_attributes_for :questionnaire
                     
-  def add_to_category!(category)
-    self.categorizations.create!(:category_id => category.id)
-  end
+  
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)

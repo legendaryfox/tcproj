@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120204071919) do
+ActiveRecord::Schema.define(:version => 20120215064549) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(:version => 20120204071919) do
 
   create_table "categorizations", :force => true do |t|
     t.integer  "category_id"
-    t.integer  "cbo_id"
+    t.integer  "cboprofile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
-  add_index "categorizations", ["cbo_id"], :name => "index_categorizations_on_cbo_id"
+  add_index "categorizations", ["cboprofile_id"], :name => "index_categorizations_on_cbo_id"
 
   create_table "cbo_community_memberships", :force => true do |t|
     t.integer  "cbo_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20120204071919) do
     t.text     "how_to_volunteer"
     t.string   "phone"
     t.string   "website"
+    t.integer  "category_id"
   end
 
   add_index "cboprofiles", ["cbo_id"], :name => "index_cboprofiles_on_cbo_id"

@@ -18,9 +18,12 @@ class Category < ActiveRecord::Base
                     
   validates :description, :presence => true,
                           :length => { :maximum => 140 }
-                          
+=begin                          
   has_many :categorizations, :foreign_key => "category_id"
-  has_many :cbos, :through => :categorizations, :source => :cbo                        
+  has_many :cboprofiles, :through => :categorizations, :source => :cboprofile                        
+=end
   
+  has_many :cboprofiles
+
 end
 

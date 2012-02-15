@@ -1,11 +1,11 @@
-<h1>New Category</h1>
+<h1>Edit Category</h1>
 
 <%= form_for(@category) do |category_form| %>
 	<%= render 'shared/error_messages', :object => category_form.object %>
 	<%= render 'fields', :category_form => category_form %>
 	
 	<div class="actions">
-		<%= category_form.submit "Create Category", :class => "btn primary" %>
+		<%= category_form.submit "Edit Category", :class => "btn primary" %>
 	</div>
 	
 <% end %>

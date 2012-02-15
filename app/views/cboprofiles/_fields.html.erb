@@ -15,6 +15,15 @@
 	</div>
 	
 	<div class="clearfix">
+		<%= cboprofile_form.label :category, :class => "xlInput" %>
+		<div class="input">
+			<%= cboprofile_form.select(:category_id, Category.all.collect {|category| [category.name, category.id] }, :prompt => true)%>
+		</div>
+	</div>
+	
+
+	
+	<div class="clearfix">
 		<%= cboprofile_form.label :phone, :class => "xlInput" %>
 		<div class="input">
 			<%= cboprofile_form.text_field :phone, :class => "xlarge" %>
