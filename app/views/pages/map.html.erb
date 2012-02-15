@@ -1,7 +1,7 @@
 <div class="map_filter" style="z-index: 1">
 <%= form_tag map_path, :method => :get do %>
 <center>
-<strong>Filter By:</strong><br /><br />
+<strong>Filter By: </strong><br /><br />
 <p>
 <%= select_tag "category_id", options_from_collection_for_select(@categories, "id", "name", @selected_category.to_i), :include_blank => "All Categories" %>
 <br /><br />
@@ -23,7 +23,7 @@
 </div>
 
      
-<% if !signed_in_user? %>
+<% if !signed_in_user? && @selected_category.nil? %>
 
 		<div id="modal-from-dom" class="modal hide fade in" style="display: block; width:347px; position: absolute; z-index: 100">
 		    <div class="modal-header">
@@ -39,6 +39,7 @@
 		    <a class="close btn primary" href="#">Thanks!</a>
 		    </div>
 		</div>
+		
 <% end %>
 
 <script>

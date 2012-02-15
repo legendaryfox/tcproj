@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   
   def map
     
+    
     @selected_category = params[:category_id]
     @categories = Category.all
     
