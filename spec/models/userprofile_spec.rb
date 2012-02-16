@@ -11,6 +11,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: userprofiles
@@ -37,5 +38,9 @@ end
 #  core_question3_response :text
 #  core_question4_response :text
 #  school                  :string(255)
+#  avatar_file_name        :string(255)
+#  avatar_content_type     :string(255)
+#  avatar_file_size        :integer
+#  avatar_updated_at       :datetime
 #
 

@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="span4">
-		<%= image_tag "200x250.gif"%>
+		<%= image_tag @userprofile.avatar.url(:medium) %>
+		Should be at <%= @userprofile.avatar.url(:medium) %>
 		<br /><br />
 		<% if signed_in_user? %>
 			<div class="btn">

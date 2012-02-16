@@ -2,7 +2,7 @@
 
 
 class Userprofile < ActiveRecord::Base
-  attr_accessible :firstname, :lastname, :nickname, :school
+  attr_accessible :firstname, :lastname, :nickname, :school, :avatar
   attr_accessible :street1, :street2, :city, :state, :zip, :country
   attr_accessible :short_bio, :long_bio, :core_question1_response, :core_question2_response, :core_question3_response, :core_question4_response
   attr_accessible :latitude, :longitude
@@ -12,6 +12,8 @@ class Userprofile < ActiveRecord::Base
   
   
   belongs_to :user
+  
+  has_attached_file :avatar, :styles => { :medium => "200x250>", :thumb => "100x125>" }
   
   validates :firstname, :presence => true
   validates :lastname, :presence => true
@@ -83,6 +85,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: userprofiles
@@ -109,5 +112,9 @@ end
 #  core_question3_response :text
 #  core_question4_response :text
 #  school                  :string(255)
+#  avatar_file_name        :string(255)
+#  avatar_content_type     :string(255)
+#  avatar_file_size        :integer
+#  avatar_updated_at       :datetime
 #
 

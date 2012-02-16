@@ -5,6 +5,7 @@ gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
 gem 'possessive'
 gem 'stamp'
 gem 'geocoder' 
+gem "paperclip", "~> 2.0"
 
 group :development do
 	gem 'rspec-rails', '2.0.1'
