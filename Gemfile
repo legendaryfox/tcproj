@@ -6,6 +6,7 @@ gem 'possessive'
 gem 'stamp'
 gem 'geocoder' 
 gem "paperclip", "~> 2.0"
+gem 'aws-sdk'
 
 group :development do
 	gem 'rspec-rails', '2.0.1'
