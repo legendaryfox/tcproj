@@ -15,10 +15,14 @@ class Userprofile < ActiveRecord::Base
   
   has_attached_file :avatar, 
     :styles => { :medium => "200x250>", :thumb => "100x125>" },
+    :default_url => "200x250.gif",
     :storage => :s3,
     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
     :path => "/:style/:id/:filename",
     :s3_storage_class => :reduced_redundancy
+    
+  validates_attachment_size :avatar, :less_than => 5.megabytes
+  validates_attachment_content_type :avatar, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
   
   validates :firstname, :presence => true
   validates :lastname, :presence => true
