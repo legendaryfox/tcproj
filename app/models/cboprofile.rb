@@ -1,5 +1,5 @@
 class Cboprofile < ActiveRecord::Base
-  attr_accessible :name, :description, :latitude, :longitude, :category_id
+  attr_accessible :name, :description, :latitude, :longitude, :category_id, :cbo_avatar
   attr_accessible :street1, :street2, :city, :state, :zip, :country, :phone, :website
   attr_accessible :information, :location_notes, :how_to_volunteer
   
@@ -7,6 +7,17 @@ class Cboprofile < ActiveRecord::Base
   after_validation :geocode, :if => (:street1_changed? || :street2_changed? || :city_changed? || :state_changed? || :zip_changed? || :country_changed?)
   
   belongs_to :cbo
+  
+  has_attached_file :cbo_avatar, 
+    :styles => { :medium => "200x250>", :thumb => "100x125>" },
+    :default_url => "200x250.gif",
+    :storage => :s3,
+    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+    :path => "/:style/:id/:filename",
+    :s3_storage_class => :reduced_redundancy
+    
+  validates_attachment_size :cbo_avatar, :less_than => 5.megabytes
+  validates_attachment_content_type :cbo_avatar, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
   
   validates :name, :presence => true
   
@@ -71,29 +82,34 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: cboprofiles
 #
-#  id               :integer         not null, primary key
-#  name             :string(255)
-#  description      :text
-#  latitude         :float
-#  longitude        :float
-#  cbo_id           :integer
-#  created_at       :datetime
-#  updated_at       :datetime
-#  street1          :string(255)     default("")
-#  street2          :string(255)     default("")
-#  city             :string(255)     default("")
-#  state            :string(255)     default("")
-#  zip              :string(255)     default("")
-#  country          :string(255)     default("")
-#  information      :text
-#  location_notes   :text
-#  how_to_volunteer :text
-#  phone            :string(255)
-#  website          :string(255)
-#  category_id      :integer
+#  id                      :integer         not null, primary key
+#  name                    :string(255)
+#  description             :text
+#  latitude                :float
+#  longitude               :float
+#  cbo_id                  :integer
+#  created_at              :datetime
+#  updated_at              :datetime
+#  street1                 :string(255)     default("")
+#  street2                 :string(255)     default("")
+#  city                    :string(255)     default("")
+#  state                   :string(255)     default("")
+#  zip                     :string(255)     default("")
+#  country                 :string(255)     default("")
+#  information             :text
+#  location_notes          :text
+#  how_to_volunteer        :text
+#  phone                   :string(255)
+#  website                 :string(255)
+#  category_id             :integer
+#  cbo_avatar_file_name    :string(255)
+#  cbo_avatar_content_type :string(255)
+#  cbo_avatar_file_size    :integer
+#  cbo_avatar_updated_at   :datetime
 #
 

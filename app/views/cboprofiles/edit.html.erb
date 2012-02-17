@@ -1,6 +1,6 @@
 <h1>Edit CBO Profile</h1>
 
-<%= form_for(@cboprofile) do |cboprofile_form| %>
+<%= form_for @cboprofile, :html => { :multipart => true } do |cboprofile_form| %>
 	<%= render 'shared/error_messages', :object => cboprofile_form.object %>
 	<%= render 'fields', :cboprofile_form => cboprofile_form %>
 	

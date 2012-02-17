@@ -14,6 +14,27 @@ class CommunitiesController < ApplicationController
     @title = "All Communities"
   end
   
+  def edit
+    @community = Community.find(params[:id])
+    @title = "Edit Community"
+  end
+
+  def update
+    @community = Community.find(params[:id])
+    
+    if params[:community][:use_default_image] == "1"
+      # they want to use the default image
+      @community.community_avatar = nil
+    end
+    
+    if @community.update_attributes(params[:community])
+      redirect_to @community, :flash => { :success => "Community updated." }
+    else
+      @title = "Edit Community"
+      render 'edit'
+    end
+  end
+  
   
   def my
     if signed_in_user?

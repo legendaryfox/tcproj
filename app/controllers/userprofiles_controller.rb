@@ -17,6 +17,12 @@ class UserprofilesController < ApplicationController
   
   def update
     @userprofile = Userprofile.find(params[:id]) #TODO: analagous way of passing/authenticating @userprofile as users_controller
+    
+    if params[:userprofile][:use_default_image] == "1"
+      # they want to use the default image
+      @userprofile.avatar = nil
+    end
+    
     if @userprofile.update_attributes(params[:userprofile])
       redirect_to @userprofile, :flash => { :success => "Profile updated." }
     else

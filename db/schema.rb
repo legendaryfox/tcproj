@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120216091011) do
+ActiveRecord::Schema.define(:version => 20120217065927) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -48,18 +48,22 @@ ActiveRecord::Schema.define(:version => 20120216091011) do
     t.integer  "cbo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "street1",          :default => ""
-    t.string   "street2",          :default => ""
-    t.string   "city",             :default => ""
-    t.string   "state",            :default => ""
-    t.string   "zip",              :default => ""
-    t.string   "country",          :default => ""
+    t.string   "street1",                 :default => ""
+    t.string   "street2",                 :default => ""
+    t.string   "city",                    :default => ""
+    t.string   "state",                   :default => ""
+    t.string   "zip",                     :default => ""
+    t.string   "country",                 :default => ""
     t.text     "information"
     t.text     "location_notes"
     t.text     "how_to_volunteer"
     t.string   "phone"
     t.string   "website"
     t.integer  "category_id"
+    t.string   "cbo_avatar_file_name"
+    t.string   "cbo_avatar_content_type"
+    t.integer  "cbo_avatar_file_size"
+    t.datetime "cbo_avatar_updated_at"
   end
 
   add_index "cboprofiles", ["cbo_id"], :name => "index_cboprofiles_on_cbo_id"
@@ -85,6 +89,10 @@ ActiveRecord::Schema.define(:version => 20120216091011) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "zip"
+    t.string   "community_avatar_file_name"
+    t.string   "community_avatar_content_type"
+    t.integer  "community_avatar_file_size"
+    t.datetime "community_avatar_updated_at"
   end
 
   add_index "communities", ["city"], :name => "index_communities_on_city"
