@@ -28,5 +28,22 @@
 		</div>
 	</div>
 	
+	<div class="clearfix">
+		<%= community_form.label "Photo", :class => "xlInput" %>
+		<div class="input">
+			<%= community_form.file_field :community_avatar, :class => "xlarge" %>
+			<p class="help-block">Must be an image file, and smaller than 5MB.</p>
+		</div>
+	
+	</div>
+	
+	<div class="clearfix">
+		<%= community_form.label "Use Default Image?", :class => "xlInput" %>
+		<div class="input">
+			<%= community_form.check_box :use_default_image, :checked => 'unchecked', :class => "inline checkbox" %>
+			<span class="help-inline">Check this if you want to use the default image.</span>
+		</div>
+	</div>
+	
 	
 </fieldset>

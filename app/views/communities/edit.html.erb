@@ -1,4 +1,4 @@
-<h1>Create a new Community</h1>
+<h1>Edit a Community</h1>
 
 <%= form_for @community, :html => { :multipart => true } do |community_form| %>
 	<%= render 'shared/error_messages', :object => community_form.object %>
@@ -6,7 +6,7 @@
 	
 	
 	<div class="actions">
-		<%= community_form.submit "Create Community", :class => "btn primary" %>
+		<%= community_form.submit "Update Community", :class => "btn primary" %>
 	</div>
 	
 <% end %>

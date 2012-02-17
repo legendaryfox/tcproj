@@ -14,6 +14,12 @@ class CboprofilesController < ApplicationController
 
   def update
     @cboprofile = Cboprofile.find(params[:id])
+    
+    if params[:cboprofile][:use_default_image] == "1"
+      # they want to use the default image
+      @cboprofile.cbo_avatar = nil
+    end
+    
     if @cboprofile.update_attributes(params[:cboprofile])
       redirect_to @cboprofile, :flash => { :success => "Profile updated." }
     else
