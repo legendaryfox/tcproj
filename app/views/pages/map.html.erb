@@ -74,6 +74,8 @@ if (GBrowserIsCompatible()) {
   // of the "marker" and "html" variables which will be needed later when the event triggers.    
   function createMarker(point,html) {
     var marker = new GMarker(point);
+
+
     GEvent.addListener(marker, "click", function() {
       marker.openInfoWindowHtml(html);
     });
@@ -82,6 +84,9 @@ if (GBrowserIsCompatible()) {
 
 	function createIconMarker(point,html,options) {
 		var marker = new GMarker(point, options);
+		
+		
+		
 		GEvent.addListener(marker, "click", function() {
 			marker.openInfoWindowHtml(html);
 		});
@@ -98,28 +103,13 @@ if (GBrowserIsCompatible()) {
 	map.setCenter(new GLatLng(<%= @centerLat %>, <%= @centerLng %>), 13);
 	
 
-	var point = new GLatLng(<%= @centerLat %>, <%= @centerLng %>);
-	var myIcon = new GIcon(G_DEFAULT_ICON);
-	myIcon.image = "images/smiley_happy.png";
-	myIcon.iconSize = new GSize(32, 37)
-	myIcon.shadow = "images/shadow.png";
-	myIcon.shadowSize = new GSize(51, 37);
-	markerOptions = { 
-		icon:myIcon,
-		title: '<%= @centerText %>'
-	};
-	//map.addOverlay(new GMarker(point, markerOptions));
-	var marker = createIconMarker(point, '<%= @centerText %>', markerOptions);
-	map.addOverlay(marker);
-	
-
 	
 
 	// SET UP CBO MARKERS
 
 	// UNJOINED CBOS
 	<% @unjoined_cboprofiles.each do |cboprofile| %>
-		var point = new GLatLng(<%= cboprofile.latitude %>, <%= cboprofile.longitude %>);
+		var point = new GLatLng(<%= cboprofile.latitude || @centerLat  %>, <%= cboprofile.longitude || @centerLng %>);
 		var myIcon = new GIcon(G_DEFAULT_ICON);
 		myIcon.image = "images/red_workdesk.png";
 		myIcon.iconSize = new GSize(32, 37);
@@ -138,7 +128,7 @@ if (GBrowserIsCompatible()) {
 	
 	// JOINED CBOS
 	<% @joined_cboprofiles.each do |cboprofile| %>
-		var point = new GLatLng(<%= cboprofile.latitude %>, <%= cboprofile.longitude %>);
+		var point = new GLatLng(<%= cboprofile.latitude || @centerLat  %>, <%= cboprofile.longitude || @centerLng %>);
 		var myIcon = new GIcon(G_DEFAULT_ICON);
 		myIcon.image = "images/green_workdesk.png";
 		myIcon.iconSize = new GSize(32, 37);
@@ -154,6 +144,25 @@ if (GBrowserIsCompatible()) {
 		<%= escape_javascript(cboprofile.full_address) %> <br /><\/div>', markerOptions)
 		map.addOverlay(marker);
 	<% end %>
+	
+	
+	
+	// DRAW THE CENTER MARKER
+	
+	var point = new GLatLng(<%= @centerLat %>, <%= @centerLng %>);
+	var myIcon = new GIcon(G_DEFAULT_ICON);
+	myIcon.image = "images/smiley_happy.png";
+	myIcon.iconSize = new GSize(32, 37)
+	myIcon.shadow = "images/shadow.png";
+	myIcon.shadowSize = new GSize(51, 37);
+	markerOptions = { 
+		icon:myIcon,
+		title: '<%= @centerText %>'
+	};
+	//map.addOverlay(new GMarker(point, markerOptions));
+	var marker = createIconMarker(point, '<%= @centerText %>', markerOptions);
+	map.addOverlay(marker);
+	
 	
 
 
