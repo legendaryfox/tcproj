@@ -48,23 +48,15 @@ class PagesController < ApplicationController
       # A category is provided
       unjoined_cbos.each do |unjoined_cbo|
         if unjoined_cbo.cboprofile.category_id == @selected_category.to_i
-          if !unjoined_cbo.cboprofile.latitude.blank? && !unjoined_cbo.cboprofile.longitude.blank?
-            @unjoined_cboprofiles.push(unjoined_cbo.cboprofile)
-            puts "CBO PROFILE IS #{unjoined_cbo.cboprofile}"
-            
-          end
-          
+          @unjoined_cboprofiles.push(unjoined_cbo.cboprofile)
+                
         end
       end
       
       joined_cbos.each do |joined_cbo|
         if joined_cbo.cboprofile.category_id == @selected_category.to_i
-          if !joined_cbo.cboprofile.latitude.blank? && !joined_cbo.cboprofile.longitude.blank?
-            @joined_cboprofiles.push(joined_cbo.cboprofile)
-            puts "CBO PROFILE IS #{unjoined_cbo.cboprofile}"
+          @joined_cboprofiles.push(joined_cbo.cboprofile)
             
-          end
-          
         end
       end
      
