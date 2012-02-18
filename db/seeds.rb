@@ -400,14 +400,14 @@ johnuser.create_userprofile(
   :state => "NJ",
   :zip => "07747",
   :country => "USA")
-  
+=begin
 johnuser.join_cbo!(cbo1)
 johnuser.join_cbo!(cbo2, 1)
 johnuser.join_cbo!(cbo3)
 johnuser.join_cbo!(cbo6, 1)
+=end
 johnuser.join_community!(community1)
 johnuser.join_community!(community3)
-  
 mikeuser = User.create!(
   :name => "mike", 
   :email => "mike@gmail.com", 
@@ -423,10 +423,11 @@ mikeuser.create_userprofile(
   :state => "NJ",
   :zip => "08857",
   :country => "USA")
-  
+=begin
 mikeuser.join_cbo!(cbo2)
 mikeuser.join_cbo!(cbo3, 1)
 mikeuser.join_cbo!(cbo4, 1)
+=end
 mikeuser.join_community!(community1)
 mikeuser.join_community!(community2)
   
@@ -446,10 +447,11 @@ joshuser.create_userprofile(
   :state => "MA",
   :zip => "02446",
   :country => "USA")
-  
+=begin  
 joshuser.join_cbo!(cbo1)
 joshuser.join_cbo!(cbo2, 1)
 joshuser.join_cbo!(cbo3, 1)
+=end
 joshuser.join_community!(community2)
 
 
@@ -469,10 +471,11 @@ meganuser.create_userprofile(
   :zip => "02134",
   :country => "USA")
   
-  
+=begin
 meganuser.join_cbo!(cbo1, 1)
 meganuser.join_cbo!(cbo2)
 meganuser.join_cbo!(cbo5, 1)
+=end
 meganuser.join_community!(community1)
 meganuser.join_community!(community2)
   
@@ -492,10 +495,11 @@ kevinuser.create_userprofile(
   :zip => "02215",
   :country => "USA")
 
-
+=begin
 kevinuser.join_cbo!(cbo6, 1)
 kevinuser.join_cbo!(cbo5, 1)
 kevinuser.join_cbo!(cbo2, 1)
+=end
 kevinuser.join_community!(community1)
 kevinuser.join_community!(community2)
   
@@ -514,10 +518,12 @@ enochuser.create_userprofile(
   :state => "MA",
   :zip => "02215",
   :country => "USA")
-  
+
+=begin
 enochuser.join_cbo!(cbo2, 1)
 enochuser.join_cbo!(cbo3, 1)
 enochuser.join_cbo!(cbo4)
+=end
 enochuser.join_community!(community1)
 enochuser.join_community!(community2)
 
@@ -537,10 +543,11 @@ josiahuser.create_userprofile(
   :zip => "02215",
   :country => "USA")
   
-  
+=begin  
 josiahuser.join_cbo!(cbo1, 1)
 josiahuser.join_cbo!(cbo2, 1)
 josiahuser.join_cbo!(cbo3, 1)
+=end
 josiahuser.join_community!(community3)
 josiahuser.join_community!(community2)
 

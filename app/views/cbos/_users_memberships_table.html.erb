@@ -7,7 +7,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% cbo.pending_users_memberships.each do |membership| %>
+		<% memberships.each do |membership| %>
 		<tr>
 			<td><%= link_to User.find_by_id(membership.user_id).userprofile.name, User.find_by_id(membership.user_id).userprofile %></td>
 			<td><%= membership.updated_at.stamp("January 1, 1999 at 20:12")%></td>

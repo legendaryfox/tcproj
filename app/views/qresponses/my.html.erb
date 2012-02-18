@@ -1,5 +1,11 @@
 <h1>Applications</h1>
 
 <% @qresponses.each do |qresponse| %>
-<%= link_to "Response " + sprintf('%08d', qresponse.id), qresponse %>, by <%= link_to qresponse.user.userprofile.name, qresponse.user.userprofile %> for <%= link_to qresponse.questionnaire.cbo.cboprofile.name, qresponse.questionnaire.cbo.cboprofile %><br />
+<%= link_to "Response " + sprintf('%08d', qresponse.id), qresponse %>, by <%= link_to qresponse.user.userprofile.name, qresponse.user.userprofile %> for <%= link_to qresponse.questionnaire.cbo.cboprofile.name, qresponse.questionnaire.cbo.cboprofile %>
+	|| Current Membership Level: <%= qresponse.membership.confirmed %>
+	<% if signed_in_cbo? %>
+		<%= render 'memberships/cbo_confirm_form', :membership => qresponse.membership, :cbo_id => current_cbo.id, :user_id => qresponse.user.id %>
+	<% end %>
+	<br />
+
 <% end %>

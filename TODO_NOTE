@@ -1,3 +1,9 @@
+-clean up memberships
+--add option to view qresponse to cbos/user_memberships_table
+--make select-list dynamic
+--user perspective
+
+
 -questionnaires
 --correct integration with memberships
 --admin panels?

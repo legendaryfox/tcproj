@@ -12,9 +12,7 @@
 			<td><%= link_to User.find_by_id(membership.user_id).userprofile.name, User.find_by_id(membership.user_id).userprofile %></td>
 			<td><%= membership.updated_at.stamp("January 1, 1999 at 20:12") %></td>
 			<td>
-				<%= form_for(membership, :html => { :method => :delete}) do |f| %>
-					<%= f.submit "Remove", :class => "btn small danger" %>
-				<% end %>
+				<%= render 'memberships/cbo_confirm_form', :membership => membership, :cbo_id => current_cbo.id, :user_id => membership.user_id %>
 			</td>
 			
 		</tr>

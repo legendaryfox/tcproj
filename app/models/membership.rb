@@ -1,10 +1,22 @@
 class Membership < ActiveRecord::Base
+  attr_accessible :confirmed, :cbo_id, :user_id
+  # 0 = not confirmed - admin needs to read
+  # 1 = admin confirmed - CBO needs to read
+  # 2 = cbo read - pending - on hold for now
+  # 3 = cbo read - denied
+  # 4 = cbo read - accepted
+  
+  
   belongs_to :user,  :class_name => "User"
   belongs_to :cbo,      :class_name => "Cbo"
+  has_one :qresponse
   
-  def confirm!(level=1)
-    self.toggle!(:confirmed)
+  def confirm!(level=4)
+    #self.toggle!(:confirmed)
+    self.confirmed = level
+    self.save
   end
+  
 
   def confirmed?
     self.confirmed != 0

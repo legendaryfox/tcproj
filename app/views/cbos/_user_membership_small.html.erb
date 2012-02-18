@@ -1,4 +1,11 @@
 <% if signed_in_user? %>
+
+
+<p>
+<% if current_user.part_of_cbo?(cbo) %>
+	<%= submit_tag "Joined", :class => "btn small disabled" %>
+<% end%>
+
 <p>
 <% if current_user.part_of_cbo?(cbo) %>
 	<!-- Remove yourself from this CBO:<br /><br /> !-->

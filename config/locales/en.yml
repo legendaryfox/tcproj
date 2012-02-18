@@ -7,3 +7,10 @@ en:
   core_question2_text: "What's the most interesting thing you've learned during your time in college?"
   core_question3_text: "What was your most interesting volunteering experience?"
   core_question4_text: "How was your previous volunteering experience?"
+  
+  confirm_level0_text: "Awaiting Admin Approval"
+  confirm_level1_text: "Awaiting CBO Approval"
+  confirm_level2_text: "Pending"
+  confirm_level3_text: "Denied"
+  confirm_level4_text: "Accepted"
+  

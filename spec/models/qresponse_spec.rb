@@ -4,6 +4,7 @@ describe Qresponse do
   pending "add some examples to (or delete) #{__FILE__}"
 end
 
+
 # == Schema Information
 #
 # Table name: qresponses
@@ -33,5 +34,6 @@ end
 #  question10_response :text
 #  created_at          :datetime
 #  updated_at          :datetime
+#  membership_id       :integer
 #
 

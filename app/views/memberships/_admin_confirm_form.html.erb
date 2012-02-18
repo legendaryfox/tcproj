@@ -1,0 +1,16 @@
+<%= form_for(membership, :as => :membership, :url => confirm_membership_path(membership), :method => :put) do |f| %>
+	<%= f.hidden_field :cbo_id %>
+	<%= f.hidden_field :user_id %>
+	<%= select_tag :confirm_level, 
+	
+		"<option value=\"0\">0 - Admin Not Confirmed</option>
+	      <option value=\"1\">1 - Admin Read - CBO Confirm</option>
+	      <option value=\"2\">2 - CBO Read, Pending</option>
+	      <option value=\"3\">3 - CBO Read, Denied</option>
+	      <option value=\"4\">4 - CBO Read, Accepted</option>".html_safe %>
+	
+	<%= f.submit "Set Membership Level", :class => "btn primary"%>
+
+	<% session[:return_to] = request.request_uri %>
+	
+<% end %>

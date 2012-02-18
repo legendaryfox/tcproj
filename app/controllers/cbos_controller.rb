@@ -16,6 +16,9 @@ class CbosController < ApplicationController
   
   def show
     @cbo = Cbo.find(params[:id])
+    @approved_memberships = @cbo.approved_users_memberships
+    @confirmed_memberships = @cbo.confirmed_users_memberships
+    @rejected_memberships = @cbo.rejected_users_memberships
   end
   
   def edit

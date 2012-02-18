@@ -79,11 +79,13 @@ class Cbo < ActiveRecord::Base
     self.confirmed != 0
   end
   
-  def confirmed_users_memberships(confirm_level = 1)
+  
+  
+  def confirmed_users_memberships(confirm_level = 4)
     self.memberships.find_all_by_confirmed(confirm_level)
   end
   
-  def confirmed_users(confirm_level = 1)
+  def confirmed_users(confirm_level = 4)
     #self.cbos.find_all_by_confirmed
     
     #first, get the memberships
@@ -103,11 +105,27 @@ class Cbo < ActiveRecord::Base
     self.confirmed_users(0)
   end
   
+  def approved_users_memberships
+    self.confirmed_users_memberships([1,2])
+  end
+  
+  def approved_users
+    self.confirmed_users([1,2])
+  end
+  
+  def rejected_users_memberships
+    self.confirmed_users_memberships(3)
+  end
+  
+  def rejected_users
+    self.confirmed_users_memberships(3)
+  end
+  
   
   def confirm_user!(user)
     # check the user to make sure user is part of CBO's pending
     if user.pending_of_cbo?(self)
-      cbo.memberships.find_by_user_id(user).confirm!
+      self.memberships.find_by_user_id(user).confirm!
     end
   end
   

@@ -3,15 +3,22 @@
 <p>Your organization currently has these members:</p>
 
 
-<%= render 'confirmed_users_table', :cbo => @cbo %>
+<%= render 'users_memberships_table', :memberships => @confirmed_memberships %>
 
 
 <%end %>
 
-<% if @cbo.pending_users.size > 0 %>
+<% if @cbo.approved_users.size > 0 %>
 <p>The following members need to be confirmed:</p>
 
-<%= render 'pending_users_table', :cbo => @cbo %>
+<%= render 'users_memberships_table', :memberships => @approved_memberships %>
+
+<% end %>
+
+<% if @cbo.rejected_users.size > 0 %>
+<p>The following members have been rejected:</p>
+
+<%= render 'users_memberships_table', :memberships => @rejected_memberships %>
 
 <% end %>
 

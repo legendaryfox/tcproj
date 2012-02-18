@@ -66,40 +66,45 @@ class User < ActiveRecord::Base
     # you are only a part of a CBO if you have a confirmed membership
     membership = self.memberships.find_by_cbo_id(cbo)
     if membership
-      return membership unless membership.confirmed == 0
+      #return membership unless membership.confirmed == 0
+      return membership if membership.confirmed == 4
     end
   end
   
   def part_of_community?(community)
     return self.user_community_memberships.find_by_community_id(community)
   end
-  
+=begin  
   def part_of_opportunity?(opportunity)
     participation = self.participations.find_by_opportunity_id(opportunity)
     if participation
       return participation unless participation.confirmed == 0
     end
   end
+=end
   
   def pending_of_cbo?(cbo)
     membership = self.memberships.find_by_cbo_id(cbo)
     if membership
-      return membership if membership.confirmed == 0
+      return membership if membership.confirmed < 3
     end
   end
   
+  
+=begin  
   def pending_of_opportunity?(opportunity)
     participation = self.participations.find_by_opportunity_id(opportunity)
     if participation
       return participation if participation.confirmed == 0
     end
   end
+=end
   
-  def confirmed_cbos_memberships(confirm_level = 1)
+  def confirmed_cbos_memberships(confirm_level = 4)
     self.memberships.find_all_by_confirmed(confirm_level)
   end
   
-  def confirmed_cbos(confirm_level = 1)
+  def confirmed_cbos(confirm_level = 4)
     #self.cbos.find_all_by_confirmed
     
     #first, get the memberships
@@ -119,6 +124,24 @@ class User < ActiveRecord::Base
     self.confirmed_cbos(0)
   end
   
+  def approved_cbos_memberships
+    self.confirmed_cbos_memberships([1,2])
+  end
+  
+  def approved_cbos
+    self.confirmed_cbos([1,2])
+  end
+  
+  def rejected_cbos_memberships
+    self.confirmed_cbos_memberships(3)
+  end
+  
+  def rejected_cbos
+    self.confirmed_cbos(3)
+  end
+  
+  
+=begin  
   def confirmed_opportunities_participations(confirm_level = 1)
     self.participations.find_all_by_confirmed(confirm_level)
   end
@@ -140,7 +163,7 @@ class User < ActiveRecord::Base
     self.confirmed_opportunities(0)
   end
   
-
+=end
 
   
   def confirm!(level=1)

@@ -71,3 +71,14 @@
 	<%= simple_format(@qresponse.question10_text) %>
 	<%= simple_format(@qresponse.question10_response) %>
 <% end %>
+
+<br />
+<hr />
+<br />
+<% if signed_in_cbo? %>
+	<% if @qresponse.questionnaire.cbo == current_cbo %>
+		<%= render 'memberships/cbo_confirm_form', :membership => @qresponse.membership, :cbo_id => current_cbo.id, :user_id => @qresponse.user.id %>
+	<% end %>
+<% end %>
+
+
