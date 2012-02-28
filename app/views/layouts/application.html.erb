@@ -24,7 +24,7 @@
 		<% if !current_page?(:controller => 'pages', :action => 'map')%>
 		<div class="content">
 		<% else %>
-		<div>
+		<div style="height:100%;">
 		<% end %>
 			<%= render :partial => "shared/flash_messages", :locals => {:flash => flash} %>
 
