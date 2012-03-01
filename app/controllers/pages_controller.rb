@@ -26,14 +26,14 @@ class PagesController < ApplicationController
     @unjoined_cboprofiles = []
     @joined_cboprofiles = []
     
-    @centerLat = 42.357778
-		@centerLng = -71.061667
-		@centerText = "Boston"
+    @center_lat = 42.357778
+		@center_lng = -71.061667
+		@center_text = "Boston"
 	
     if signed_in_user?
-  		@centerLat ||= current_user.userprofile.latitude
-  		@centerLng ||= current_user.userprofile.longitude
-  		@centerText = "#{current_user.userprofile.name}, Your Current Location"
+  		@center_lat ||= current_user.userprofile.latitude
+  		@center_lng ||= current_user.userprofile.longitude
+  		@center_text = "#{current_user.userprofile.name}, Your Current Location"
   		
   		
       joined_cbos = current_user.cbos

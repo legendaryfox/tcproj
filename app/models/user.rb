@@ -186,8 +186,6 @@ class User < ActiveRecord::Base
   end
   
   
-  
-  
   private
     
     def encrypt_password

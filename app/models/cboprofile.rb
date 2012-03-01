@@ -74,6 +74,15 @@ class Cboprofile < ActiveRecord::Base
     return Cboprofile.near([lat, long], distance).all.delete_if{ |cboprofile| !cboprofile.cbo.confirmed? }
   end
   
+  def self.get_cboprofiles(cbo_array)
+    cboprofile_array = []
+    cbo_array.each do |cbo|
+      cboprofile_array.push cbo.cboprofile
+    end
+    
+    return cboprofile_array
+  end
+  
   
 end
 

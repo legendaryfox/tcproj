@@ -17,117 +17,127 @@
 					<h3>Application Form to <%= @cboprofile.name %></h3>
 				</div>
 				<div class="modal-body">
-					
-					
+
+
 					<%= render 'questionnaires/modal_reply', :questionnaire => @cboprofile.cbo.questionnaire, :qresponse => Qresponse.new(:questionnaire_id => @cboprofile.cbo.questionnaire.id) %>
-					
-					
-					
+
+
+
 				</div>
 				<!-- 
 				<div class="modal-footer">
-					<a href="#" class="btn primary">Primary Action</a>
-					<a href="#" class="btn secondary">Secondary Action</a>
+				<a href="#" class="btn primary">Primary Action</a>
+				<a href="#" class="btn secondary">Secondary Action</a>
 				</div>
 				!-->
 			</div>
-			
+
 			<a class="btn" data-controls-modal="questionnaire-modal" data-backdrop="static" data-keyboard="true">View Application</a>
-			
+
 
 		</p>
 		<% end %>
 		<!-- END QUESTIONNAIRE/MEMBERSHIP MODAL !-->
-		
+
 		<br /><br />
 		<% if signed_in_cbo? %>
-			<% if @cboprofile.id == current_cbo.cboprofile.id %>
-				<div class="btn">
-					<%= link_to "Edit Profile", edit_cboprofile_path(current_cbo.cboprofile) %>
-				</div>
-			<% end %>
-		<% end %>
-
+		<% if @cboprofile.id == current_cbo.cboprofile.id %>
+		<div class="btn">
+			<%= link_to "Edit Profile", edit_cboprofile_path(current_cbo.cboprofile) %>
 		</div>
-
-		<div class="span11" style="border-left: 1px solid #eee; border-right: 1px solid #eee; margin-left: 0; padding-left: 19px">
-		<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small></h1>
-
-		<dl class="tabs">
-		<dd><a href="#1" class="active">Information</a></dd>
-		<dd><a href="#2">Volunteer Thoughts</a></dd>
-		<dd><a href="#3">Volunteer Notes</a></dd>
-		</dl>
-
-		<ul class="tabs-content">
-		<li class="active" id="1Tab">
-		
-
-			<ul class="leftinfo">
-				<li>Description</li>
-			</ul>
-
-			<ul class="rightinfo">
-				<li><%= simple_format(@cboprofile.description) %></li>
-			</ul>
-			
-			<ul class="leftinfo">
-				<li>Information</li>
-			</ul>
-
-			<ul class="rightinfo">
-				<li><%= simple_format(@cboprofile.information) %></li>
-			</ul>
-    
-		    <ul class="leftinfo">
-				<li>Contact Email</li>
-			</ul>
-
-			<ul class="rightinfo">
-				<li><%= mail_to @cboprofile.cbo.email %></li>
-			</ul>
-    
-    
-		    <ul class="leftinfo">
-				<li>Address</li>
-			</ul>
-
-			<ul class="rightinfo">
-				<li>
-				<address>
-					<strong><%= @cboprofile.name %></strong><br />
-					<%= profile_address_formatted(@cboprofile) %><br />
-
-				</address>
-				<%= google_map_static_image_for(@cboprofile, 320, 200) %>
-         
-		        </li>
-			</ul>
-
-    
-		</li>
-
-		<li id="2Tab">
-			<ul class="infolist">
-				<li><a href="#">Josiah Wang:</a> had a great time volunteering here.</li>
-				<li><a href="#">Kevin Chang:</a> Learned so much from the kids and my whole student group had fun. Go BU!</li>
-			</ul>
-		</li>
-
-		<li id="3Tab">
-			<ul class="leftinfo">
-				<li>Volunteering Information</li>
-			</ul>
-			
-			<ul class="rightinfo">
-				<li><%= simple_format(@cboprofile.how_to_volunteer) %></li>
-			</ul>
-			
-			
-		</li>
+		<% end %>
+		<% end %>
 
 	</div>
 
-</div>
+	<div class="span11" style="border-left: 1px solid #eee; border-right: 1px solid #eee; margin-left: 0; padding-left: 19px">
+		<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small></h1>
+
+		<dl class="tabs">
+			<dd><a href="#1" class="active">Information</a></dd>
+			<dd><a href="#2">Volunteer Thoughts</a></dd>
+			<dd><a href="#3">Volunteer Notes</a></dd>
+		</dl>
+
+		<ul class="tabs-content">
+			<li class="active" id="1Tab">
+
+
+				<ul class="leftinfo">
+					<li>Description</li>
+				</ul>
+
+				<ul class="rightinfo">
+					<li><%= simple_format(@cboprofile.description) %></li>
+				</ul>
+
+				<ul class="leftinfo">
+					<li>Information</li>
+				</ul>
+
+
+
+
+				<ul class="rightinfo">
+					<li><%= simple_format(@cboprofile.information) %></li>
+				</ul>
+
+
+				<ul class="leftinfo">
+					<li>Volunteering</li>
+				</ul>
+
+				<ul class="rightinfo">
+					<li><%= simple_format(@cboprofile.how_to_volunteer) %></li>
+				</ul>
+
+
+
+				<ul class="leftinfo">
+					<li>Contact Email</li>
+				</ul>
+
+				<ul class="rightinfo">
+					<li><%= mail_to @cboprofile.cbo.email %></li>
+				</ul>
+
+
+				<ul class="leftinfo">
+					<li>Address</li>
+				</ul>
+
+				<ul class="rightinfo">
+					<li>
+						<address>
+							<strong><%= @cboprofile.name %></strong><br />
+							<%= profile_address_formatted(@cboprofile) %><br />
+
+						</address>
+						<%= google_map_static_image_for(@cboprofile, 320, 200) %>
+
+					</li>
+				</ul>
+
+
+
+
+			</li>
+
+			<li id="2Tab">
+				<ul class="infolist">
+					<li><a href="#">Josiah Wang:</a> had a great time volunteering here.</li>
+					<li><a href="#">Kevin Chang:</a> Learned so much from the kids and my whole student group had fun. Go BU!</li>
+				</ul>
+			</li>
+
+			<li id="3Tab">
+
+
+
+			</li>
+
+		</div>
+
+	</div>
 
 

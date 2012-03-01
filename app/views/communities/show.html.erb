@@ -20,7 +20,6 @@
 			<dd><a href="#2">Recent Activity</a></dd>
 			<dd><a href="#3">CBOs</a></dd>
 			<dd><a href="#4">Members</a></dd>
-			<dd><a href="#5">Opportunities</a></dd>
 		</dl>
 
 		<ul class="tabs-content">
@@ -29,7 +28,17 @@
 				<div class="span11">
 					<h2>Location</h2>
 					<br />
-					<p><%= google_map_static_image_for(@community, 400, 300) %></p>
+					<p>
+						<%= render 'pages/map_box', 
+						:html_map_width => "400px", 
+						:html_map_height => "300px",
+						:joined_cboprofiles => [],
+						:unjoined_cboprofiles => Cboprofile.get_cboprofiles(@community.cbos),
+						:center_lat => @community.latitude,
+						:center_lng => @community.longitude,
+						:center_text => @community.name, 
+						:zoom_level => 12 %>
+					</p>
 					<address>
 						<strong><%= @community.full_address%></strong>
 					</address>
@@ -54,13 +63,7 @@
 				<%= render 'users/users_table', :users => @community.users %>
 			</li>
 
-			<li id="5Tab">
-				<ul class="infolist">
-					<li><a href="#">Local Opportunity 1</a></li>
-					<li><a href="#">Local Opportunity 2</a></li>
-					<li><a href="#">Local Opportunity 3</a></li>
-				</ul>
-			</li>
+			
 		
 		</ul>
 
