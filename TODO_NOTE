@@ -2,6 +2,7 @@
 --add option to view qresponse to cbos/user_memberships_table
 --make select-list dynamic
 --user perspective
+--stronger coupling with qresponse?
 
 
 -questionnaires
