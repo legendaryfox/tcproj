@@ -1,5 +1,5 @@
 class QuestionnairesController < ApplicationController
-  
+=begin  
   before_filter :authenticate_cbo, :only => [:new, :create]
   before_filter :authenticate_user, :only => [:reply]
   
@@ -54,5 +54,5 @@ class QuestionnairesController < ApplicationController
   end
   
   
- 
+=end 
 end

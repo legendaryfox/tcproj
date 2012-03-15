@@ -19,11 +19,14 @@ class User < ActiveRecord::Base
                         
   before_save :encrypt_password
 
-  has_many :memberships #, :foreign_key => "user_id"               
-  has_many :cbos, :through => :memberships, :source => :cbo
+  #has_many :memberships #, :foreign_key => "user_id"               
+  #has_many :cbos, :through => :memberships, :source => :cbo
   
   #has_many :participations
   #has_many :opportunities, :through => :participations, :source => :opportunity
+  
+  has_many :subscriptions
+  has_many :subscribed_cbos, :through => :subscriptions, :source => :cbo
   
   has_many :user_community_memberships
   has_many :communities, :through => :user_community_memberships, :source => :community
@@ -38,13 +41,40 @@ class User < ActiveRecord::Base
     encrypted_password == encrypt(submitted_password)
   end
   
-  def join_cbo!(cbo, default_confirm = 0)
-    self.memberships.create!(:cbo_id => cbo.id, :confirmed => default_confirm)
-  end
   
   def join_community!(community)
     self.user_community_memberships.create!(:community_id => community.id)
   end
+  
+  def leave_community!(community)
+    self.user_community_memberships.find_by_community_id(community).destroy
+  end
+  
+  def part_of_community?(community)
+    return self.user_community_memberships.find_by_community_id(community)
+  end
+  
+  def subscribe_to(cbo)
+    self.subscriptions.create!(:cbo_id => cbo.id) if self.subscriptions.find_by_cbo_id(cbo).nil?
+  end
+  
+  def unsubscribe_from(cbo)
+    self.subscriptions.find_by_cbo_id(cbo).destroy if !self.subscriptions.find_by_cbo_id(cbo).nil?
+  end
+  
+  def subscribed?(cbo)
+    subscription = self.subscriptions.find_by_cbo_id(cbo)
+    if subscription
+      return true
+    end
+  end
+  
+=begin  
+  def join_cbo!(cbo, default_confirm = 0)
+    self.memberships.create!(:cbo_id => cbo.id, :confirmed => default_confirm)
+  end
+  
+  
   
   def join_opportunity!(opportunity, default_confirm = 0)
     self.participations.create!(:opportunity_id => opportunity.id, :confirmed => default_confirm)
@@ -58,9 +88,7 @@ class User < ActiveRecord::Base
     self.participations.find_by_opportunity_id(opportunity).destroy
   end
   
-  def leave_community!(community)
-    self.user_community_memberships.find_by_community_id(community).destroy
-  end
+  
   
   def part_of_cbo?(cbo)
     # you are only a part of a CBO if you have a confirmed membership
@@ -70,18 +98,14 @@ class User < ActiveRecord::Base
       return membership if membership.confirmed == 4
     end
   end
-  
-  def part_of_community?(community)
-    return self.user_community_memberships.find_by_community_id(community)
-  end
-=begin  
+ 
   def part_of_opportunity?(opportunity)
     participation = self.participations.find_by_opportunity_id(opportunity)
     if participation
       return participation unless participation.confirmed == 0
     end
   end
-=end
+
   
   def pending_of_cbo?(cbo)
     membership = self.memberships.find_by_cbo_id(cbo)
@@ -91,14 +115,14 @@ class User < ActiveRecord::Base
   end
   
   
-=begin  
+ 
   def pending_of_opportunity?(opportunity)
     participation = self.participations.find_by_opportunity_id(opportunity)
     if participation
       return participation if participation.confirmed == 0
     end
   end
-=end
+
   
   def confirmed_cbos_memberships(confirm_level = 4)
     self.memberships.find_all_by_confirmed(confirm_level)
@@ -141,7 +165,7 @@ class User < ActiveRecord::Base
   end
   
   
-=begin  
+ 
   def confirmed_opportunities_participations(confirm_level = 1)
     self.participations.find_all_by_confirmed(confirm_level)
   end

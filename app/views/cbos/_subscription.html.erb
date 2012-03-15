@@ -1,0 +1,18 @@
+
+<% if current_user.part_of_cbo?(@cbo) %>
+
+	Unsubscribe from this CBO:<br /><br />
+	<%= form_for(current_user.subscriptions.find_by_cbo_id(@cbo),
+				:html => { :method => :delete }) do |f| %>
+		<% f.submit "Unsubscribe", :class => "btn danger" %>
+	<% end %>
+
+<% else %>
+
+	Subscribe to this CBO:<br /><br />
+	<%= form_for(current_user.subscriptions.build(:cbo_id => @cbo.id)) do |f| %>
+		<%= f.hidden_field :cbo_id %>
+		<%= f.submit "Subscribe", :class => "btn primary"  %>
+	<% end %>
+<% end %>
+

@@ -20,11 +20,11 @@ class PagesController < ApplicationController
     
     @title = "The College Project"
     all_cbos = Cbo.all
-    unjoined_cbos = all_cbos
-    joined_cbos = []
+    unsubscribed_cbos = all_cbos
+    subscribed_cbos = []
     
-    @unjoined_cboprofiles = []
-    @joined_cboprofiles = []
+    @unsubscribed_cboprofiles = []
+    @subscribed_cboprofiles = []
     
     @center_lat = 42.357778
 		@center_lng = -71.061667
@@ -36,8 +36,8 @@ class PagesController < ApplicationController
   		@center_text = "#{current_user.userprofile.name}, Your Current Location"
   		
   		
-      joined_cbos = current_user.cbos
-  		unjoined_cbos = all_cbos - joined_cbos
+      subscribed_cbos = current_user.subscribed_cbos
+  		unsubscribed_cbos = all_cbos - subscribed_cbos
   	end
   	
 	
@@ -46,16 +46,16 @@ class PagesController < ApplicationController
 	  # Filter based on category
 	  if !@selected_category.blank?
       # A category is provided
-      unjoined_cbos.each do |unjoined_cbo|
-        if unjoined_cbo.cboprofile.category_id == @selected_category.to_i
-          @unjoined_cboprofiles.push(unjoined_cbo.cboprofile)
+      unsubscribed_cbos.each do |unsubscribed_cbo|
+        if unsubscribed_cbo.cboprofile.category_id == @selected_category.to_i
+          @unsubscribed_cboprofiles.push(unsubscribed_cbo.cboprofile)
                 
         end
       end
       
-      joined_cbos.each do |joined_cbo|
-        if joined_cbo.cboprofile.category_id == @selected_category.to_i
-          @joined_cboprofiles.push(joined_cbo.cboprofile)
+      subscribed_cbos.each do |subscribed_cbo|
+        if subscribed_cbo.cboprofile.category_id == @selected_category.to_i
+          @subscribed_cboprofiles.push(subscribed_cbo.cboprofile)
             
         end
       end
@@ -65,8 +65,8 @@ class PagesController < ApplicationController
     else
       # No category provided - no filtering
 
-      @unjoined_cboprofiles = unjoined_cbos.collect {|unjoined_cbo| unjoined_cbo.cboprofile }
-  	  @joined_cboprofiles = joined_cbos.collect {|joined_cbo| joined_cbo.cboprofile }
+      @unsubscribed_cboprofiles = unsubscribed_cbos.collect {|unsubscribed_cbo| unsubscribed_cbo.cboprofile }
+  	  @subscribed_cboprofiles = subscribed_cbos.collect {|subscribed_cbo| subscribed_cbo.cboprofile }
 
  	  
   	  @category_name = 'All Categories'
@@ -75,7 +75,7 @@ class PagesController < ApplicationController
 	  
 	  # End filter
 	  
-	  @cbo_count = @unjoined_cboprofiles.count + @joined_cboprofiles.count
+	  @cbo_count = @unsubscribed_cboprofiles.count + @subscribed_cboprofiles.count
 	 
     
     

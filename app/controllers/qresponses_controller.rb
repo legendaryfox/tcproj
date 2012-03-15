@@ -1,14 +1,8 @@
 class QresponsesController < ApplicationController
-  
+
+=begin  
   before_filter :authenticate_user, :only => [:new, :create]
 
-=begin
-  def new
-    @title = "New Questionnaire Response"
-    @questionnaire = :params[:id]
-    @qresponse = current_user.qresponses.new(:questionnaire_id => @questionnaire.id)
-  end
-=end
 
   def create
     @questionnaire = Questionnaire.find(params[:qresponse][:questionnaire_id])
@@ -111,5 +105,5 @@ class QresponsesController < ApplicationController
       
     
   end
-
+=end
 end

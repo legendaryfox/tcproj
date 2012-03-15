@@ -52,8 +52,8 @@ if (GBrowserIsCompatible()) {
 
 	// SET UP CBO MARKERS
 
-	// UNJOINED CBOS
-	<% unjoined_cboprofiles.each do |cboprofile| %>
+	// UNSUBSCRIBED CBOS
+	<% unsubscribed_cboprofiles.each do |cboprofile| %>
 	var point = new GLatLng(<%= cboprofile.latitude || center_lat  %>, <%= cboprofile.longitude || center_lng %>);
 	var myIcon = new GIcon(G_DEFAULT_ICON);
 	myIcon.image = "<%= image_path("red_workdesk.png") %>";
@@ -71,8 +71,8 @@ if (GBrowserIsCompatible()) {
 	map.addOverlay(marker);
 	<% end %>
 
-	// JOINED CBOS
-	<% joined_cboprofiles.each do |cboprofile| %>
+	// SUBSCRIBED CBOS
+	<% subscribed_cboprofiles.each do |cboprofile| %>
 	var point = new GLatLng(<%= cboprofile.latitude || center_lat  %>, <%= cboprofile.longitude || center_lng %>);
 	var myIcon = new GIcon(G_DEFAULT_ICON);
 	myIcon.image = "<%= image_path("green_workdesk.png") %>";

@@ -1,5 +1,6 @@
 
 class Qresponse < ActiveRecord::Base
+=begin
   attr_accessible :user_id
   attr_accessible :membership_id
   attr_accessible :questionnaire_id
@@ -20,7 +21,7 @@ class Qresponse < ActiveRecord::Base
   belongs_to :questionnaire, :class_name => "Questionnaire"
   belongs_to :membership, :class_name => "Membership"
   
-  
+=end  
 end
 
 

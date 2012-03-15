@@ -2,6 +2,7 @@
 
 
 class Opportunity < ActiveRecord::Base
+=begin
   attr_accessible :name, :description, :cbo_id, :questionnaire_id
   attr_accessible :address, :latitude, :longitude
   attr_accessible :start_date, :end_date
@@ -48,7 +49,7 @@ class Opportunity < ActiveRecord::Base
       self.participations.find_by_user_id(user).confirm!
     end
   end
-  
+=end  
 end
 
 # == Schema Information

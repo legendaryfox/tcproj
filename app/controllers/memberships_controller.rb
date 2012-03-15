@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-  
+=begin  
   def new
 
   end
@@ -48,7 +48,6 @@ class MembershipsController < ApplicationController
     }
   end
 
-=begin
   def confirm0
     
   end

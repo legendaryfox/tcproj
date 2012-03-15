@@ -1,4 +1,6 @@
 class OpportunitiesController < ApplicationController
+  
+=begin
   def show
     @opportunity = Opportunity.find(params[:id])
   end
@@ -18,5 +20,5 @@ class OpportunitiesController < ApplicationController
       render 'new'
     end
   end
-
+=end
 end

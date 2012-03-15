@@ -1,4 +1,5 @@
 class Questionnaire < ActiveRecord::Base
+=begin
   attr_accessible :question1_text, 
                   :question2_text,
                   :question3_text,
@@ -19,7 +20,7 @@ class Questionnaire < ActiveRecord::Base
   
   
  
-  
+=end  
   
   
 end

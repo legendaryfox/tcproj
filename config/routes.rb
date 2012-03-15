@@ -1,6 +1,10 @@
 Tcproj::Application.routes.draw do
   
   
+  get "subscriptions/create"
+
+  get "subscriptions/destroy"
+
   get "qresponses/new"
 
   get "qresponses/show"
@@ -110,6 +114,7 @@ Tcproj::Application.routes.draw do
   resources :qresponses
   
   resources :pages
+  resources :subscriptions
 
     
 

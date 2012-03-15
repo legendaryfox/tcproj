@@ -9,8 +9,8 @@
 
 
 
-<% if current_user.cbos.empty? %>
-	<p>You are not part of any CBOs. See some nearby CBOs <%= link_to "here", nearby_cbos_path %>.</p>
+<% if current_user.subscribed_cbos.empty? %>
+	<p>You are subscribed to any CBOs. See some nearby CBOs <%= link_to "here", nearby_cbos_path %>.</p>
 <% end %>
 
 

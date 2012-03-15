@@ -24,8 +24,11 @@ class Cbo < ActiveRecord::Base
                     
   # has_many :opportunities
   
-  has_many :memberships #, :foreign_key => "cbo_id"
-  has_many :users, :through => :memberships, :source => :user
+  #has_many :memberships #, :foreign_key => "cbo_id"
+  #has_many :users, :through => :memberships, :source => :user
+  
+  has_many :subscriptions
+  has_many :subscribed_users, :through => :subscriptions, :source => :user
   
   has_many :cbo_community_memberships
   has_many :communities, :through => :cbo_community_memberships, :source => :community
@@ -80,7 +83,7 @@ class Cbo < ActiveRecord::Base
   end
   
   
-  
+=begin  
   def confirmed_users_memberships(confirm_level = 4)
     self.memberships.find_all_by_confirmed(confirm_level)
   end
@@ -128,7 +131,7 @@ class Cbo < ActiveRecord::Base
       self.memberships.find_by_user_id(user).confirm!
     end
   end
-  
+=end  
   
   
   private

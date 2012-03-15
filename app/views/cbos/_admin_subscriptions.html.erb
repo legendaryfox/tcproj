@@ -1,0 +1,9 @@
+
+<% if @cbo.confirmed_users.size > 0 %>
+<p>Your organization currently has these followers:</p>
+
+
+<%= render 'users_subscriptions_table', :subscribed_users => @subscribed_users %>
+
+
+<%end %>

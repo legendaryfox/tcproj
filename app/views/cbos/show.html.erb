@@ -8,11 +8,11 @@
 </p>
 
 <% if signed_in_user? %>
-	<%= render 'user_membership', :cbo => @cbo %>
+	<%= render 'user_subscription', :cbo => @cbo %>
 
 <% end %>
 
 <% if current_cbo?(@cbo) %>
-	<%= render 'admin_members', :cbo => @cbo %>
+	<%= render 'admin_subscriptions', :cbo => @cbo %>
 	<p><%= link_to "Edit Profile", edit_cbo_path(@cbo) %></p>
 <% end %>

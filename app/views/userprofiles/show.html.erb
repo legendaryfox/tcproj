@@ -79,9 +79,11 @@
 				</ul>
 			</li>
 			
+			
+			
 			<li id="4Tab">
 				<ul class="infolist">
-					<% @userprofile.user.cbos.each do |cbo|%>
+					<% @userprofile.user.subscribed_cbos.each do |cbo|%>
 					<li><%= link_to cbo.name, cbo.cboprofile %></li>
 					<% end %>
 				</ul>

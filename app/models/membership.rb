@@ -1,4 +1,5 @@
 class Membership < ActiveRecord::Base
+=begin
   attr_accessible :confirmed, :cbo_id, :user_id
   # 0 = not confirmed - admin needs to read
   # 1 = admin confirmed - CBO needs to read
@@ -21,7 +22,7 @@ class Membership < ActiveRecord::Base
   def confirmed?
     self.confirmed != 0
   end
-  
+=end
 end
 
 

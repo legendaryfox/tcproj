@@ -19,7 +19,11 @@
 				<div class="modal-body">
 
 
-					<%= render 'questionnaires/modal_reply', :questionnaire => @cboprofile.cbo.questionnaire, :qresponse => Qresponse.new(:questionnaire_id => @cboprofile.cbo.questionnaire.id) %>
+					<% 
+					
+					#render 'questionnaires/modal_reply', :questionnaire => @cboprofile.cbo.questionnaire, :qresponse => Qresponse.new(:questionnaire_id => @cboprofile.cbo.questionnaire.id) 
+					
+					%>
 
 
 
@@ -33,7 +37,7 @@
 			</div>
 
 			<a class="btn" data-controls-modal="questionnaire-modal" data-backdrop="static" data-keyboard="true">View Application</a>
-
+			<%= render 'cbos/user_subscription', :cbo => @cboprofile.cbo %>
 
 		</p>
 		<% end %>

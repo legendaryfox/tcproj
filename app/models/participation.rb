@@ -3,6 +3,7 @@
 
 
 class Participation < ActiveRecord::Base
+=begin
   belongs_to :user,  :class_name => "User"
   belongs_to :opportunity,      :class_name => "Opportunity"
   
@@ -13,6 +14,7 @@ class Participation < ActiveRecord::Base
   def confirmed?
     self.confirmed != 0
   end
+=end
 end
 
 

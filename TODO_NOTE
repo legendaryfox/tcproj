@@ -1,3 +1,21 @@
+SUBSCRIPTIONS
+:user, :cbo
+-a follower relationship
+-mailing list
+-etc
+
+Participation
+:user, :cbo, <times and dates>
+-can only submit one at a time
+-if user has applied, only then can CBO look at user information
+
+
+FIRST, SUBSCRIPTIONS.
+-integrate follower/following between cbo and user
+-pull out all membership references and code; use follower/following
+
+
+
 NEW MEMBERSHIPS + FOLLOWERS
 --erase current membership model?
 

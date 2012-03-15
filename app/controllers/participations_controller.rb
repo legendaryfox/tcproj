@@ -1,4 +1,5 @@
 class ParticipationsController < ApplicationController
+=begin
   def new
 
   end
@@ -19,5 +20,5 @@ class ParticipationsController < ApplicationController
     redirect_to @cbo, :flash => { :succes => "You have successfully left this CBO." }
     
   end
-  
+=end  
 end

@@ -1,3 +1,5 @@
+<!--
+
 <% if !current_user.qresponses.find_by_questionnaire_id(questionnaire.id) %>
 	<%= form_for(qresponse, :html => { :class => "form-stacked" }) do |qresponse_form| %>
 		<%= render 'shared/error_messages', :object => qresponse_form.object %>
@@ -141,3 +143,5 @@
 	
 
 <% end %>
+
+!-->
