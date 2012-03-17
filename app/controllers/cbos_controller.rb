@@ -18,6 +18,8 @@ class CbosController < ApplicationController
     @cbo = Cbo.find(params[:id])
     @subscribed_users = @cbo.subscribed_users.all
     
+    @participations = @cbo.participations
+    
 =begin
     @approved_memberships = @cbo.all #@cbo.approved_users_memberships
     @confirmed_memberships = [] #@cbo.confirmed_users_memberships

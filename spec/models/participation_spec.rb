@@ -4,6 +4,7 @@ describe Participation do
   pending "add some examples to (or delete) #{__FILE__}"
 end
 
+
 # == Schema Information
 #
 # Table name: participations
@@ -11,7 +12,7 @@ end
 #  id         :integer         not null, primary key
 #  user_id    :integer
 #  cbo_id     :integer
-#  status     :integer
+#  status     :integer         default(0)
 #  monday     :text
 #  tuesday    :text
 #  wednesday  :text

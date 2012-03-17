@@ -92,6 +92,12 @@ Tcproj::Application.routes.draw do
     end
   end
   
+  resources :participations do
+    member do
+      put 'change_status'
+    end
+  end
+  
   resources :qresponses do
     collection do
       get 'my'

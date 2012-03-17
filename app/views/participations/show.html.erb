@@ -1,8 +1,53 @@
-<% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_of_week| %>
-	<h2><%= day_of_week %></h2><br />
-	<% (0..23).each do |hour| %>
-		Hour <%= hour %>: <%= @participation[day_of_week][hour] == 1 ? "Yes" : "No" %> <br />
+<% if signed_in_user? %>
+	<% if @participation.user_id == current_user.id %>
+		<%= link_to "Edit", edit_participation_path(@participation) %>
 	<% end %>
-	<hr />	
+<% end %>		
 	
+	
+<% if signed_in_cbo? %>
+	<% if @participation.cbo_id == current_cbo.id %>
+	
+		<%= form_for @participation do |participation_form| %>
+	
+			<div class="clearfix">
+				<%= participation_form.label :status, :class => "xlInput" %>
+				<div class="input">
+					<%= participation_form.select :status, 
+						options_for_select([['Not Confirmed', 0], ['Need More Infos', 1], ['Confirmed', 2]], @participation.status)
+ 					%>
+
+					<%= participation_form.submit "Set Status", :class => "btn primary"%>
+				</div>
+			</div>
+		<% end %>
+	
+	<% end %>
 <% end %>
+	
+	
+
+
+<table class="bordered-table">
+	<thead>
+		<th>Hour</th>
+		<th>Mon</th>
+		<th>Tue</th>
+		<th>Wed</th>
+		<th>Thu</th>
+		<th>Fri</th>
+		<th>Sat</th>
+		<th>Sun</th>
+	</thead>
+	<tbody>
+		<% (0..23).each do |hour_num| %>
+			<tr>
+			<% hour_key = "hour#{hour_num}" %>
+				<td><%= hour_num %></td>
+				<% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_of_week| %>
+				<td><%= @participation[day_of_week][hour_key] == "1" ? "Yes" : " " %></td>
+			<% end %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

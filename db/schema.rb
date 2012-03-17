@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120315163449) do
+ActiveRecord::Schema.define(:version => 20120317163050) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(:version => 20120315163449) do
   create_table "participations", :force => true do |t|
     t.integer  "user_id"
     t.integer  "cbo_id"
-    t.integer  "status"
+    t.integer  "status",     :default => 0
     t.text     "monday"
     t.text     "tuesday"
     t.text     "wednesday"
