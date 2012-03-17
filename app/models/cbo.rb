@@ -33,14 +33,16 @@ class Cbo < ActiveRecord::Base
   has_many :cbo_community_memberships
   has_many :communities, :through => :cbo_community_memberships, :source => :community
   
+  has_many :participations
+  
   
   
   
   has_one :cboprofile
-  has_one :questionnaire
+  #has_one :questionnaire
   
   accepts_nested_attributes_for :cboprofile
-  accepts_nested_attributes_for :questionnaire
+  #accepts_nested_attributes_for :questionnaire
                     
   
   

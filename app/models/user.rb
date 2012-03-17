@@ -28,11 +28,13 @@ class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :subscribed_cbos, :through => :subscriptions, :source => :cbo
   
+  has_many :participations
+  
   has_many :user_community_memberships
   has_many :communities, :through => :user_community_memberships, :source => :community
   
   has_one :userprofile
-  has_many :qresponses
+  #has_many :qresponses
   
   accepts_nested_attributes_for :userprofile
   
@@ -68,6 +70,7 @@ class User < ActiveRecord::Base
       return true
     end
   end
+  
   
 =begin  
   def join_cbo!(cbo, default_confirm = 0)

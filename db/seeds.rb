@@ -45,10 +45,11 @@ cbo1.create_cboprofile(
   :website => "http://www.gbfb.org",
   :phone => "(617) 427-5200"
 )
+=begin
 cbo1.create_questionnaire(
   :question1_text => "Question 1 cbo1",
   :question2_text => "Question 2 cbo1")
-
+=end
 cbo2 = Cbo.create!(
   :name => "Quincy Asian Resources",
   :email => "quincy@email.com",
@@ -67,10 +68,11 @@ cbo2.create_cboprofile(
   :website => "http://www.quincyasianresources.org",
   :phone => "(617) 472-2200"
 )
+=begin
 cbo2.create_questionnaire(
   :question1_text => "Question 1 cbo2",
   :question2_text => "Question 2 cbo2")
-
+=end
 cbo3 = Cbo.create!(
   :name => "Rosie's Place",
   :email => "rosie@email.com",
@@ -89,10 +91,11 @@ cbo3.create_cboprofile(
   :website => "http://www.rosiesplace.org",
   :phone => "(617) 442-9322"
 )
+=begin
 cbo3.create_questionnaire(
   :question1_text => "Question 1 cbo3",
   :question2_text => "Question 2 cbo3")
-  
+=end
   
 
 cbo4 = Cbo.create!(
@@ -113,10 +116,11 @@ cbo4.create_cboprofile(
   :website => "http://www.cradlestocrayons.org/boston",
   :phone => "(617) 779-4700"
 )
+=begin
 cbo4.create_questionnaire(
   :question1_text => "Question 1 cbo4",
   :question2_text => "Question 2 cbo4")
-
+=end
 cbo5 = Cbo.create!(
   :name => "Boston Rescue Mission",
   :email => "rescue@email.com",
@@ -135,10 +139,11 @@ cbo5.create_cboprofile(
   :website => "http://www.brm.org",
   :phone => "(617) 338-9000"
 )
+=begin
 cbo5.create_questionnaire(
   :question1_text => "Question 1 cbo5",
   :question2_text => "Question 2 cbo5")
-
+=end
 cbo6 = Cbo.create!(
   :name => "Big Sister/Big Brother of Massachusetts Bay",
   :email => "bbbs@email.com",
@@ -157,10 +162,11 @@ cbo6.create_cboprofile(
   :website => "http://www.bbbsmb.org",
   :phone => "(617) 542-9090"
 )
+=begin
 cbo6.create_questionnaire(
   :question1_text => "Question 1 cbo6",
   :question2_text => "Question 2 cbo6")
-
+=end
 cbo7 = Cbo.create!(
   :name => "Samaritans of Boston",
   :email => "samaritans@email.com",
@@ -179,10 +185,11 @@ cbo7.create_cboprofile(
   :website => "http://www.samaritanshope.org",
   :phone => "(617) 536-2460"
 )
+=begin
 cbo7.create_questionnaire(
   :question1_text => "Question 1 cbo7",
   :question2_text => "Question 2 cbo7")
-
+=end
 cbo8 = Cbo.create!(
   :name => "Project Bread",
   :email => "bread@email.com",
@@ -201,10 +208,11 @@ cbo8.create_cboprofile(
   :website => "http://www.projectbread.org",
   :phone => "(617) 723-5000"
 )
+=begin
 cbo8.create_questionnaire(
   :question1_text => "Question 1 cbo8",
   :question2_text => "Question 2 cbo8")
-
+=end
 cbo9 = Cbo.create!(
   :name => "Boston Cares",
   :email => "cares@email.com",
@@ -223,10 +231,11 @@ cbo9.create_cboprofile(
   :website => "http://www.bostoncares.org",
   :phone => "(617) 442-0910"
 )
+=begin
 cbo9.create_questionnaire(
   :question1_text => "Question 1 cbo9",
   :question2_text => "Question 2 cbo9")
-
+=end
 
 cbo10 = Cbo.create!(
   :name => "Habitat for Humanity Greater Boston",
@@ -246,10 +255,11 @@ cbo10.create_cboprofile(
   :website => "http://www.habitatboston.org",
   :phone => "(617) 423-2223"
 )
+=begin
 cbo10.create_questionnaire(
   :question1_text => "Question 1 cbo10",
   :question2_text => "Question 2 cbo10")
-
+=end
 
 
 

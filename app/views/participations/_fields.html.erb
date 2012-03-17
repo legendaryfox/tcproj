@@ -1,0 +1,15 @@
+	
+<div class="clearfix">
+	<%= participation_form.label :cbo_id, :class => "xlInput" %>
+	<div class="input">
+		<%= participation_form.select(:cbo_id, Cbo.all.collect {|cbo| [cbo.cboprofile.name, cbo.id] }, :prompt => true) %>
+	</div>
+</div>
+
+
+<% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_of_week| %>
+
+	<%= render 'day_hour_fields', :day_of_week => day_of_week, :participation_form => participation_form %>
+	<hr />	
+	
+<% end %>

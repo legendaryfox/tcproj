@@ -1,24 +1,44 @@
 class ParticipationsController < ApplicationController
-=begin
+  
+  before_filter :authenticate_user, :only => [:new, :create, :edit, :update]
+  
   def new
-
+    @participation = Participation.new
+    @participation.set_default_schedule
   end
   
   def create
-    #@cbo = Cbo.find(params[:participations][:cbo_id])
-    #redirect_to @cbo
-    #puts params
-    @cbo = Cbo.find_by_id(params[:participation][:cbo_id])
-    current_user.join_cbo!(@cbo)
-    redirect_to @cbo, :flash => { :success => "You have successfully joined this CBO." }
-    
+    @participation = current_user.participations.new()
+    @participation.set_default_schedule
+    @participation.attributes = params[:participation]
+    if @participation.save
+      redirect_to participations_path, :success => "Successfully made your participation"
+    else
+      render 'new'
+    end
   end
   
-  def destroy
-    @cbo = Participation.find_by_id(params[:id]).cbo
-    current_user.leave_cbo!(@cbo)
-    redirect_to @cbo, :flash => { :succes => "You have successfully left this CBO." }
-    
+  def index
+    @participations = Participation.all
   end
-=end  
+  
+  def show
+    @participation = Participation.find(params[:id])
+  end
+  
+  def edit
+    @participation = Participation.find(params[:id])
+  end
+  
+  def update
+    @participation = Participation.find(params[:id])
+    if @participation.update_attributes(params[:participation])
+      redirect_to participations_path, :success => "Successfully updated your participation"
+    else
+      render 'edit'
+    end
+  end
+  
+  
+  
 end

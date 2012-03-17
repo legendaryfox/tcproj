@@ -104,14 +104,14 @@ Tcproj::Application.routes.draw do
   resources :cboprofiles
   resources :cbos
   resources :categories
-  resources :opportunities
+  #resources :opportunities
   resources :participations
-  resources :memberships
+  #resources :memberships
   resources :communities
   resources :user_community_memberships
   resources :cbo_community_memberships
-  resources :questionnaires
-  resources :qresponses
+  #resources :questionnaires
+  #resources :qresponses
   
   resources :pages
   resources :subscriptions

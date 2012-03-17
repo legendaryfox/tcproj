@@ -1,0 +1,16 @@
+<%= participation_form.fields_for day_of_week, do |day_form| %>
+
+	<%= day_of_week %>:<br />
+	
+	<% (0..23).each do |hour_num| %>
+	
+		<% hour_key = "hour#{hour_num}" %>
+	
+		<%= day_form.hidden_field hour_key.to_sym, :value => 0 %>
+		<%= check_box_tag "participation[#{day_of_week.to_s}][#{hour_key}]", 
+			"1",
+		 	@participation[day_of_week][hour_key] == "1" ? true : false 
+		%>
+	<% end %>
+
+<% end %>

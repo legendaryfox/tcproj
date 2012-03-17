@@ -1,14 +1,19 @@
 class CreateParticipations < ActiveRecord::Migration
   def self.up
     create_table :participations do |t|
-      t.integer :student_id
+      t.integer :user_id
       t.integer :cbo_id
+      t.integer :status
+      t.text :monday
+      t.text :tuesday
+      t.text :wednesday
+      t.text :thursday
+      t.text :friday
+      t.text :saturday
+      t.text :sunday
 
       t.timestamps
     end
-    add_index :participations, :student_id
-    add_index :participations, :cbo_id
-    
   end
 
   def self.down

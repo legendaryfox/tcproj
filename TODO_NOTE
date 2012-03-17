@@ -9,6 +9,47 @@ Participation
 -can only submit one at a time
 -if user has applied, only then can CBO look at user information
 
+PROCESS:
+-user logs in
+-user goes to CBO page
+-user fills out chart
+-user submits chart
+-cbo recieves chart
+-? ACCEPT, REJECT, NEED MORE INFO
+--(ACCEPT): alert CBO to send applcation to user [<---automate based on an uploaded application???]. mark as accept
+--(REJECT): delete the application. send message.
+--(MORE INFO): cbo can fill in message. send message. keep marked as pending.
+
+
+
+BACKUP
+
+	
+	<%= participation_form.fields_for :monday, do |monday_form| %>
+	
+		<% (0..23).each do |hour| %>
+			<%= check_box_tag "participation[monday][#{hour}]", @participation.monday[hour] == 1 ? "1" : "0", @participation.monday[hour] == 1 ? true : false %>
+		<% end %>
+	
+	<% end %>
+	
+	<hr />
+	
+	<%= participation_form.fields_for :monday , do |monday_form| %>
+	
+		<% (0..23).each do |hour| %>
+			<%= check_box_tag "participation[#{:monday.to_s}][#{hour}]", @participation[:monday][hour] == 1 ? "1" : "0", @participation[:monday][hour] == 1 ? true : false %>
+		<% end %>
+	
+	<% end %>
+	
+
+
+END
+PLAN OF ATTACK:
+-PARTICIPATION = :user, :cbo, :status, (:monday, :tuesday, :wednesday, etc...)
+
+
 
 FIRST, SUBSCRIPTIONS.
 -integrate follower/following between cbo and user

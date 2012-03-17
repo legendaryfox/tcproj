@@ -1,1 +1,8 @@
-Hello
+<% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_of_week| %>
+	<h2><%= day_of_week %></h2><br />
+	<% (0..23).each do |hour| %>
+		Hour <%= hour %>: <%= @participation[day_of_week][hour] == 1 ? "Yes" : "No" %> <br />
+	<% end %>
+	<hr />	
+	
+<% end %>
