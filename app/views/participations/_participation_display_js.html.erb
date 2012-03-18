@@ -1,0 +1,38 @@
+<script language="javascript">
+
+function showHideRow(rowId) {
+	row = document.getElementById(rowId)
+	row.style.display = (row.style.display == 'table-row')? 'none' : 'table-row';
+}
+
+function showHideMorning() {
+	showHideRow('row_0');
+	showHideRow('row_1');
+	showHideRow('row_2');
+	showHideRow('row_3');
+	showHideRow('row_4');
+	showHideRow('row_5');
+	showHideRow('row_6');
+	showHideRow('row_7');
+	showHideRow('row_8');
+	
+}
+
+function showHideEvening() {
+	showHideRow('row_18');
+	showHideRow('row_19');
+	showHideRow('row_20');
+	showHideRow('row_21');
+	showHideRow('row_22');
+	showHideRow('row_23');
+	
+}
+
+function highlightRow(rowId) {
+	row = document.getElementById(rowId)
+	row.style.backgroundColor = "#FF0000"
+	
+}
+
+
+</script>

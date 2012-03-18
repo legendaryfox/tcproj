@@ -1,15 +1,100 @@
+<%= render 'participation_stylesheet' %>	
+	
+<%= render 'participation_display_js' %>
+
+<script language="javascript">
+	function changeCellColor(td)
+	{
+	    var node = td;
+	    while ( (node = node.parentNode) != null )
+	    {
+	        if ( node.tagName == "TD" )
+	        {
+	            //node.style.backgroundColor = td.checked ? "lightgreen" : "transparent";
+				node.className = td.checked ? "selectedCell" : "unselectedCell";
+	            return;
+	        }
+	    }
+	    // not found...give up?
+	}
+</script>
+
+
 
 <%= form_for @participation, :html => { :multipart => true } do |participation_form| %>
-	<%= render 'shared/error_messages', :object => participation_form.object %>
 
-	<%= render 'fields', :participation_form => participation_form %>
+<table class="bordered-table condensed-table" id="scheduleTable">
+	<thead>
+		<th>Hour</th>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+		<th>Sunday</th>
+	</thead>
+	<tbody>
+		
+		<% (0..23).each do |hour_num| # for each hour %>
+			
+			
+			
+			<% if hour_num == 0 # show the toggle times %>
+				<tr>
+					<td onMouseDown="showHideMorning()" colspan="8">Show/Hide Morning Times</td>
+				</tr>
+				
+			<% end %>
+			
+			
+			
+			
+			<% if (hour_num >= 0 && hour_num <= 8) # hide the morning section %>
+				<tr style="display: none;" class="morningRow" id="row_<%= hour_num %>">
+					
+			<% elsif (hour_num >= 18 && hour_num <= 23) # hide the evening section %>
+				<tr style="display: none;" class="eveningRow" id="row_<%= hour_num %>">
+					
+			<% else # draw as normal %>
+				<tr id="row_<%= hour_num %>">
+					
+			<% end %>
 
+				
+					<% hour_key = "hour#{hour_num}" # string-ify it %>
+					<td><%= (hour_num % 12 == 0 ? "12" : (hour_num % 12).to_s) + (hour_num < 12 ? " AM" : " PM") %></td>
+					
+					<% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_of_week| %>
+				
+						<%= participation_form.fields_for day_of_week do |day_form| %>
+					
+							<td class="<%= @participation[day_of_week][hour_key] == "1" ? "selectedCell" : "unselectedCell" %>">
+								<%= day_form.hidden_field hour_key.to_sym, :value => 0 %>
+								<%= check_box_tag "participation[#{day_of_week.to_s}][#{hour_key}]", 
+									"1",
+								 	@participation[day_of_week][hour_key] == "1" ? true : false,
+								 	:onClick => "changeCellColor(this);"
+								%>
+							</td>
+				
+						<% end %>
+					<% end %>	
+			</tr>
+			
+			<% if hour_num == 23 # show the toggler for evening times%>
+				<tr>
+					<td onMouseDown="showHideEvening()" colspan="8">Show/Hide Evening Times</td>
+				</tr>
+			<% end %>
 
+		<% end %>
+	</tbody>
+</table>
 
+<div class="actions">
+	<%= participation_form.submit "Edit", :class => "btn primary" %>
+</div>
 
-
-	<div class="actions">
-		<%= participation_form.submit "Edit", :class => "btn primary" %>
-	</div>
 
 <% end %>

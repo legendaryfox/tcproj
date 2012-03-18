@@ -1,3 +1,29 @@
+	<% if (hour_num >= 0 && hour_num <= 8) || (hour_num >= 18 && hour_num <= 23) %>
+		<% if hour_num == 0 %>
+			<tr>
+				<td colspan="8">Show Morning Times</td>
+			</tr>
+		<% end %>
+		
+		<% if hour_num == 18 %>
+			<tr>
+				<td colspan="8">Show Evening Times</td>
+			</tr>
+		<% end %>
+		<tr style="display:none">
+	<% else %>
+		<tr>
+	<% end %>
+	
+	<% hour_key = "hour#{hour_num}" %>
+		<td><%= hour_num %></td>
+		<% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_of_week| %>
+		<td><%= @participation[day_of_week][hour_key] == "1" ? "Yes" : " " %></td>
+	<% end %>
+	</tr>
+
+
+
 SUBSCRIPTIONS
 :user, :cbo
 -a follower relationship

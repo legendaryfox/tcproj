@@ -26,9 +26,38 @@
 <% end %>
 	
 	
+<script language="javascript">
+function showHideRow(rowId) {
+	row = document.getElementById(rowId)
+	row.style.display = (row.style.display == 'table-row')? 'none' : 'table-row';
+}
 
+function showHideMorning() {
+	showHideRow('row_0');
+	showHideRow('row_1');
+	showHideRow('row_2');
+	showHideRow('row_3');
+	showHideRow('row_4');
+	showHideRow('row_5');
+	showHideRow('row_6');
+	showHideRow('row_7');
+	showHideRow('row_8');
+	
+}
 
-<table class="bordered-table">
+function showHideEvening() {
+	showHideRow('row_18');
+	showHideRow('row_19');
+	showHideRow('row_20');
+	showHideRow('row_21');
+	showHideRow('row_22');
+	showHideRow('row_23');
+	
+}
+
+</script>
+
+<table class="bordered-table condensed-table" id="scheduleTable">
 	<thead>
 		<th>Hour</th>
 		<th>Mon</th>
@@ -40,14 +69,40 @@
 		<th>Sun</th>
 	</thead>
 	<tbody>
+		
 		<% (0..23).each do |hour_num| %>
-			<tr>
+			
+		
+			<% if hour_num == 0 %>
+				<tr>
+					<td onmousedown="showHideMorning()" colspan="8">Show/Hide Morning Times</td>
+				</tr>
+			<% end %>
+			
+			
+			
+			
+			<% if (hour_num >= 0 && hour_num <= 8) %>
+				<tr style="display: none; background-color: #FFFFDD" id="row_<%= hour_num %>">
+			<% elsif (hour_num >= 18 && hour_num <= 23) %>
+				<tr style="display: none; background-color: #DDFFFF" id="row_<%= hour_num %>">
+			<% else %>
+				<tr id = "row_<%= hour_num %>">
+			<% end %>
+
 			<% hour_key = "hour#{hour_num}" %>
-				<td><%= hour_num %></td>
-				<% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_of_week| %>
+			<td><%= (hour_num % 12 == 0 ? "12" : (hour_num % 12).to_s) + (hour_num < 12 ? " AM" : " PM") %></td>
+			<% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_of_week| %>
 				<td><%= @participation[day_of_week][hour_key] == "1" ? "Yes" : " " %></td>
 			<% end %>
 			</tr>
+			
+			<% if hour_num == 23 %>
+				<tr>
+					<td onmousedown="showHideEvening()" colspan="8">Show/Hide Evening Times</td>
+				</tr>
+			<% end %>
+
 		<% end %>
 	</tbody>
 </table>

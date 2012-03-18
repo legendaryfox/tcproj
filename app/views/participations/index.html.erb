@@ -1,4 +1,4 @@
 <%= link_to "New", new_participation_path %><br />
 <% @participations.each do |participation| %>
-	<%= link_to "Participation #{participation.id}", edit_participation_path(participation) %> <br/>
+	<%= link_to "Participation #{participation.id}", participation %> <br/>
 <% end %>
