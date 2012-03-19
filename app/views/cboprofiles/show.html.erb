@@ -11,7 +11,7 @@
 		<!-- BEGIN QUESTIONNAIRE MODAL !-->
 		<% if signed_in_user? %>
 		<p>
-			<div id="questionnaire-modal" class="modal hide fade" style="overflow-y:auto; max-height: 90%; margin-top:-45%;">
+			<div id="participation-modal" class="modal hide fade" style="overflow-y:auto; max-height: 90%; margin-top:-45%;">
 				<div class="modal-header">
 					<a href="#" class="close">&times;</a>
 					<h3>Application Form to <%= @cboprofile.name %></h3>
@@ -19,9 +19,19 @@
 				<div class="modal-body">
 
 
-					<% 
+					<%= 
 					
 					#render 'questionnaires/modal_reply', :questionnaire => @cboprofile.cbo.questionnaire, :qresponse => Qresponse.new(:questionnaire_id => @cboprofile.cbo.questionnaire.id) 
+					
+					if current_user.participations.find_by_cbo_id(params[:id])
+						# already has a participation to this CBO.
+						render 'participations/modal_show', :participation => current_user.participations.find_by_cbo_id(params[:id])
+					else
+						# new participation to this CBO.
+						participation = current_user.participations.new(:cbo_id => params[:id])
+						participation.set_default_schedule
+						render 'participations/modal_reply', :participation => participation
+					end
 					
 					%>
 
@@ -36,7 +46,7 @@
 				!-->
 			</div>
 
-			<a class="btn" data-controls-modal="questionnaire-modal" data-backdrop="static" data-keyboard="true">View Application</a>
+			<a class="btn" data-controls-modal="participation-modal" data-backdrop="static" data-keyboard="true">View Application</a>
 			<%= render 'cbos/user_subscription', :cbo => @cboprofile.cbo %>
 
 		</p>
@@ -55,7 +65,7 @@
 	</div>
 
 	<div class="span11" style="border-left: 1px solid #eee; border-right: 1px solid #eee; margin-left: 0; padding-left: 19px">
-		<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small></h1>
+		<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small>  <a class="btn large primary" data-controls-modal="participation-modal" data-backdrop="static" data-keyboard="true">Volunteer</a> </h1>
 
 		<dl class="tabs">
 			<dd><a href="#1" class="active">Information</a></dd>

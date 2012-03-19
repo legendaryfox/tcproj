@@ -13,7 +13,8 @@ class ParticipationsController < ApplicationController
     
     @participation.attributes = params[:participation]
     if @participation.save
-      redirect_to @participation, :success => "Successfully made your participation"
+      #redirect_to @participation, :success => "Successfully made your participation"
+      redirect_to @participation.cbo.cboprofile, :flash => {:success => "Successfully sent your application! Please wait further instructions."}
     else
       render 'new'
     end
@@ -35,7 +36,12 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find(params[:id])
     #params[:participation][:status].to_i
     if @participation.update_attributes(params[:participation])
-      redirect_to @participation, :success => "Successfully updated your participation"
+      
+      if signed_in_cbo?
+        redirect_to @participation.cbo, :flash => {:success => "Successfully changed confirmation level."}
+      else
+        redirect_to @participation.cbo.cboprofile, :flash => {:success => "Successfully updated your participation"}
+      end
     else
       render 'edit'
     end
