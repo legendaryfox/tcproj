@@ -19,9 +19,21 @@
 	}
 </script>
 
+<h1>Participation Schedule</h1>
+
+<p>Please select which times you would be available to volunteer.</p><br />
 
 
 <%= form_for @participation, :html => { :multipart => true } do |participation_form| %>
+	<%= render 'shared/error_messages', :object => participation_form.object %>
+	
+	<div class="clearfix">
+		<%= participation_form.label :cbo_id, :class => "xlInput" %>
+		<div class="input">
+			<%= participation_form.select(:cbo_id, Cbo.all.collect {|cbo| [cbo.cboprofile.name, cbo.id] }, :prompt => true) %>
+		</div>
+	</div>
+
 
 <table class="bordered-table condensed-table" id="scheduleTable">
 	<thead>

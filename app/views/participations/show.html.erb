@@ -26,80 +26,68 @@
 <% end %>
 	
 	
-<script language="javascript">
-function showHideRow(rowId) {
-	row = document.getElementById(rowId)
-	row.style.display = (row.style.display == 'table-row')? 'none' : 'table-row';
-}
-
-function showHideMorning() {
-	showHideRow('row_0');
-	showHideRow('row_1');
-	showHideRow('row_2');
-	showHideRow('row_3');
-	showHideRow('row_4');
-	showHideRow('row_5');
-	showHideRow('row_6');
-	showHideRow('row_7');
-	showHideRow('row_8');
+<%= render 'participation_stylesheet' %>	
 	
-}
+<%= render 'participation_display_js' %>
 
-function showHideEvening() {
-	showHideRow('row_18');
-	showHideRow('row_19');
-	showHideRow('row_20');
-	showHideRow('row_21');
-	showHideRow('row_22');
-	showHideRow('row_23');
-	
-}
-
-</script>
 
 <table class="bordered-table condensed-table" id="scheduleTable">
 	<thead>
 		<th>Hour</th>
-		<th>Mon</th>
-		<th>Tue</th>
-		<th>Wed</th>
-		<th>Thu</th>
-		<th>Fri</th>
-		<th>Sat</th>
-		<th>Sun</th>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+		<th>Sunday</th>
 	</thead>
 	<tbody>
 		
-		<% (0..23).each do |hour_num| %>
+		<% (0..23).each do |hour_num| # for each hour %>
 			
-		
-			<% if hour_num == 0 %>
+			
+			
+			<% if hour_num == 0 # show the toggle times %>
 				<tr>
-					<td onmousedown="showHideMorning()" colspan="8">Show/Hide Morning Times</td>
+					<td onMouseDown="showHideMorning()" colspan="8">Show/Hide Morning Times</td>
 				</tr>
+				
 			<% end %>
 			
 			
 			
 			
-			<% if (hour_num >= 0 && hour_num <= 8) %>
-				<tr style="display: none; background-color: #FFFFDD" id="row_<%= hour_num %>">
-			<% elsif (hour_num >= 18 && hour_num <= 23) %>
-				<tr style="display: none; background-color: #DDFFFF" id="row_<%= hour_num %>">
-			<% else %>
-				<tr id = "row_<%= hour_num %>">
+			<% if (hour_num >= 0 && hour_num <= 8) # hide the morning section %>
+				<tr style="display: none;" class="morningRow" id="row_<%= hour_num %>">
+					
+			<% elsif (hour_num >= 18 && hour_num <= 23) # hide the evening section %>
+				<tr style="display: none;" class="eveningRow" id="row_<%= hour_num %>">
+					
+			<% else # draw as normal %>
+				<tr id="row_<%= hour_num %>">
+					
 			<% end %>
 
-			<% hour_key = "hour#{hour_num}" %>
-			<td><%= (hour_num % 12 == 0 ? "12" : (hour_num % 12).to_s) + (hour_num < 12 ? " AM" : " PM") %></td>
-			<% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_of_week| %>
-				<td><%= @participation[day_of_week][hour_key] == "1" ? "Yes" : " " %></td>
-			<% end %>
+				
+					<% hour_key = "hour#{hour_num}" # string-ify it %>
+					<td><%= (hour_num % 12 == 0 ? "12" : (hour_num % 12).to_s) + (hour_num < 12 ? " AM" : " PM") %></td>
+					
+					<% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_of_week| %>
+				
+					
+							<td class="<%= @participation[day_of_week][hour_key] == "1" ? "selectedCell" : "unselectedCell" %>">
+								
+								<%= @participation[day_of_week][hour_key] == "1" ? "Yes" : "" %>
+								
+							</td>
+				
+					<% end %>	
 			</tr>
 			
-			<% if hour_num == 23 %>
+			<% if hour_num == 23 # show the toggler for evening times%>
 				<tr>
-					<td onmousedown="showHideEvening()" colspan="8">Show/Hide Evening Times</td>
+					<td onMouseDown="showHideEvening()" colspan="8">Show/Hide Evening Times</td>
 				</tr>
 			<% end %>
 
