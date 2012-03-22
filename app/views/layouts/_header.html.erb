@@ -31,7 +31,6 @@
 				<li class="dropdown" data-dropdown="dropdown">
 					<a href="#" class="dropdown-toggle">CBOs</a>
 					<ul class="dropdown-menu">
-
 						<% current_user.subscribed_cbos.each do |cbo| %>
 						<li><%= link_to cbo.cboprofile.name, cbo.cboprofile %></li>
 						<% end %>
@@ -46,6 +45,19 @@
 						
 					</ul>
 				</li>
+				
+				<!-- PARTICIPATION DROPDOWN !-->
+				<li class="dropdown" data-dropdown="dropdown">
+					<a href="#" class="dropdown-toggle">Applications</a>
+					<ul class="dropdown-menu">
+						<% current_user.participations.each do |participation| %>
+						<li><%= link_to participation.cbo.cboprofile.name, participation %></li>
+						<% end %>
+						<li class="divider"></li>
+						<li><%= link_to "My Applications", my_participations_path %></li>
+					</ul>
+				</li>
+					
 				
 				
 				<!-- COMMUNITIES DROPDOWN !-->

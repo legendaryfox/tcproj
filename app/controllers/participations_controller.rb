@@ -1,10 +1,14 @@
 class ParticipationsController < ApplicationController
   
-  before_filter :authenticate_user, :only => [:new, :create, :edit]
+  before_filter :authenticate_user, :only => [:new, :create, :edit, :my]
   
   def new
     @participation = Participation.new
     @participation.set_default_schedule # there's probably a better way to do this...
+  end
+  
+  def my
+    @participations = current_user.participations
   end
   
   def create
@@ -26,6 +30,7 @@ class ParticipationsController < ApplicationController
   
   def show
     @participation = Participation.find(params[:id])
+    @new_participation_message = ParticipationMessage.new
   end
   
   def edit

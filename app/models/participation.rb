@@ -1,6 +1,7 @@
 class Participation < ActiveRecord::Base
   
   
+  
   # attr_accessible :status
   serialize :monday
   serialize :tuesday
@@ -12,7 +13,10 @@ class Participation < ActiveRecord::Base
   
   attr_accessible :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday
   attr_accessible :cbo_id
+  
   attr_accessible :status
+  
+  has_many :participation_messages
   
  
  

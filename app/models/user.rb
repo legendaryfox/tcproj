@@ -36,8 +36,21 @@ class User < ActiveRecord::Base
   has_one :userprofile
   #has_many :qresponses
   
+  has_many :participation_messages
+  
   accepts_nested_attributes_for :userprofile
   
+  def post_participation_message(participation, message)
+    if self.participations.find_by_id(participation.id)
+      # valid participation
+      ParticipationMessage.create(:participation_id => participation.id,
+                                  :user_or_cbo => 1,
+                                  :user_id => self.id,
+                                  :cbo_id => participation.cbo_id,
+                                  :message => message)
+    end
+    
+  end
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)

@@ -1,7 +1,10 @@
-Private Messages
+participation_message
 :id
 :content
-:
+:user_id
+:cbo_id
+:user_or_cbo
+:participation_id
 
 
 

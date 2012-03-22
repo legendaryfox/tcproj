@@ -34,6 +34,7 @@ class Cbo < ActiveRecord::Base
   has_many :communities, :through => :cbo_community_memberships, :source => :community
   
   has_many :participations
+  has_many :participation_messages
   
   
   
@@ -44,7 +45,17 @@ class Cbo < ActiveRecord::Base
   accepts_nested_attributes_for :cboprofile
   #accepts_nested_attributes_for :questionnaire
                     
-  
+  def post_participation_message(participation, message)
+    if self.participations.find_by_id(participation.id)
+      # valid participation
+      ParticipationMessage.create(:participation_id => participation.id,
+                                  :user_or_cbo => 2,
+                                  :user_id => participation.user_id,
+                                  :cbo_id => self.id,
+                                  :message => message)
+    end
+    
+  end
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)

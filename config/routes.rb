@@ -96,6 +96,10 @@ Tcproj::Application.routes.draw do
     member do
       put 'change_status'
     end
+    
+    collection do
+      get 'my'
+    end
   end
   
   resources :qresponses do
@@ -104,6 +108,9 @@ Tcproj::Application.routes.draw do
     end
   end
   
+  resources :participation_messages do
+    
+  end
   
   
   resources :userprofiles
