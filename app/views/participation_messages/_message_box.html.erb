@@ -1,0 +1,31 @@
+<!-- BEGIN PARTICIPATION MESSAGES !-->
+
+
+<!-- Display Box !-->
+<% participation.participation_messages.find(:all, :limit => 25, :order => 'created_at desc').reverse.each do |participation_message| %>
+	<%= link_to participation_message.sender_name, participation_message.sender_profile_object %> (<%= distance_of_time_in_words_to_now(participation_message.created_at, true) + " ago" %>) - <%= participation_message.message %><br />
+
+<% end %>
+
+<br />
+<!-- form box to leave a message !-->
+<%= form_for ParticipationMessage.new do |new_participation_message_form| %>
+
+	<% if signed_in_user? %>
+		<%= new_participation_message_form.hidden_field :user_or_cbo, :value => 1 %>
+		
+	<% elsif signed_in_cbo? %>
+		<%= new_participation_message_form.hidden_field :user_or_cbo, :value => 2 %>
+	
+	<% end %>
+
+	<%= new_participation_message_form.hidden_field :user_id, :value => participation.user_id %>
+	<%= new_participation_message_form.hidden_field :cbo_id, :value => participation.cbo_id %>
+	<%= new_participation_message_form.hidden_field :participation_id, :value => participation.id %>
+	
+	<%= new_participation_message_form.text_area :message, :class => "xxlarge", :rows => 2 %>
+	
+	<%= new_participation_message_form.submit "Send", :class => "btn primary" %>
+<% end %>
+
+<!-- END PARTICIPATION MESSAGES !-->

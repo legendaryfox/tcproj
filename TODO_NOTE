@@ -1,3 +1,5 @@
+Every time confirmation is changed, trigger it as a message.
+
 participation_message
 :id
 :content

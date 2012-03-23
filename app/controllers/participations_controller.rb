@@ -30,7 +30,7 @@ class ParticipationsController < ApplicationController
   
   def show
     @participation = Participation.find(params[:id])
-    @new_participation_message = ParticipationMessage.new
+    #@new_participation_message = ParticipationMessage.new
   end
   
   def edit
@@ -44,8 +44,21 @@ class ParticipationsController < ApplicationController
       
       if signed_in_cbo?
         redirect_to @participation.cbo, :flash => {:success => "Successfully changed confirmation level."}
+        
+        # log via a ParticipationMessage
+        ParticipationMessage.create(:participation_id => @participation.id,
+                                    :user_id => @participation.user_id,
+                                    :cbo_id => @participation.cbo_id,
+                                    :user_or_cbo => 2,
+                                    :message => "#{current_cbo.cboprofile.name} updated status.")
       else
         redirect_to @participation.cbo.cboprofile, :flash => {:success => "Successfully updated your participation"}
+        
+        ParticipationMessage.create(:participation_id => @participation.id,
+                                    :user_id => @participation.user_id,
+                                    :cbo_id => @participation.cbo_id,
+                                    :user_or_cbo => 1,
+                                    :message => "#{current_user.userprofile.name} updated schedule.")
       end
     else
       render 'edit'
