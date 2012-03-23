@@ -2,9 +2,11 @@
 
 
 <!-- Display Box !-->
-<% participation.participation_messages.find(:all, :limit => 25, :order => 'created_at desc').reverse.each do |participation_message| %>
-	<%= link_to participation_message.sender_name, participation_message.sender_profile_object %> (<%= distance_of_time_in_words_to_now(participation_message.created_at, true) + " ago" %>) - <%= participation_message.message %><br />
+<% if !participation.participation_messages.empty? %>
+	<% participation.participation_messages.find(:all, :limit => 25, :order => 'created_at desc').reverse.each do |participation_message| %>
+		<%= link_to participation_message.sender_name, participation_message.sender_profile_object %> (<%= distance_of_time_in_words_to_now(participation_message.created_at, true) + " ago" %>) - <%= participation_message.message %><br />
 
+		<% end %>
 <% end %>
 
 <br />
