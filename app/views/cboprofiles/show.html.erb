@@ -62,12 +62,19 @@
 	</div>
 
 	<div class="span11" style="border-left: 1px solid #eee; border-right: 1px solid #eee; margin-left: 0; padding-left: 19px">
-		<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small> <% if signed_in_user? %> <a class="btn large primary" data-controls-modal="participation-modal" data-backdrop="static" data-keyboard="true">Volunteer</a> <% end %></h1>
+		<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small> 
+		
+		<% if signed_in_user? %> 
+			<a class="btn large primary" data-controls-modal="participation-modal" data-backdrop="static" data-keyboard="true">Volunteer</a> 
+		<% elsif !signed_in_cbo? %>
+			<a class="btn large primary" href="<%= signin_path %>">Volunteer</a>
+		<% end %>
+		
+		</h1>
 
 		<dl class="tabs">
 			<dd><a href="#1" class="active">Information</a></dd>
-			<dd><a href="#2">Volunteer Thoughts</a></dd>
-			<dd><a href="#3">Volunteer Notes</a></dd>
+			<dd><a href="#2">Volunteer Notes</a></dd>
 		</dl>
 
 		<ul class="tabs-content">
@@ -93,26 +100,18 @@
 							<%= profile_address_formatted(@cboprofile) %><br />
 
 						</address>
-						<%= google_map_static_image_for(@cboprofile, 320, 200) %>
+						
 
 					</li>
 				</ul>
-
-
-
-
+				
+				
 			</li>
+
 
 			<li id="2Tab">
-				<ul class="infolist">
-					<li><a href="#">Josiah Wang:</a> had a great time volunteering here.</li>
-					<li><a href="#">Kevin Chang:</a> Learned so much from the kids and my whole student group had fun. Go BU!</li>
-				</ul>
-			</li>
 
-			<li id="3Tab">
-
-
+				<%= google_map_static_image_for(@cboprofile, 320, 200) %>
 
 			</li>
 

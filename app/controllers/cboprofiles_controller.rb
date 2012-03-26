@@ -45,7 +45,7 @@ class CboprofilesController < ApplicationController
   
     def correct_cboprofile_cbo
       @cbo = Cboprofile.find(params[:id]).cbo 
-      redirect_to(root_path) unless current_user?(@cbo)
+      redirect_to(root_path) unless current_cbo?(@cbo)
     end
 
 
