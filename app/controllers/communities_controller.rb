@@ -1,5 +1,7 @@
 class CommunitiesController < ApplicationController
   
+  before_filter :authenticate_cbo, :only => [:new, :edit, :update]
+  
   def new
     @title = "New Community"
     @community = Community.new

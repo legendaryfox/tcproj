@@ -18,11 +18,11 @@ class ParticipationMessage < ActiveRecord::Base
   def sender_profile_object
     if self.user_or_cbo == 1
       # user sent.
-      return self.user
+      return self.user.userprofile
       
     elsif self.user_or_cbo == 2
       # cbo sent.
-      return self.cbo
+      return self.cbo.cboprofile
       
     end
   end

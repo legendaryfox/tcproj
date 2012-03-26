@@ -83,9 +83,11 @@
 			
 			<li id="4Tab">
 				<ul class="infolist">
-					<% @userprofile.user.subscribed_cbos.each do |cbo|%>
-					<li><%= link_to cbo.name, cbo.cboprofile %></li>
+					
+					<% @userprofile.user.participations.find_all_by_status(2).each do |participation| %>
+					<li><%= link_to participation.cbo.cboprofile.name, participation.cbo.cboprofile %></li>
 					<% end %>
+
 				</ul>
 			</li>
 			

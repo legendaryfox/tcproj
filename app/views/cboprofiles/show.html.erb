@@ -2,8 +2,6 @@
 <div class="row">
 	<div class="span4">
 		<%= image_tag @cboprofile.cbo_avatar.url(:medium) %>
-		<br />
-		<a href="#">View More Photos</a>
 		<br /><br />
 
 
@@ -46,7 +44,6 @@
 				!-->
 			</div>
 
-			<a class="btn" data-controls-modal="participation-modal" data-backdrop="static" data-keyboard="true">View Application</a>
 			<%= render 'cbos/user_subscription', :cbo => @cboprofile.cbo %>
 
 		</p>
@@ -65,7 +62,7 @@
 	</div>
 
 	<div class="span11" style="border-left: 1px solid #eee; border-right: 1px solid #eee; margin-left: 0; padding-left: 19px">
-		<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small>  <a class="btn large primary" data-controls-modal="participation-modal" data-backdrop="static" data-keyboard="true">Volunteer</a> </h1>
+		<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small> <% if signed_in_user? %> <a class="btn large primary" data-controls-modal="participation-modal" data-backdrop="static" data-keyboard="true">Volunteer</a> <% end %></h1>
 
 		<dl class="tabs">
 			<dd><a href="#1" class="active">Information</a></dd>
@@ -79,48 +76,17 @@
 
 				<ul class="leftinfo">
 					<li>Description</li>
-				</ul>
-
-				<ul class="rightinfo">
-					<li><%= simple_format(@cboprofile.description) %></li>
-				</ul>
-
-				<ul class="leftinfo">
 					<li>Information</li>
-				</ul>
-
-
-
-
-				<ul class="rightinfo">
-					<li><%= simple_format(@cboprofile.information) %></li>
-				</ul>
-
-
-				<ul class="leftinfo">
 					<li>Volunteering</li>
-				</ul>
-
-				<ul class="rightinfo">
-					<li><%= simple_format(@cboprofile.how_to_volunteer) %></li>
-				</ul>
-
-
-
-				<ul class="leftinfo">
 					<li>Contact Email</li>
-				</ul>
-
-				<ul class="rightinfo">
-					<li><%= mail_to @cboprofile.cbo.email %></li>
-				</ul>
-
-
-				<ul class="leftinfo">
 					<li>Address</li>
 				</ul>
 
 				<ul class="rightinfo">
+					<li><%= simple_format(@cboprofile.description) %></li>
+					<li><%= simple_format(@cboprofile.information) %></li>
+					<li><%= simple_format(@cboprofile.how_to_volunteer) %></li>
+					<li><%= mail_to @cboprofile.cbo.email %></li>
 					<li>
 						<address>
 							<strong><%= @cboprofile.name %></strong><br />

@@ -1,5 +1,7 @@
 class ParticipationMessagesController < ApplicationController
   
+  before_filter :authenticate_user, :only => [:create]
+  
   def index
     @participation_messages = ParticipationMessage.all
   end

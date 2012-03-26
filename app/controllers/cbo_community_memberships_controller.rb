@@ -1,5 +1,6 @@
 class CboCommunityMembershipsController < ApplicationController
   
+  before_filter :authenticate_cbo
   
   def create
     

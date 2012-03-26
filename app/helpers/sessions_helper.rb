@@ -76,6 +76,12 @@ module SessionsHelper
   end
   
   
+  def authenticate_admin
+    store_location
+    redirect_to signin_path, :notice => "You do not have the priviledge to do that."
+  end
+  
+  
   
   private
   

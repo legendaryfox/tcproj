@@ -47,7 +47,22 @@ if (GBrowserIsCompatible()) {
 
 	map.setCenter(new GLatLng(<%= center_lat %>, <%= center_lng %>), <%= zoom_level %>);
 
+	// DRAW THE CENTER MARKER
 
+	var point = new GLatLng(<%= center_lat %>, <%= center_lng %>);
+	var myIcon = new GIcon(G_DEFAULT_ICON);
+	myIcon.image = "<%= image_path("smiley_happy.png") %>";
+	myIcon.iconSize = new GSize(32, 37)
+	myIcon.shadow = "<%= image_path("shadow.png") %>";
+	myIcon.shadowSize = new GSize(51, 37);
+	markerOptions = { 
+		icon:myIcon,
+		title: '<%= center_text %>',
+		zIndexProcess: function() { return 9999; }
+	};
+	//map.addOverlay(new GMarker(point, markerOptions));
+	var marker = createIconMarker(point, '<%= center_text %>', markerOptions);
+	map.addOverlay(marker);
 
 
 	// SET UP CBO MARKERS
@@ -92,21 +107,7 @@ if (GBrowserIsCompatible()) {
 
 
 
-	// DRAW THE CENTER MARKER
-
-	var point = new GLatLng(<%= center_lat %>, <%= center_lng %>);
-	var myIcon = new GIcon(G_DEFAULT_ICON);
-	myIcon.image = "<%= image_path("smiley_happy.png") %>";
-	myIcon.iconSize = new GSize(32, 37)
-	myIcon.shadow = "<%= image_path("shadow.png") %>";
-	myIcon.shadowSize = new GSize(51, 37);
-	markerOptions = { 
-		icon:myIcon,
-		title: '<%= center_text %>'
-	};
-	//map.addOverlay(new GMarker(point, markerOptions));
-	var marker = createIconMarker(point, '<%= center_text %>', markerOptions);
-	map.addOverlay(marker);
+	
 
 
 

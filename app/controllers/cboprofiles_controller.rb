@@ -1,6 +1,8 @@
 class CboprofilesController < ApplicationController
   
   before_filter :authenticate_user, :only => [:nearby]
+  before_filter :authenticate_cbo, :only => [:edit, :update]
+  before_filter :correct_cboprofile_cbo, :only => [:edit, :update]
   
   def show
     @cboprofile = Cboprofile.find(params[:id])
@@ -38,6 +40,13 @@ class CboprofilesController < ApplicationController
     @cboprofiles = Cboprofile.near_location(current_user.userprofile.latitude, current_user.userprofile.longitude, @distance)
     @title = "All CBOs within " + @distance.to_s + " miles of you."
   end
+  
+  private
+  
+    def correct_cboprofile_cbo
+      @cbo = Cboprofile.find(params[:id]).cbo 
+      redirect_to(root_path) unless current_user?(@cbo)
+    end
 
 
 end

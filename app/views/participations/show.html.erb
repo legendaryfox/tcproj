@@ -42,6 +42,29 @@
 		<% end %>
 	
 	<% end %>
+	
+	
+	<!-- Information about Student !-->
+	<hr />
+	<h2>More information on <%= link_to @participation.user.userprofile.name, @participation.user.userprofile %>:</h2>
+	
+	<h3><%= t(:core_question1_text) %></h3>
+	<p><%= @participation.user.userprofile.core_question1_response %></p>
+	<br />
+	
+	<h3><%= t(:core_question2_text) %></h3>
+	<p><%= @participation.user.userprofile.core_question2_response %></p>
+	<br />
+	
+	<h3><%= t(:core_question3_text) %></h3>
+	<p><%= @participation.user.userprofile.core_question3_response %></p>
+	<br />
+	
+	<h3><%= t(:core_question4_text) %></h3>
+	<p><%= @participation.user.userprofile.core_question4_response %></p>
+	<br />
+	<hr />
+	
 <% end %>
 
 <% if signed_in_cbo? or signed_in_user? %>
