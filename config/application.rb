@@ -38,5 +38,21 @@ module Tcproj
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    
+    config.action_mailer.delivery_method = :smtp
+
+    ActionMailer::Base.smtp_settings = {
+      :address => "smtpout.secureserver.net",
+      :port => 80,
+      :user_name => "do-not-reply@thecollegeproject.org",
+      :password => "foobar",
+      :authentication => :login
+    }
+
+    config.action_mailer.raise_delivery_errors = true
+
+    
+    
   end
 end

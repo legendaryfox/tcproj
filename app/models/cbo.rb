@@ -53,6 +53,7 @@ class Cbo < ActiveRecord::Base
                                   :user_id => participation.user_id,
                                   :cbo_id => self.id,
                                   :message => message)
+                                  
     end
     
   end

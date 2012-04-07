@@ -47,7 +47,7 @@ class ParticipationsController < ApplicationController
         # log via a ParticipationMessage                   
         @participation.cbo.post_participation_message(@participation, "#{current_cbo.cboprofile.name} updated status.")
         redirect_to @participation.cbo, :flash => {:success => "Successfully changed confirmation level."}
-        
+        ParticipationMessageMailer.deliver_status_changed(@participation)
         
       else
         # user
