@@ -65,7 +65,38 @@
 		<h1><%= @cboprofile.name %> <small><%= communities_tagline(@cboprofile.cbo) %></small> 
 		
 		<% if signed_in_user? %> 
-			<a class="btn large primary" data-controls-modal="participation-modal" data-backdrop="static" data-keyboard="true">Volunteer</a> 
+			
+			<%
+			
+				# we need to define the button class...
+				button_participation = current_user.participations.find_by_cbo_id(@cboprofile.cbo)
+				if button_participation
+					# has an application; what kind?
+				
+					if button_participation.status == 0
+						# unconfirmed application
+						button_type = "default"
+						button_text = "Pending Application"
+						
+					elsif button_participation.status == 1
+						# need-more-information
+						button_type = "info"
+						button_text = "More Information Required!"
+					
+					elsif button_participation.status == 2
+						# confirmed
+						button_type = "success"
+						button_text = "Accepted"
+					end
+				else
+					# user does not have an application
+					button_type = "primary"
+					button_text = "Volunteer!"
+				end
+
+			%>
+			
+			<a class="btn large <%= button_type %>" data-controls-modal="participation-modal" data-backdrop="static" data-keyboard="true"><%= button_text %> </a> 
 		<% elsif !signed_in_cbo? %>
 			<a class="btn large primary" href="<%= signin_path %>">Volunteer</a>
 		<% end %>

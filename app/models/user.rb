@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   has_many :subscribed_cbos, :through => :subscriptions, :source => :cbo
   
   has_many :participations
+  has_many :participation_cbos, :through => :participations, :source => :cbo
   
   has_many :user_community_memberships
   has_many :communities, :through => :user_community_memberships, :source => :community

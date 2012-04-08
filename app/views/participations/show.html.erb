@@ -150,6 +150,9 @@
 	</tbody>
 </table>
 
+<p>There <%= @participation.partysize == 1 ? 'is' : 'are' %> a total of <%= pluralize(@participation.partysize, 'person') %> volunteering.</p>
+
+
 <% if signed_in_user? %>
 	<% if @participation.user_id == current_user.id %>
 		<%= link_to "Edit Schedule", edit_participation_path(@participation) %>
