@@ -6,7 +6,7 @@
 			
 			<% if @userprofile.id == current_user.id %>
 				<div class="btn">
-				<%= link_to "Edit Profile", edit_userprofile_path(current_user.userprofile) %>
+				<%= link_to "Edit Profile", edit_user_path(current_user) %>
 				</div>
 			<% end %>
 			

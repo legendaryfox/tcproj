@@ -1,10 +1,16 @@
 <h1>Edit User</h1>
 
-<%= form_for(@user) do |user_form| %>
+<%= form_for @user, :html => { :multipart => true } do |user_form| %>
 	<%= render 'shared/error_messages', :object => user_form.object %>
 	<%= render 'fields', :user_form => user_form %>
+
+	<%= user_form.fields_for :userprofile do |userprofile_form| %>
+		<%= render 'userprofiles/fields', :userprofile_form => userprofile_form, :label => "Profile" %>	
+	<% end %>	
+	
 	
 	<div class="actions">
-		<%= user_form.submit "Update", :class => "btn primary" %>
+		<%= user_form.submit "Edit", :class => "btn primary" %>
 	</div>
+	
 <% end %>
