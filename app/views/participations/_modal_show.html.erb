@@ -1,18 +1,7 @@
 <p>You've already submitted a schedule to this CBO. Please wait further instructions, or <%= link_to "edit", edit_participation_path(participation) %> your schedule.</p>
 	
 	
-<%
-	status_string = ""
-	case participation[:status]
-	when 0
-		status_string = "Pending"
-	when 1
-		status_string = "Need More Information"
-	when 2
-		status_string = "Accepted"
-	end
-%>
-<p>Your application status is currently: <strong><%= status_string %></strong></p>
+<p>Your application status is currently: <strong><%= participation.status_string.titlecase %></strong></p>
 	
 	
 <%= render 'participations/participation_stylesheet' %>	
@@ -83,6 +72,8 @@
 		<% end %>
 	</tbody>
 </table>
+
+<p>There <%= participation.partysize == 1 ? 'is' : 'are' %> a total of <%= pluralize(participation.partysize, 'person') %> volunteering.</p>
 
 <%= render 'participation_messages/message_box', :participation => participation %>
 <br />

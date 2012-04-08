@@ -14,7 +14,7 @@ class Participation < ActiveRecord::Base
   attr_accessible :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday
   attr_accessible :cbo_id
   
-  attr_accessible :status
+  attr_accessible :status, :partysize
   
   has_many :participation_messages
   
@@ -25,6 +25,8 @@ class Participation < ActiveRecord::Base
   
   validates :user_id, :presence => true
   validates :cbo_id, :presence => true
+  
+  validates :partysize, :presence => true, :numericality => { :greater_than => 0}
   
   validates_uniqueness_of :cbo_id, :scope => :user_id
   
@@ -113,6 +115,7 @@ class Participation < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: participations
@@ -130,5 +133,6 @@ end
 #  sunday     :text
 #  created_at :datetime
 #  updated_at :datetime
+#  partysize  :integer         default(1)
 #
 

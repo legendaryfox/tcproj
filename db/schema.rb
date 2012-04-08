@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120322091552) do
+ActiveRecord::Schema.define(:version => 20120408114250) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20120322091552) do
     t.text     "sunday"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "partysize",  :default => 1
   end
 
   create_table "qresponses", :force => true do |t|

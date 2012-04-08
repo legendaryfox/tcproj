@@ -5,6 +5,7 @@ describe Participation do
 end
 
 
+
 # == Schema Information
 #
 # Table name: participations
@@ -22,5 +23,6 @@ end
 #  sunday     :text
 #  created_at :datetime
 #  updated_at :datetime
+#  partysize  :integer         default(1)
 #
 
