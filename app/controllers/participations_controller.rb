@@ -17,9 +17,13 @@ class ParticipationsController < ApplicationController
     
     @participation.attributes = params[:participation]
     if @participation.save
-      #redirect_to @participation, :success => "Successfully made your participation"
+
+      # update view participation messages
       @participation.user.post_participation_message(@participation, "#{current_user.userprofile.name} created participation.")
       redirect_to @participation.cbo.cboprofile, :flash => {:success => "Successfully sent your application! Please wait further instructions."}
+    
+      # send an email out
+      ParticipationMessageMailer.deliver_new_participation(@participation)
     else
       render 'new'
     end
@@ -45,14 +49,20 @@ class ParticipationsController < ApplicationController
       
       if signed_in_cbo?
         # log via a ParticipationMessage                   
-        @participation.cbo.post_participation_message(@participation, "#{current_cbo.cboprofile.name} updated status.")
+        @participation.cbo.post_participation_message(@participation, "#{current_cbo.cboprofile.name} updated status to #{@participation.status_string.titlecase}.")
         redirect_to @participation.cbo, :flash => {:success => "Successfully changed confirmation level."}
+        
+        # Send mail using mailer
         ParticipationMessageMailer.deliver_status_changed(@participation)
         
       else
         # user
+        # log via a ParticipationMessage
         @participation.user.post_participation_message(@participation, "#{current_user.userprofile.name} updated schedule.")
         redirect_to @participation.cbo.cboprofile, :flash => {:success => "Successfully updated your participation"}
+        
+        # Send mail using mailer
+        ParticipationMessageMailer.deliver_schedule_changed(@participation)
     
       end
     else

@@ -47,6 +47,20 @@ class Participation < ActiveRecord::Base
     
   end
   
+  def status_string
+    
+    case self.status
+		when 0
+			status_string = "not confirmed"
+		when 1
+			status_string = "need more info"
+		when 2
+			status_string = "accepted"
+		end
+    
+    
+  end 
+  
 =begin  
   def validate_user_cbo_uniqueness
     

@@ -12,7 +12,7 @@
 			status_string = "Accepted"
 		end
 	%>
-	<h2>Current Status: <strong><%= status_string %></strong></h2>
+	<h2>Current Status: <strong><%= @participation.status_string.titlecase %></strong></h2>
 	
 	<br />
 	
@@ -33,7 +33,7 @@
 				<%= participation_form.label :status, :class => "xlInput" %>
 				<div class="input">
 					<%= participation_form.select :status, 
-						options_for_select([['Not Confirmed', 0], ['Need More Infos', 1], ['Confirmed', 2]], @participation.status)
+						options_for_select([['Not Confirmed', 0], ['Need More Info', 1], ['Accepted', 2]], @participation.status)
  					%>
 
 					<%= participation_form.submit "Set Status", :class => "btn primary"%>

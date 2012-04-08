@@ -7,6 +7,7 @@ gem 'stamp'
 gem 'geocoder' 
 gem "paperclip", "~> 2.0"
 gem 'aws-sdk'
+gem 'actionmailer-with-request'
 
 group :development do
 	gem 'rspec-rails', '2.0.1'

@@ -1,4 +1,13 @@
-Hello, you've received a new message from <% @user.userprofile.name %>. <br />
+Hello, you've received a new message from <%= @user.userprofile.name %>:
 <br />
 
 <%= simple_format(@participation_message.message) %>
+
+To view this application, visit: <%= @url %>
+
+<br /><br />
+
+Thanks,
+
+The College Project team<br />
+http://www.thecollegeproject.org

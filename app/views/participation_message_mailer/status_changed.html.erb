@@ -1,1 +1,10 @@
-Hello <%= @user.userprofile.name %>! <%= @cbo.cboprofile.name %> has updated your application status to <%= @participation.status %>!
+Hello <%= @user.userprofile.name %>, <br />
+
+<%= @cbo.cboprofile.name %> has updated your application status to <%= @participation.status_string.titlecase %>!<br />
+To view this application, visit: <%= @url %>
+
+<br /><br />
+Thanks,
+
+The College Project team<br />
+http://www.thecollegeproject.org
